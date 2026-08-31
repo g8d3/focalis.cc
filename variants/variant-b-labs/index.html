@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Focalis Labs — We build tools for builders</title>
+<meta name="description" content="Focalis Labs builds AI-powered creative & automation kits for builders, designers, and teams who ship fast.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: { syne: ['Syne','sans-serif'], grotesk: ['Space Grotesk','sans-serif'] },
+      colors: {
+        void: '#0F0A1E',
+        lime: '#C6FF00',
+        magenta: '#FF006E',
+        violet: '#7C3AED',
+        cyan: '#00E5FF',
+      }
+    }
+  }
+}
+</script>
+<style>
+  *{scroll-behavior:smooth}
+  body{background:#0F0A1E;color:#fff;font-family:'Space Grotesk',sans-serif;overflow-x:hidden}
+  .glass{background:rgba(255,255,255,0.06);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.09)}
+  .glass-strong{background:rgba(255,255,255,0.08);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.12)}
+  .glow-lime{box-shadow:0 0 40px rgba(198,255,0,0.25), 0 0 80px rgba(198,255,0,0.1)}
+  .glow-magenta{box-shadow:0 0 40px rgba(255,0,110,0.25), 0 0 80px rgba(255,0,110,0.1)}
+  .text-gradient-lime{background:linear-gradient(90deg,#C6FF00 0%, #7CFF7C 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .text-gradient-magenta{background:linear-gradient(90deg,#FF006E 0%, #FF8A00 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .noise{position:relative}
+  .noise::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none}
+  ::selection{background:#C6FF00;color:#0F0A1E}
+</style>
+</head>
+<body class="antialiased">
+<!-- NAV -->
+<nav class="fixed top-0 w-full z-50 glass border-b border-white/10">
+  <div class="max-w-[1280px] mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-lime to-cyan flex items-center justify-center font-syne font-800 text-void text-[14px]">FL</div>
+      <span class="font-syne font-800 text-[18px] tracking-tight">FOCALIS<span class="text-lime"> LABS</span></span>
+      <span class="hidden sm:inline ml-2 text-[10px] tracking-[0.2em] text-white/50 border border-white/15 rounded-full px-2.5 py-1">EXPERIMENTAL • 2026</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-[13px] tracking-wide">
+      <a href="products.html" class="text-white/70 hover:text-white transition">Products</a>
+      <a href="pricing.html" class="text-white/70 hover:text-white transition">Pricing</a>
+      <a href="about.html" class="text-white/70 hover:text-white transition">About</a>
+      <a href="contact.html" class="text-white/70 hover:text-white transition">Contact</a>
+      <a href="pricing.html" class="bg-lime text-void font-bold px-5 py-2.5 rounded-full hover:brightness-110 transition glow-lime">Get Access →</a>
+    </div>
+    <button id="menuBtn" class="md:hidden w-10 h-10 rounded-full glass flex items-center justify-center">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </div>
+  <div id="mobileMenu" class="hidden md:hidden border-t border-white/10 glass px-6 py-6 space-y-4">
+    <a href="products.html" class="block text-white/80">Products</a>
+    <a href="pricing.html" class="block text-white/80">Pricing</a>
+    <a href="about.html" class="block text-white/80">About</a>
+    <a href="contact.html" class="block text-white/80">Contact</a>
+    <a href="pricing.html" class="inline-block bg-lime text-void font-bold px-6 py-3 rounded-full">Get Access →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="relative pt-32 pb-20 px-6 overflow-hidden">
+  <!-- gradient blobs -->
+  <div class="absolute -top-32 -right-32 w-[700px] h-[700px] rounded-full blur-[120px] opacity-30" style="background:radial-gradient(circle at 50% 50%, #7C3AED 0%, #FF006E 40%, transparent 70%)"></div>
+  <div class="absolute top-40 -left-32 w-[600px] h-[600px] rounded-full blur-[120px] opacity-20" style="background:radial-gradient(circle at 50% 50%, #C6FF00 0%, #00E5FF 50%, transparent 70%)"></div>
+  <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[900px] h-[300px] blur-[80px] opacity-10" style="background:linear-gradient(90deg,#C6FF00,#FF006E,#7C3AED)"></div>
+
+  <div class="max-w-[1280px] mx-auto relative">
+    <div class="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 text-[11px] tracking-[0.15em] mb-8">
+      <span class="w-2 h-2 rounded-full bg-lime animate-pulse"></span>
+      <span class="text-white/70">NEW</span>
+      <span class="text-white">HyperCapture 2.0 — now with browser-native 4K capture</span>
+      <span class="hidden sm:inline text-lime">→</span>
+    </div>
+
+    <h1 class="font-syne font-800 text-[42px] sm:text-[64px] lg:text-[84px] leading-[0.9] tracking-tight">
+      WE BUILD<br>
+      <span class="text-gradient-lime">TOOLS</span> FOR<br>
+      <span class="inline-flex items-center gap-4">
+        BUILDERS
+        <span class="hidden sm:inline-flex w-16 h-16 lg:w-20 lg:h-20 rounded-2xl bg-gradient-to-br from-lime to-cyan items-center justify-center text-void text-[28px]">↗</span>
+      </span>
+    </h1>
+
+    <div class="grid lg:grid-cols-[1.2fr_0.8fr] gap-8 mt-10">
+      <p class="text-[18px] sm:text-[20px] leading-relaxed text-white/60 max-w-[560px]">
+        AI-powered creative & automation kits — designed to be remixed, broken, and rebuilt. For teams who ship at the speed of thought.
+      </p>
+      <div class="flex flex-wrap gap-4 items-start">
+        <a href="products.html" class="bg-white text-void font-bold px-8 py-4 rounded-full hover:bg-white/90 transition inline-flex items-center gap-2">Explore Kits <span>→</span></a>
+        <a href="pricing.html" class="glass-strong px-8 py-4 rounded-full font-semibold hover:bg-white/10 transition inline-flex items-center gap-2">View Pricing <span class="text-lime">$29 → $499</span></a>
+      </div>
+    </div>
+
+    <!-- bento hero grid -->
+    <div class="grid grid-cols-12 gap-4 mt-16">
+      <!-- large card -->
+      <div class="col-span-12 lg:col-span-7 glass rounded-[28px] p-8 relative overflow-hidden noise min-h-[380px] flex flex-col">
+        <div class="absolute inset-0 bg-gradient-to-br from-violet/20 via-transparent to-lime/10 pointer-events-none"></div>
+        <div class="relative">
+          <div class="flex items-center justify-between mb-6">
+            <span class="text-[11px] tracking-[0.2em] text-lime border border-lime/30 rounded-full px-3 py-1">FEATURED KIT</span>
+            <span class="text-[11px] tracking-widest text-white/40">001 — HYPERCAPTURE</span>
+          </div>
+          <h3 class="font-syne font-700 text-[28px] leading-none">Capture anything.<br>Perfect every time.</h3>
+          <p class="text-white/50 mt-3 max-w-[420px] text-[14px] leading-relaxed">Browser automation + GPU capture + instant video assembly. Record workflows, product demos, and UIs at 4K/60 without plugins.</p>
+          <div class="flex flex-wrap gap-2 mt-6">
+            <span class="glass px-3 py-1.5 rounded-full text-[11px] text-white/70">4K • 60fps</span>
+            <span class="glass px-3 py-1.5 rounded-full text-[11px] text-white/70">No extension</span>
+            <span class="glass px-3 py-1.5 rounded-full text-[11px] text-white/70">FFmpeg baked in</span>
+          </div>
+          <div class="mt-8 flex items-center gap-4">
+            <span class="font-syne font-800 text-[32px]">$149</span>
+            <span class="text-white/40 text-[13px]">one-time • lifetime updates</span>
+            <a href="products.html#hypercapture" class="ml-auto bg-lime text-void text-[13px] font-bold px-5 py-2.5 rounded-full">Buy with Dodo →</a>
+          </div>
+        </div>
+        <!-- abstract visual -->
+        <div class="absolute -right-8 -bottom-8 w-56 h-56 rounded-[24px] bg-gradient-to-br from-lime to-cyan opacity-20 blur-[1px] rotate-12 hidden lg:block"></div>
+        <div class="absolute right-8 bottom-8 w-48 h-32 glass-strong rounded-2xl hidden lg:flex items-center justify-center">
+          <div class="text-center">
+            <div class="text-[10px] tracking-[0.2em] text-white/40">CAPTURE PREVIEW</div>
+            <div class="mt-2 flex gap-1 justify-center"><span class="w-2 h-2 rounded-full bg-red-400"></span><span class="w-2 h-2 rounded-full bg-yellow-400"></span><span class="w-2 h-2 rounded-full bg-lime"></span></div>
+            <div class="mt-3 h-10 w-32 rounded-lg bg-white/10 mx-auto flex items-center justify-center text-[10px] text-white/50">● REC 00:42</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- right stack -->
+      <div class="col-span-12 lg:col-span-5 grid grid-rows-2 gap-4">
+        <div class="glass rounded-[28px] p-7 relative overflow-hidden flex flex-col justify-between min-h-[180px]">
+          <div class="absolute inset-0 bg-gradient-to-br from-magenta/15 to-transparent pointer-events-none"></div>
+          <div class="relative">
+            <div class="text-[11px] tracking-[0.2em] text-magenta">002 — SIGNAL GRID</div>
+            <h4 class="font-syne font-700 text-[20px] mt-2 leading-tight">Turn noise into signal.</h4>
+            <p class="text-white/50 text-[13px] mt-2">Volume-profile S/R + capital redistribution for crypto traders.</p>
+          </div>
+          <div class="relative flex items-center justify-between mt-4">
+            <span class="font-bold text-[18px]">$299</span>
+            <a href="products.html#signalgrid" class="text-[12px] font-bold border border-white/20 rounded-full px-4 py-2 hover:bg-white hover:text-void transition">Buy with Dodo</a>
+          </div>
+        </div>
+        <div class="glass rounded-[28px] p-7 relative overflow-hidden flex flex-col justify-between min-h-[180px]">
+          <div class="absolute inset-0 bg-gradient-to-br from-cyan/15 to-transparent pointer-events-none"></div>
+          <div class="relative">
+            <div class="text-[11px] tracking-[0.2em] text-cyan">003 — VOICE FORGE</div>
+            <h4 class="font-syne font-700 text-[20px] mt-2 leading-tight">Voices that don't sound like AI.</h4>
+            <p class="text-white/50 text-[13px] mt-2">Studio-grade TTS + voice cloning. 40+ languages, real-time streaming.</p>
+          </div>
+          <div class="relative flex items-center justify-between mt-4">
+            <span class="font-bold text-[18px]">$79</span>
+            <a href="products.html#voiceforge" class="text-[12px] font-bold border border-white/20 rounded-full px-4 py-2 hover:bg-white hover:text-void transition">Buy with Dodo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- stats bar -->
+    <div class="glass rounded-[20px] grid grid-cols-2 lg:grid-cols-4 divide-x divide-white/10 mt-4">
+      <div class="p-6 text-center">
+        <div class="font-syne font-800 text-[28px] text-lime">12k+</div>
+        <div class="text-[11px] tracking-[0.15em] text-white/40 mt-1">BUILDERS SHIPPING</div>
+      </div>
+      <div class="p-6 text-center">
+        <div class="font-syne font-800 text-[28px]">47</div>
+        <div class="text-[11px] tracking-[0.15em] text-white/40 mt-1">KITS &amp; MODULES</div>
+      </div>
+      <div class="p-6 text-center">
+        <div class="font-syne font-800 text-[28px] text-magenta">4.9/5</div>
+        <div class="text-[11px] tracking-[0.15em] text-white/40 mt-1">AVG RATING</div>
+      </div>
+      <div class="p-6 text-center">
+        <div class="font-syne font-800 text-[28px]">24h</div>
+        <div class="text-[11px] tracking-[0.15em] text-white/40 mt-1">SUPPORT SLA</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUSTED / LOGOS -->
+<section class="px-6 pb-12">
+  <div class="max-w-[1280px] mx-auto">
+    <div class="text-center text-[11px] tracking-[0.2em] text-white/30 mb-6">TRUSTED BY BUILDERS AT</div>
+    <div class="flex flex-wrap justify-center gap-3 text-[12px] tracking-wide text-white/40">
+      <span class="glass rounded-full px-5 py-2">Linear</span>
+      <span class="glass rounded-full px-5 py-2">Vercel</span>
+      <span class="glass rounded-full px-5 py-2">Supabase</span>
+      <span class="glass rounded-full px-5 py-2">Perplexity</span>
+      <span class="glass rounded-full px-5 py-2">Retool</span>
+      <span class="glass rounded-full px-5 py-2">Figma</span>
+    </div>
+  </div>
+</section>
+
+<!-- BENTO FEATURES -->
+<section class="px-6 pb-20">
+  <div class="max-w-[1280px] mx-auto">
+    <div class="flex flex-wrap items-end justify-between gap-6 mb-8">
+      <h2 class="font-syne font-800 text-[32px] sm:text-[44px] leading-none">A lab, not a<br><span class="text-white/30">store.</span></h2>
+      <p class="text-white/50 max-w-[420px] text-[14px] leading-relaxed">Every kit is a starting point. Fork it, extend it, ship your version. Docs, source, and community included. No gatekeeping.</p>
+    </div>
+
+    <div class="grid grid-cols-12 gap-4">
+      <div class="col-span-12 md:col-span-6 lg:col-span-4 glass rounded-[24px] p-7 hover:bg-white/[0.08] transition group">
+        <div class="w-10 h-10 rounded-xl bg-lime flex items-center justify-center text-void text-lg">◈</div>
+        <h3 class="font-syne font-700 text-[18px] mt-5">Remixable by design</h3>
+        <p class="text-white/50 text-[13px] mt-2 leading-relaxed">All kits ship with clean HTML/CSS/JS. No lock-in. Copy what you need, discard the rest.</p>
+        <div class="mt-4 text-[12px] text-lime opacity-0 group-hover:opacity-100 transition">Explore docs →</div>
+      </div>
+      <div class="col-span-12 md:col-span-6 lg:col-span-4 glass rounded-[24px] p-7 hover:bg-white/[0.08] transition group">
+        <div class="w-10 h-10 rounded-xl bg-magenta flex items-center justify-center text-white text-lg">⚡</div>
+        <h3 class="font-syne font-700 text-[18px] mt-5">GPU-accelerated</h3>
+        <p class="text-white/50 text-[13px] mt-2 leading-relaxed">From video rendering to real-time voice, we squeeze every flop from your hardware.</p>
+        <div class="mt-4 text-[12px] text-magenta opacity-0 group-hover:opacity-100 transition">See benchmarks →</div>
+      </div>
+      <div class="col-span-12 md:col-span-6 lg:col-span-4 glass rounded-[24px] p-7 hover:bg-white/[0.08] transition group">
+        <div class="w-10 h-10 rounded-xl bg-cyan flex items-center justify-center text-void text-lg">⬡</div>
+        <h3 class="font-syne font-700 text-[18px] mt-5">Built for agents</h3>
+        <p class="text-white/50 text-[13px] mt-2 leading-relaxed">Every tool has a CLI and API. Your agents can install, configure, and run them autonomously.</p>
+        <div class="mt-4 text-[12px] text-cyan opacity-0 group-hover:opacity-100 transition">Agent guide →</div>
+      </div>
+      <div class="col-span-12 md:col-span-6 lg:col-span-8 glass rounded-[24px] p-8 flex flex-col sm:flex-row gap-8 items-center">
+        <div class="flex-1">
+          <div class="text-[11px] tracking-[0.2em] text-lime">WORKFLOW</div>
+          <h3 class="font-syne font-700 text-[22px] mt-2">From idea to video in 12 minutes.</h3>
+          <p class="text-white/50 text-[13px] mt-2">Record → Auto-edit → Voiceover → Publish. The full loop, no context switching.</p>
+          <a href="products.html" class="inline-block mt-4 text-[13px] font-bold underline decoration-lime underline-offset-4">See all kits →</a>
+        </div>
+        <div class="w-full sm:w-[280px] glass-strong rounded-2xl p-4">
+          <div class="flex items-center gap-2 text-[11px] text-white/50"><span class="w-2 h-2 rounded-full bg-lime"></span> Pipeline active</div>
+          <div class="mt-3 space-y-2">
+            <div class="flex items-center justify-between bg-white/5 rounded-lg px-3 py-2 text-[12px]"><span>Capture</span><span class="text-lime">✓ 2.4s</span></div>
+            <div class="flex items-center justify-between bg-white/5 rounded-lg px-3 py-2 text-[12px]"><span>Transcribe</span><span class="text-lime">✓ 1.1s</span></div>
+            <div class="flex items-center justify-between bg-white/5 rounded-lg px-3 py-2 text-[12px]"><span>Render</span><span class="text-cyan">● 8s</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-span-12 md:col-span-12 lg:col-span-4 bg-gradient-to-br from-lime to-cyan rounded-[24px] p-8 text-void flex flex-col justify-between min-h-[220px]">
+        <div>
+          <div class="text-[11px] tracking-[0.2em] opacity-60">PRICING</div>
+          <h3 class="font-syne font-800 text-[28px] leading-none mt-2">Pay once.<br>Own forever.</h3>
+          <p class="text-void/60 text-[13px] mt-2">No subscriptions. No seat limits. Lifetime updates included.</p>
+        </div>
+        <a href="pricing.html" class="mt-6 bg-void text-white rounded-full px-6 py-3 text-[13px] font-bold text-center hover:bg-black transition">View Plans →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="px-6 pb-20">
+  <div class="max-w-[1280px] mx-auto glass rounded-[32px] p-10 sm:p-14 relative overflow-hidden text-center">
+    <div class="absolute inset-0 bg-gradient-to-br from-violet/20 via-magenta/10 to-lime/10 pointer-events-none"></div>
+    <div class="relative">
+      <h2 class="font-syne font-800 text-[32px] sm:text-[48px] leading-none">Start building<br><span class="text-gradient-lime">today.</span></h2>
+      <p class="text-white/50 mt-4 max-w-[520px] mx-auto text-[14px]">Join 12,000+ builders. Instant delivery via Dodo Payments. 14-day refund, no questions asked.</p>
+      <div class="flex flex-wrap justify-center gap-4 mt-8">
+        <a href="products.html" class="bg-lime text-void font-bold px-8 py-4 rounded-full">Browse Kits →</a>
+        <a href="contact.html" class="glass-strong px-8 py-4 rounded-full font-semibold">Talk to us</a>
+      </div>
+      <div class="mt-6 text-[11px] tracking-[0.15em] text-white/30">SECURE CHECKOUT VIA DODO PAYMENTS • INSTANT DELIVERY • VAT INCLUDED</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-white/10 px-6 py-12">
+  <div class="max-w-[1280px] mx-auto">
+    <div class="grid md:grid-cols-4 gap-10">
+      <div>
+        <div class="flex items-center gap-2"><div class="w-8 h-8 rounded-lg bg-gradient-to-br from-lime to-cyan flex items-center justify-center font-syne font-800 text-void text-[12px]">FL</div><span class="font-syne font-800">FOCALIS LABS</span></div>
+        <p class="text-white/40 text-[13px] mt-3 leading-relaxed">We build tools for builders. AI-powered creative & automation kits, built in the open.</p>
+        <p class="text-white/30 text-[11px] mt-4">Focalis Labs LLC<br>8 The Green STE B, Dover, DE 19901<br>hello@focalis.cc</p>
+      </div>
+      <div>
+        <div class="text-[11px] tracking-[0.2em] text-white/40 mb-4">PRODUCTS</div>
+        <ul class="space-y-2 text-[13px] text-white/60">
+          <li><a href="products.html#hypercapture" class="hover:text-white">HyperCapture</a></li>
+          <li><a href="products.html#signalgrid" class="hover:text-white">Signal Grid</a></li>
+          <li><a href="products.html#voiceforge" class="hover:text-white">Voice Forge</a></li>
+          <li><a href="products.html" class="hover:text-white">All Kits →</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="text-[11px] tracking-[0.2em] text-white/40 mb-4">COMPANY</div>
+        <ul class="space-y-2 text-[13px] text-white/60">
+          <li><a href="about.html" class="hover:text-white">About</a></li>
+          <li><a href="pricing.html" class="hover:text-white">Pricing</a></li>
+          <li><a href="contact.html" class="hover:text-white">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="text-[11px] tracking-[0.2em] text-white/40 mb-4">LEGAL</div>
+        <ul class="space-y-2 text-[13px] text-white/60">
+          <li><a href="privacy.html" class="hover:text-white">Privacy Policy</a></li>
+          <li><a href="terms.html" class="hover:text-white">Terms of Service</a></li>
+          <li><a href="refund.html" class="hover:text-white">Refund Policy</a></li>
+        </ul>
+        <div class="mt-6 flex gap-2">
+          <a href="#" class="w-8 h-8 rounded-full glass flex items-center justify-center text-[12px] hover:bg-white/10">𝕏</a>
+          <a href="#" class="w-8 h-8 rounded-full glass flex items-center justify-center text-[12px] hover:bg-white/10">▶</a>
+          <a href="#" class="w-8 h-8 rounded-full glass flex items-center justify-center text-[12px] hover:bg-white/10">⬢</a>
+        </div>
+      </div>
+    </div>
+    <div class="mt-10 pt-6 border-t border-white/10 flex flex-wrap justify-between gap-4 text-[11px] text-white/30">
+      <span>© 2026 Focalis Labs LLC. All rights reserved.</span>
+      <span>Payments processed securely by Dodo Payments.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('menuBtn').addEventListener('click',()=>{document.getElementById('mobileMenu').classList.toggle('hidden')});
+</script>
+<script src="/admin/bar.js"></script>
+</body>
+</html>

@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Focalis Systems — Infrastructure for Ambitious Teams</title>
+<meta name="description" content="Focalis Systems builds reliable infrastructure for growing teams — automation systems, AI-assisted workflows, and integration software with enterprise SLAs.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230F2342'/><path d='M8 16l6 6 10-12' stroke='%2314B8A6' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script>
+<script>try{var t=localStorage.getItem("focalis-theme");if(!t){t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.setAttribute("data-theme",t)}catch(e){document.documentElement.setAttribute("data-theme","light")}</script>
+</head>
+<body class="antialiased">
+
+<!-- Top announcement -->
+<div class="bg-[#0F2342] text-white text-[13px] py-2">
+  <div class="max-w-[1160px] mx-auto px-6 flex items-center justify-between gap-4">
+    <div class="flex items-center gap-2">
+      <span class="inline-flex items-center gap-1.5 bg-white/10 border border-white/15 rounded-full px-2.5 py-1 text-[11px] font-semibold tracking-widest uppercase">New</span>
+      <span class="text-white/90">SOC 2 Type I attestation in progress — controls available on request.</span>
+    </div>
+    <a href="contact.html" class="hidden md:inline-flex text-white/80 hover:text-white underline underline-offset-4 text-[13px]">Request our security overview →</a>
+  </div>
+</div>
+
+<!-- NAV -->
+<header class="nav-wrap">
+  <div class="max-w-[1160px] mx-auto px-6 h-[64px] flex items-center justify-between gap-8 relative">
+    <a href="index.html" class="flex items-center gap-3 shrink-0">
+      <span class="w-8 h-8 rounded-md bg-[#0F2342] flex items-center justify-center">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M7 14l3.5 3.5L17 8" stroke="#14B8A6" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><rect x="3" y="3" width="18" height="18" rx="3.5" stroke="white" stroke-opacity="0.15" stroke-width="1.2"/></svg>
+      </span>
+      <span class="serif font-semibold tracking-tight text-[17px] text-[#0F2342]">Focalis Systems</span>
+      <span class="hidden sm:inline text-[11px] font-semibold tracking-widest uppercase text-[#5B6476] border border-[#E8E4DE] rounded-full px-2 py-0.5">Enterprise</span>
+    </a>
+    <nav class="hidden lg:flex items-center gap-6 text-[14px] font-medium text-[#3A4356]">
+      <a href="products.html" class="hover:text-[#0F2342] transition-colors">Products</a>
+      <a href="pricing.html" class="hover:text-[#0F2342] transition-colors">Pricing</a>
+      <a href="about.html" class="hover:text-[#0F2342] transition-colors">About</a>
+      <a href="contact.html" class="hover:text-[#0F2342] transition-colors">Contact</a>
+    </nav>
+    <div class="hidden lg:flex items-center gap-3">
+      <a href="contact.html" class="text-[14px] font-medium text-[#0F2342] hover:underline underline-offset-4">Talk to sales</a>
+      <a href="products.html" class="btn-primary text-[13px] py-2.5">View products</a>
+    </div>
+    <button id="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false" title="Switch to dark theme">
+      <svg data-theme-icon="sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 6.34l-1.41 1.41M19.07 19.07l-1.41 1.41"/></svg>
+      <svg data-theme-icon="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <button id="menu-btn" class="lg:hidden w-9 h-9 rounded-md border border-[#E8E4DE] flex items-center justify-center text-[#0F2342]" aria-expanded="false" aria-label="Toggle menu">
+      <svg data-icon="open" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg data-icon="close" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="display:none"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div id="mobile-menu" class="mobile-menu">
+      <div class="px-6 flex flex-col gap-1 text-[14px] font-medium">
+        <a href="products.html" class="py-2.5 border-b border-[#F5F3EF] text-[#0F2342]">Products</a>
+        <a href="pricing.html" class="py-2.5 border-b border-[#F5F3EF] text-[#0F2342]">Pricing</a>
+        <a href="about.html" class="py-2.5 border-b border-[#F5F3EF] text-[#0F2342]">About</a>
+        <a href="contact.html" class="py-2.5 border-b border-[#F5F3EF] text-[#0F2342]">Contact</a>
+        <a href="privacy.html" class="py-2 text-[13px] text-[#5B6476]">Privacy</a>
+        <a href="terms.html" class="py-2 text-[13px] text-[#5B6476]">Terms</a>
+        <a href="refund.html" class="py-2 text-[13px] text-[#5B6476]">Refund Policy</a>
+        <a href="products.html" class="btn-primary justify-center mt-3">View products</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero-gradient border-b border-[#E8E4DE] overflow-hidden">
+  <div class="max-w-[1160px] mx-auto px-6 pt-12 md:pt-16 pb-10 md:pb-14">
+    <div class="grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-12 items-start">
+      <div class="animate-fadeUp">
+        <div class="flex flex-wrap items-center gap-2 mb-5">
+          <span class="badge badge-teal"><span class="w-1.5 h-1.5 rounded-full bg-[#14B8A6]"></span> Trusted by operations teams</span>
+          <span class="badge badge-stone">99.9% uptime SLA</span>
+        </div>
+        <h1 class="serif text-[34px] md:text-[44px] font-semibold leading-[1.06] tracking-[-0.03em] text-[#0F2342]">
+          Infrastructure for<br>ambitious teams.
+        </h1>
+        <p class="mt-4 text-[17px] leading-relaxed text-[#3A4356] max-w-[560px]">
+          Focalis Systems designs automation systems, AI-assisted workflows, and integration software for companies that cannot afford downtime. Licensed software, managed services, and clear SLAs — from first integration to enterprise-scale orchestration.
+        </p>
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a href="products.html" class="btn-primary">Explore products <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a href="pricing.html" class="btn-secondary">See pricing</a>
+        </div>
+        <div class="mt-6 flex flex-wrap items-center gap-4 text-[13px] text-[#5B6476]">
+          <span class="flex items-center gap-1.5"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 3v5l3 2" stroke="#14B8A6" stroke-width="1.4" stroke-linecap="round"/></svg> 14-day refund, no questions</span>
+          <span class="w-1 h-1 rounded-full bg-[#D6D0C4]"></span>
+          <span class="flex items-center gap-1.5"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-6" stroke="#14B8A6" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg> DPA & sub-processors listed</span>
+          <span class="w-1 h-1 rounded-full bg-[#D6D0C4]"></span>
+          <span>Invoicing via Dodo Payments</span>
+        </div>
+      </div>
+
+      <!-- Hero visual: 3D + floating cards + metrics -->
+      <div class="animate-fadeUp delay-100 hero-visual-wrap">
+        <div class="hero-mesh" aria-hidden="true"></div>
+        <canvas id="hero-3d" aria-hidden="true"></canvas>
+
+        <!-- Inline isometric SVG — decorative -->
+        <div class="absolute -top-6 -right-2 w-[160px] h-[160px] opacity-[0.07] pointer-events-none hidden lg:block" aria-hidden="true">
+          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g stroke="#0F2342" stroke-width="1.2" stroke-linejoin="round">
+              <path d="M60 70 L100 45 L140 70 L100 95 Z" fill="none"/>
+              <path d="M60 70 L60 110 L100 135 L100 95 Z" fill="none" opacity="0.7"/>
+              <path d="M140 70 L140 110 L100 135 L100 95 Z" fill="none" opacity="0.5"/>
+              <path d="M100 45 L100 95" stroke-opacity="0.3"/>
+              <path d="M40 110 L80 85 L120 110 L80 135 Z" fill="none" opacity="0.5"/>
+              <path d="M120 85 L160 60 L160 100 L120 125 Z" fill="none" opacity="0.35"/>
+              <circle cx="100" cy="45" r="3" fill="#14B8A6" stroke="none"/>
+              <circle cx="140" cy="70" r="2" fill="#14B8A6" stroke="none"/>
+              <circle cx="60" cy="70" r="2" fill="#14B8A6" stroke="none"/>
+            </g>
+          </svg>
+        </div>
+
+        <!-- Floating mini cards -->
+        <div class="hero-float-card hero-float-card--a hidden md:flex items-center gap-2.5" aria-hidden="true">
+          <span class="w-7 h-7 rounded-md bg-[#E6F7F5] border border-[#BFE9E4] flex items-center justify-center shrink-0"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0F766E" stroke-width="1.8"><path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/></svg></span>
+          <div><div class="text-[11px] font-semibold text-[#0F2342] leading-none">Automation run</div><div class="text-[11px] text-[#5B6476]">Completed in 1.2s</div></div>
+          <span class="w-2 h-2 rounded-full bg-emerald-500 ml-1"></span>
+        </div>
+        <div class="hero-float-card hero-float-card--b hidden md:flex items-center gap-2" aria-hidden="true">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#14B8A6]"></span>
+          <span class="text-[11px] font-semibold text-[#0F2342]">42 connectors active</span>
+          <span class="text-[11px] text-[#78746E]">· p95 41ms</span>
+        </div>
+
+        <div class="card p-6 md:p-7 relative" style="backdrop-filter:blur(6px);">
+          <div class="flex items-center justify-between gap-4 mb-5">
+            <div>
+              <div class="text-[11px] font-semibold tracking-widest uppercase text-[#5B6476]">Live system status</div>
+              <div class="flex items-center gap-2 mt-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                <span class="text-[13px] font-medium text-[#0F2342]">All systems operational</span>
+                <span class="text-[12px] text-[#5B6476]">— updated moments ago</span>
+              </div>
+            </div>
+            <span class="badge badge-teal">SLA 99.9%</span>
+          </div>
+
+          <div class="rounded-lg border border-[#E8E4DE] overflow-hidden">
+            <table class="data-table">
+              <thead><tr><th>Service</th><th>Uptime (90d)</th><th>Latency p95</th></tr></thead>
+              <tbody>
+                <tr><td class="font-medium text-[13px]">Data Pipeline API</td><td class="mono text-[13px]">99.97%</td><td class="mono text-[13px]">184 ms</td></tr>
+                <tr><td class="font-medium text-[13px]">Automation Engine</td><td class="mono text-[13px]">99.95%</td><td class="mono text-[13px]">92 ms</td></tr>
+                <tr><td class="font-medium text-[13px]">Integration Layer</td><td class="mono text-[13px]">99.98%</td><td class="mono text-[13px]">41 ms</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="mt-4 grid grid-cols-3 gap-3 text-center">
+            <div class="bg-[#FAF9F7] rounded-lg border border-[#E8E4DE] p-3">
+              <div class="text-[18px] font-semibold text-[#0F2342] serif">240+</div>
+              <div class="text-[11px] tracking-widest uppercase font-semibold text-[#5B6476]">Teams</div>
+            </div>
+            <div class="bg-[#FAF9F7] rounded-lg border border-[#E8E4DE] p-3">
+              <div class="text-[18px] font-semibold text-[#0F2342] serif">18 mo</div>
+              <div class="text-[11px] tracking-widest uppercase font-semibold text-[#5B6476]">Avg. retention</div>
+            </div>
+            <div class="bg-[#FAF9F7] rounded-lg border border-[#E8E4DE] p-3">
+              <div class="text-[18px] font-semibold text-[#0F2342] serif">&lt;4h</div>
+              <div class="text-[11px] tracking-widest uppercase font-semibold text-[#5B6476]">Support response</div>
+            </div>
+          </div>
+
+          <div class="mt-4 flex items-start gap-2.5 bg-[#E6F7F5] border border-[#BFE9E4] rounded-lg p-3">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="mt-0.5 shrink-0"><path d="M8 3.5a4.5 4.5 0 100 9 4.5 4.5 0 000-9z" stroke="#0F766E" stroke-width="1.3"/><path d="M8 7v3M8 11.5h.01" stroke="#0F766E" stroke-width="1.4" stroke-linecap="round"/></svg>
+            <p class="text-[12.5px] leading-relaxed text-[#115E59]"><strong>What you buy is what you run.</strong> Licensed software and managed services with versioned releases, changelogs, and rollback — no opaque usage metering.</p>
+          </div>
+        </div>
+        <p class="mt-3 text-center text-[12px] text-[#78746E]">Illustrative operational data. Real-time status at <a href="contact.html" class="underline underline-offset-2 hover:text-[#0F2342]">status on request</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="max-w-[1160px] mx-auto px-6 py-6">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div class="text-[11px] font-semibold tracking-widest uppercase text-[#78746E]">Built for teams that ship daily</div>
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="inline-flex items-center gap-2 text-[13px] font-medium text-[#3A4356] bg-[#FAF9F7] border border-[#E8E4DE] rounded-full px-3 py-1.5"><span class="w-1.5 h-1.5 rounded-full bg-[#14B8A6]"></span> EU data residency</span>
+        <span class="inline-flex items-center gap-2 text-[13px] font-medium text-[#3A4356] bg-[#FAF9F7] border border-[#E8E4DE] rounded-full px-3 py-1.5"><span class="w-1.5 h-1.5 rounded-full bg-[#14B8A6]"></span> GDPR & DPA included</span>
+        <span class="inline-flex items-center gap-2 text-[13px] font-medium text-[#3A4356] bg-[#FAF9F7] border border-[#E8E4DE] rounded-full px-3 py-1.5"><span class="w-1.5 h-1.5 rounded-full bg-[#14B8A6]"></span> Invoicing via Dodo Payments</span>
+        <span class="inline-flex items-center gap-2 text-[13px] font-medium text-[#3A4356] bg-[#FAF9F7] border border-[#E8E4DE] rounded-full px-3 py-1.5"><span class="w-1.5 h-1.5 rounded-full bg-[#14B8A6]"></span> 14-day refund policy</span>
+      </div>
+    </div>
+    <div class="mt-5 grid grid-cols-3 md:grid-cols-6 gap-3 opacity-60">
+      <div class="h-9 rounded bg-[#F5F3EF] border border-[#E8E4DE] flex items-center justify-center text-[11px] font-semibold tracking-widest uppercase text-[#78746E]">Northpeak</div>
+      <div class="h-9 rounded bg-[#F5F3EF] border border-[#E8E4DE] flex items-center justify-center text-[11px] font-semibold tracking-widest uppercase text-[#78746E]">Avenor</div>
+      <div class="h-9 rounded bg-[#F5F3EF] border border-[#E8E4DE] flex items-center justify-center text-[11px] font-semibold tracking-widest uppercase text-[#78746E]">Cedarline</div>
+      <div class="h-9 rounded bg-[#F5F3EF] border border-[#E8E4DE] flex items-center justify-center text-[11px] font-semibold tracking-widest uppercase text-[#78746E]">Sable & Co</div>
+      <div class="h-9 rounded bg-[#F5F3EF] border border-[#E8E4DE] flex items-center justify-center text-[11px] font-semibold tracking-widest uppercase text-[#78746E]">Merrick</div>
+      <div class="h-9 rounded bg-[#F5F3EF] border border-[#E8E4DE] flex items-center justify-center text-[11px] font-semibold tracking-widest uppercase text-[#78746E]">Halden</div>
+    </div>
+    <p class="mt-2 text-[11px] text-[#A8A29A] text-center">Selected customers — logos illustrative. References available during procurement.</p>
+  </div>
+</div>
+
+<!-- VIDEO SHOWCASE -->
+<section class="max-w-[1160px] mx-auto px-6 py-10 md:py-12">
+  <div class="video-wrap reveal">
+    <video autoplay muted loop playsinline preload="metadata" poster="assets/img/hero.jpg" aria-label="Focalis platform demo — automation and data pipelines in action">
+      <source src="https://cdn.coverr.co/videos/coverr-coding-close-up-1575/1080p.mp4" type="video/mp4">
+    </video>
+    <div class="video-fallback" aria-hidden="true"></div>
+    <div class="video-overlay" aria-hidden="true"></div>
+    <div class="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div class="max-w-[560px]">
+          <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/20 rounded-full px-3 py-1 text-[11px] font-semibold tracking-widest uppercase text-white"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> See it in action — 30 sec</div>
+          <h3 class="serif text-[22px] md:text-[26px] font-semibold text-white mt-3 leading-tight">From pipeline to dashboard in under an hour.</h3>
+          <p class="text-[13px] leading-relaxed text-white/70 mt-2">Real connectors, real lineage — filmed from a live Focalis workspace. No mock data, no slides. Pair the clip with sandbox access and you ship the same day.</p>
+          <div class="mt-4 flex flex-wrap gap-2 text-[11px]">
+            <span class="bg-white text-[#0F2342] rounded-full px-3 py-1 font-medium">Data Pipeline</span>
+            <span class="bg-white/15 border border-white/20 text-white rounded-full px-3 py-1">Automation Suite</span>
+            <span class="bg-white/15 border border-white/20 text-white rounded-full px-3 py-1">Integration Layer</span>
+          </div>
+        </div>
+        <button type="button" aria-label="Play demo video" class="shrink-0 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-lg hover:scale-105 transition-transform">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#0F2342"><path d="M8 5.14v14l11-7z"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <p class="mt-3 text-center text-[12px] text-[#78746E]">Video: illustrative platform loop — muted autoplay. Full walkthrough available on request at <a href="mailto:hello@focalis.cc" class="underline">hello@focalis.cc</a>.</p>
+</section>
+
+<!-- PRODUCTS PREVIEW -->
+<section class="max-w-[1160px] mx-auto px-6 py-14 md:py-16">
+  <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+    <div>
+      <div class="badge badge-teal mb-3">Products</div>
+      <h2 class="serif text-[26px] md:text-[30px] font-semibold tracking-tight text-[#0F2342] leading-none">Three systems. One contract.</h2>
+      <p class="mt-2 text-[15px] text-[#5B6476] max-w-[560px]">Buy standalone or as a suite. Each product is licensed software with documentation, support, and a clear SLA — not a black-box service.</p>
+    </div>
+    <a href="products.html" class="btn-secondary shrink-0">Compare all products</a>
+  </div>
+
+  <div class="grid md:grid-cols-3 gap-5">
+    <!-- Product 1 -->
+    <div class="card flex flex-col reveal overflow-hidden p-0">
+      <div class="product-card-image-wrap">
+        <img src="assets/img/data-pipeline.jpg" alt="Data Pipeline — abstract pipeline visualization, light stone background" width="1024" height="1024" loading="lazy" class="product-image">
+      </div>
+      <div class="p-6 flex flex-col flex-1">
+        <div class="w-10 h-10 rounded-lg bg-[#E6F7F5] border border-[#BFE9E4] flex items-center justify-center mb-4 -mt-10 ml-1 shadow-sm bg-white">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0F766E" stroke-width="1.7"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="3.5"/></svg>
+        </div>
+        <div class="text-[11px] font-semibold tracking-widest uppercase text-[#0F766E]">Licensed software + managed option</div>
+        <h3 class="serif text-[18px] font-semibold text-[#0F2342] mt-1">Data Pipeline</h3>
+        <p class="text-[14px] leading-relaxed text-[#5B6476] mt-2">Ingest, validate, and deliver data across warehouses, apps, and object storage. Exactly-once delivery, schema enforcement, and full lineage.</p>
+        <div class="mt-4 flex items-baseline gap-2">
+          <span class="text-[22px] font-semibold text-[#0F2342]">$199</span>
+          <span class="text-[13px] text-[#5B6476]">/ month · Team license</span>
+        </div>
+        <ul class="mt-4 space-y-2 text-[13px] text-[#3A4356]">
+          <li class="flex gap-2"><svg class="check mt-0.5" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> 50M events / month included</li>
+          <li class="flex gap-2"><svg class="check mt-0.5" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> 99.9% uptime SLA · on-call support</li>
+          <li class="flex gap-2"><svg class="check mt-0.5" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> EU/US data residency choice</li>
+        </ul>
+        <div class="mt-5 flex gap-2">
+          <button data-dodo-checkout data-product="Data Pipeline" class="btn-teal flex-1 justify-center text-[13px]">Buy with Dodo</button>
+          <a href="products.html#data-pipeline" class="btn-secondary flex-1 justify-center text-[13px]">Details</a>
+        </div>
+      </div>
+    </div>
+    <!-- Product 2 — highlighted -->
+    <div class="card-highlight flex flex-col reveal overflow-hidden p-0">
+      <div class="product-card-image-wrap">
+        <img src="assets/img/automation-suite.jpg" alt="Automation Suite — workflow cards floating in light space" width="1024" height="1024" loading="lazy" class="product-image">
+      </div>
+      <div class="p-6 flex flex-col flex-1">
+        <div class="flex items-center justify-between -mt-10 mb-4">
+          <div class="w-10 h-10 rounded-lg bg-[#0F2342] flex items-center justify-center shadow-sm">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.7"><path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/></svg>
+          </div>
+          <span class="badge badge-navy shadow-sm">Most adopted</span>
+        </div>
+        <div class="text-[11px] font-semibold tracking-widest uppercase text-[#0F766E]">Licensed software</div>
+        <h3 class="serif text-[18px] font-semibold text-[#0F2342] mt-1">Automation Suite</h3>
+        <p class="text-[14px] leading-relaxed text-[#5B6476] mt-2">Orchestrate workflows across your stack — approvals, ETL jobs, notifications, and retries. Visual builder, Git-backed, audited.</p>
+        <div class="mt-4 flex items-baseline gap-2">
+          <span class="text-[22px] font-semibold text-[#0F2342]">$349</span>
+          <span class="text-[13px] text-[#5B6476]">/ month · Business license</span>
+        </div>
+        <ul class="mt-4 space-y-2 text-[13px] text-[#3A4356]">
+          <li class="flex gap-2"><svg class="check mt-0.5" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Unlimited workflows · 500k runs / month</li>
+          <li class="flex gap-2"><svg class="check mt-0.5" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> 99.9% SLA · priority support & SSO (SAML)</li>
+          <li class="flex gap-2"><svg class="check mt-0.5" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Self-host option on Enterprise</li>
+        </ul>
+        <div class="mt-5 flex gap-2">
+          <button data-dodo-checkout data-product="Automation Suite" class="btn-primary flex-1 justify-center text-[13px]">Buy with Dodo</button>
+          <a href="products.html#automation-suite" class="btn-secondary flex-1 justify-center text-[13px]">Details</a>
+        </div>
+        <p class="mt-3 text-[11px] text-center text-[#78746E]">Or talk to sales for annual billing — two months free.</p>
+      </div>
+    </div>
+    <!-- Product 3 -->
+    <div class="card flex flex-col reveal overflow-hidden p-0">
+      <div class="product-card-image-wrap">
+        <img src="assets/img/integration-layer.jpg" alt="Integration Layer — connector nodes orbiting central hub" width="1024" height="1024" loading="lazy" class="product-image">
+      </div>
+      <div class="p-6 flex flex-col flex-1">
+        <div class="w-10 h-10 rounded-lg bg-[#FAF9F7] border border-[#E8E4DE] flex items-center justify-center mb-4 -mt-10 ml-1 shadow-sm">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#57534E" stroke-width="1.7"><rect x="3" y="7" width="18" height="10" rx="2"/><path d="M7 7V5.5A2.5 2.5 0 019.5 3h5A2.5 2.5 0 0117 5.5V7"/><circle cx="12" cy="12" r="2"/></svg>
+        </div>
+        <div class="text-[11px] font-semibold tracking-widest uppercase text-[#78746E]">Licensed software + services</div>
+        <h3 class="serif text-[18px] font-semibold text-[#0F2342] mt-1">Integration Layer</h3>
+        <p class="text-[14px] leading-relaxed text-[#5B6476] mt-2">A unified API and event bus for your internal tools. Connectors for 40+ systems, idempotent webhooks, and contract-tested SDKs.</p>
+        <div class="mt-4 flex items-baseline gap-2">
+          <span class="text-[22px] font-semibold text-[#0F2342]">$49</span>
+          <span class="text-[13px] text-[#5B6476]">/ month · Starter · then $499 Pro</span>
+        </div>
+        <ul class="mt-4 space-y-2 text-[13px] text-[#3A4356]">
+          <li class="flex gap-2"><svg class="check mt-0.5" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> 40+ connectors · webhook signing</li>
+          <li class="flex gap-2"><svg class="check mt-0.5" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> 99.5% SLA (Starter) / 99.9% (Pro)</li>
+          <li class="flex gap-2"><svg class="check mt-0.5" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> SDKs: TypeScript, Python, Go, REST</li>
+        </ul>
+        <div class="mt-5 flex gap-2">
+          <button data-dodo-checkout data-product="Integration Layer" class="btn-teal flex-1 justify-center text-[13px]">Buy with Dodo</button>
+          <a href="products.html#integration-layer" class="btn-secondary flex-1 justify-center text-[13px]">Details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-6 bg-white border border-[#E8E4DE] rounded-lg p-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+    <div class="flex items-start gap-3">
+      <span class="w-8 h-8 rounded-md bg-[#0F2342] flex items-center justify-center shrink-0 mt-0.5">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="9"/></svg>
+      </span>
+      <div>
+        <div class="text-[13px] font-semibold text-[#0F2342]">Custom Enterprise — for regulated or high-volume workloads</div>
+        <p class="text-[13px] text-[#5B6476]">Dedicated tenancy, VPC deployment, custom connectors, and a 99.95% SLA. Annual contract, invoiced via Dodo Payments or wire. <a href="pricing.html#enterprise" class="underline underline-offset-2 font-medium text-[#0F2342]">See Enterprise</a> · <a href="contact.html" class="underline underline-offset-2 font-medium text-[#0F2342]">Contact sales</a></p>
+      </div>
+    </div>
+    <span class="shrink-0 text-[13px] font-mono text-[#5B6476] bg-[#FAF9F7] border border-[#E8E4DE] rounded px-2.5 py-1">From $999 / mo</span>
+  </div>
+</section>
+
+<!-- GALLERY STRIP -->
+<section class="max-w-[1160px] mx-auto px-6 pb-10">
+  <div class="flex items-center justify-between gap-4 mb-4">
+    <div class="text-[11px] font-semibold tracking-widest uppercase text-[#78746E]">Focalis in the wild — infrastructure teams at work</div>
+    <span class="hidden md:inline text-[12px] text-[#78746E]">Paris · Frankfurt · Remote across EU · hello@focalis.cc</span>
+  </div>
+  <div class="gallery-strip grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+    <a href="about.html" class="group block"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500&h=320&fit=crop&q=80" alt="Engineers collaborating over code on large monitors" width="500" height="320" loading="lazy"><span class="mt-2 block text-[12px] font-medium text-[#5B6476] group-hover:text-[#0F2342]">Engineering workflow →</span></a>
+    <a href="products.html#automation-suite" class="group block"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=320&fit=crop&q=80" alt="Analytics dashboard with charts and metrics" width="500" height="320" loading="lazy"><span class="mt-2 block text-[12px] font-medium text-[#5B6476] group-hover:text-[#0F2342]">Automation at scale →</span></a>
+    <a href="products.html#data-pipeline" class="group block"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=500&h=320&fit=crop&q=80" alt="Modern office with engineers at workstations" width="500" height="320" loading="lazy"><span class="mt-2 block text-[12px] font-medium text-[#5B6476] group-hover:text-[#0F2342]">Data pipelines live →</span></a>
+    <a href="contact.html" class="group block"><img src="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=500&h=320&fit=crop&q=80" alt="Abstract network visualization and data nodes" width="500" height="320" loading="lazy"><span class="mt-2 block text-[12px] font-medium text-[#5B6476] group-hover:text-[#0F2342]">Integration mesh →</span></a>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="bg-white border-y border-[#E8E4DE]">
+  <div class="max-w-[1160px] mx-auto px-6 py-12 md:py-14">
+    <div class="max-w-[640px]">
+      <div class="badge badge-stone mb-3">How it works</div>
+      <h2 class="serif text-[24px] md:text-[28px] font-semibold tracking-tight text-[#0F2342]">From purchase to production in days, not quarters.</h2>
+      <p class="mt-2 text-[15px] text-[#5B6476]">Every product ships with documentation, a sandbox, and a named support contact. No hidden onboarding fees.</p>
+    </div>
+    <div class="mt-8 grid md:grid-cols-4 gap-5">
+      <div class="reveal">
+        <div class="w-8 h-8 rounded-full bg-[#0F2342] text-white flex items-center justify-center text-[13px] font-semibold">1</div>
+        <h3 class="mt-3 font-semibold text-[#0F2342] text-[14px]">Choose & purchase</h3>
+        <p class="mt-1 text-[13px] leading-relaxed text-[#5B6476]">Buy self-serve via Dodo Payments or request an enterprise quote. License key delivered instantly; invoice and receipt by email.</p>
+      </div>
+      <div class="reveal">
+        <div class="w-8 h-8 rounded-full bg-[#0F2342] text-white flex items-center justify-center text-[13px] font-semibold">2</div>
+        <h3 class="mt-3 font-semibold text-[#0F2342] text-[14px]">Connect your stack</h3>
+        <p class="mt-1 text-[13px] leading-relaxed text-[#5B6476]">Follow the quick-start guide. SDKs, Terraform modules, and sample pipelines get you to first successful run in under an hour.</p>
+      </div>
+      <div class="reveal">
+        <div class="w-8 h-8 rounded-full bg-[#0F2342] text-white flex items-center justify-center text-[13px] font-semibold">3</div>
+        <h3 class="mt-3 font-semibold text-[#0F2342] text-[14px]">Validate & go live</h3>
+        <p class="mt-1 text-[13px] leading-relaxed text-[#5B6476]">Run in shadow mode, compare outputs, then promote. Rollback is one command. Audit logs from day one.</p>
+      </div>
+      <div class="reveal">
+        <div class="w-8 h-8 rounded-full bg-[#14B8A6] text-white flex items-center justify-center text-[13px] font-semibold">4</div>
+        <h3 class="mt-3 font-semibold text-[#0F2342] text-[14px]">We stand behind it</h3>
+        <p class="mt-1 text-[13px] leading-relaxed text-[#5B6476]">SLA-backed support with response targets, status page, and quarterly reviews on Business and Enterprise.</p>
+      </div>
+    </div>
+    <div class="mt-8 rounded-lg border border-[#E8E4DE] bg-[#FAF9F7] p-4 flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
+      <div class="text-[13px] text-[#3A4356]"><strong class="text-[#0F2342]">Need procurement help?</strong> We provide a W-9, DPA, sub-processor list, and security questionnaire responses within one business day.</div>
+      <a href="contact.html" class="btn-secondary shrink-0 text-[13px]">Request procurement pack</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="max-w-[1160px] mx-auto px-6 py-12 md:py-14">
+  <div class="flex items-end justify-between gap-4 mb-6">
+    <div>
+      <div class="badge badge-stone mb-3">Customers</div>
+      <h2 class="serif text-[22px] md:text-[26px] font-semibold tracking-tight text-[#0F2342]">Teams that trust Focalis in production</h2>
+    </div>
+    <span class="hidden md:inline text-[12px] text-[#78746E]">Testimonials on file — references available during procurement.</span>
+  </div>
+  <div class="grid md:grid-cols-3 gap-5">
+    <div class="card p-6 reveal">
+      <div class="flex gap-1 text-[#D6A017] text-[14px]">★★★★★</div>
+      <p class="mt-3 text-[14px] leading-relaxed text-[#1A1E2A]">“Data Pipeline replaced three in-house jobs and cut our warehouse load failures to near zero. The exactly-once guarantee actually holds under backpressure — we verified it.”</p>
+      <div class="mt-4 flex items-center gap-3 pt-4 border-t border-[#E8E4DE]">
+        <div class="w-9 h-9 rounded-full bg-[#F5F3EF] border border-[#E8E4DE] flex items-center justify-center text-[12px] font-semibold text-[#57534E]">MR</div>
+        <div>
+          <div class="text-[13px] font-semibold text-[#0F2342]">M. Rivera</div>
+          <div class="text-[12px] text-[#78746E]">VP Engineering, Northpeak Analytics · 180 employees</div>
+        </div>
+      </div>
+    </div>
+    <div class="card p-6 reveal">
+      <div class="flex gap-1 text-[#D6A017] text-[14px]">★★★★★</div>
+      <p class="mt-3 text-[14px] leading-relaxed text-[#1A1E2A]">“We evaluated Automation Suite against two larger vendors. Focalis was the only one where audit logs and Git-backed deploys were first-class on day one.”</p>
+      <div class="mt-4 flex items-center gap-3 pt-4 border-t border-[#E8E4DE]">
+        <div class="w-9 h-9 rounded-full bg-[#F5F3EF] border border-[#E8E4DE] flex items-center justify-center text-[12px] font-semibold text-[#57534E]">SK</div>
+        <div>
+          <div class="text-[13px] font-semibold text-[#0F2342]">S. Kline</div>
+          <div class="text-[12px] text-[#78746E]">COO, Avenor Health · 95 employees</div>
+        </div>
+      </div>
+    </div>
+    <div class="card p-6 reveal">
+      <div class="flex gap-1 text-[#D6A017] text-[14px]">★★★★★</div>
+      <p class="mt-3 text-[14px] leading-relaxed text-[#1A1E2A]">“Integration Layer gave us a single webhook contract across our tools. Contract tests caught two breaking changes before they reached production.”</p>
+      <div class="mt-4 flex items-center gap-3 pt-4 border-t border-[#E8E4DE]">
+        <div class="w-9 h-9 rounded-full bg-[#F5F3EF] border border-[#E8E4DE] flex items-center justify-center text-[12px] font-semibold text-[#57534E]">JL</div>
+        <div>
+          <div class="text-[13px] font-semibold text-[#0F2342]">J. Liu</div>
+          <div class="text-[12px] text-[#78746E]">Head of Platform, Cedarline · 320 employees</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPLIANCE -->
+<section class="bg-[#0F2342] text-white">
+  <div class="max-w-[1160px] mx-auto px-6 py-12 md:py-14">
+    <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-start">
+      <div>
+        <div class="inline-flex items-center gap-2 text-[11px] font-semibold tracking-widest uppercase text-white/60 border border-white/15 rounded-full px-3 py-1">Security & Compliance</div>
+        <h2 class="serif text-[24px] md:text-[28px] font-semibold tracking-tight mt-3 leading-tight">Enterprise controls<br>without enterprise friction.</h2>
+        <p class="mt-3 text-[14px] leading-relaxed text-white/70 max-w-[520px]">We publish what processors we use, where data resides, and how we handle incidents — because procurement should not require a scavenger hunt.</p>
+        <div class="mt-6 grid grid-cols-2 gap-3">
+          <div class="bg-white/5 border border-white/10 rounded-lg p-4">
+            <div class="text-[12px] font-semibold tracking-widest uppercase text-white/60">Data</div>
+            <div class="mt-1 text-[13px] leading-relaxed text-white/85">EU primary residency (Frankfurt), US option (Virginia). Encryption at rest (AES-256) and in transit (TLS 1.2+).</div>
+          </div>
+          <div class="bg-white/5 border border-white/10 rounded-lg p-4">
+            <div class="text-[12px] font-semibold tracking-widest uppercase text-white/60">Privacy</div>
+            <div class="mt-1 text-[13px] leading-relaxed text-white/85">GDPR-ready DPA, sub-processor list, and data retention controls. <a href="privacy.html" class="underline underline-offset-2">Read privacy</a>.</div>
+          </div>
+          <div class="bg-white/5 border border-white/10 rounded-lg p-4">
+            <div class="text-[12px] font-semibold tracking-widest uppercase text-white/60">Access</div>
+            <div class="mt-1 text-[13px] leading-relaxed text-white/85">SSO (SAML 2.0) on Business/Enterprise, RBAC, and immutable audit logs retained 12 months.</div>
+          </div>
+          <div class="bg-white/5 border border-white/10 rounded-lg p-4">
+            <div class="text-[12px] font-semibold tracking-widest uppercase text-white/60">Operations</div>
+            <div class="mt-1 text-[13px] leading-relaxed text-white/85">Daily backups, tested restores, 30-day point-in-time recovery, and a public status page.</div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white rounded-xl p-6 text-[#0F2342]">
+        <div class="text-[11px] font-semibold tracking-widest uppercase text-[#5B6476]">Sub-processors (summary)</div>
+        <p class="text-[12px] text-[#5B6476] mt-1">Full list with purposes and locations in our <a href="privacy.html#subprocessors" class="underline font-medium text-[#0F2342]">Privacy Policy</a> and DPA.</p>
+        <div class="mt-4 rounded-lg border border-[#E8E4DE] overflow-hidden">
+          <table class="data-table">
+            <thead><tr><th>Processor</th><th>Purpose</th><th>Region</th></tr></thead>
+            <tbody>
+              <tr><td class="text-[13px] font-medium">Dodo Payments</td><td class="text-[13px]">Merchant of record, billing, invoicing</td><td class="text-[13px]">Global</td></tr>
+              <tr><td class="text-[13px] font-medium">Cloud hosting provider</td><td class="text-[13px]">Compute, storage, networking</td><td class="text-[13px]">EU / US</td></tr>
+              <tr><td class="text-[13px] font-medium">Email delivery</td><td class="text-[13px]">Transactional email</td><td class="text-[13px]">EU</td></tr>
+              <tr><td class="text-[13px] font-medium">Error monitoring</td><td class="text-[13px]">Reliability & diagnostics</td><td class="text-[13px]">EU</td></tr>
+              <tr><td class="text-[13px] font-medium">Support desk</td><td class="text-[13px]">Customer support</td><td class="text-[13px]">EU</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="mt-4 flex flex-wrap gap-2">
+          <a href="privacy.html" class="btn-secondary text-[13px]">Privacy & DPA</a>
+          <a href="terms.html" class="btn-secondary text-[13px]">Terms</a>
+          <a href="contact.html" class="btn-primary text-[13px]">Request questionnaire response</a>
+        </div>
+        <p class="mt-3 text-[11px] text-[#78746E]">We notify customers of material sub-processor changes at least 14 days in advance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="max-w-[1160px] mx-auto px-6 py-12 md:py-14">
+  <div class="max-w-[720px] mx-auto">
+    <div class="text-center">
+      <div class="badge badge-stone">FAQ</div>
+      <h2 class="serif text-[24px] font-semibold tracking-tight text-[#0F2342] mt-3">The questions procurement actually asks</h2>
+    </div>
+    <div class="mt-8 bg-white border border-[#E8E4DE] rounded-xl divide-y divide-[#E8E4DE]" data-single>
+      <div data-faq-item data-open="true" class="p-5">
+        <button data-faq-trigger class="w-full flex items-center justify-between gap-4 text-left">
+          <span class="text-[14px] font-semibold text-[#0F2342]">What exactly am I buying — a service or a license?</span>
+          <span data-faq-icon class="shrink-0 w-7 h-7 rounded-full bg-[#FAF9F7] border border-[#E8E4DE] flex items-center justify-center text-[#5B6476]" style="transform:rotate(180deg)">▾</span>
+        </button>
+        <div data-faq-body class="mt-3 text-[14px] leading-relaxed text-[#5B6476]">
+          A license to run Focalis software plus, where you choose it, a managed hosting and support commitment with an SLA. You receive versioned artifacts, a changelog, and a support channel — not an opaque multi-tenant black box. Self-host is available on Enterprise.
+        </div>
+      </div>
+      <div data-faq-item data-open="false" class="p-5">
+        <button data-faq-trigger class="w-full flex items-center justify-between gap-4 text-left">
+          <span class="text-[14px] font-semibold text-[#0F2342]">How is billing handled and can I get an invoice?</span>
+          <span data-faq-icon class="shrink-0 w-7 h-7 rounded-full bg-[#FAF9F7] border border-[#E8E4DE] flex items-center justify-center text-[#5B6476]">▾</span>
+        </button>
+        <div data-faq-body class="mt-3 text-[14px] leading-relaxed text-[#5B6476]" style="display:none">
+          All purchases are processed by Dodo Payments as merchant of record. You receive an immediate receipt and a VAT-compliant invoice. Monthly and annual billing are available — annual saves roughly two months. Enterprise can pay by wire on annual contracts.
+        </div>
+      </div>
+      <div data-faq-item data-open="false" class="p-5">
+        <button data-faq-trigger class="w-full flex items-center justify-between gap-4 text-left">
+          <span class="text-[14px] font-semibold text-[#0F2342]">What if it does not fit — what is the refund policy?</span>
+          <span data-faq-icon class="shrink-0 w-7 h-7 rounded-full bg-[#FAF9F7] border border-[#E8E4DE] flex items-center justify-center text-[#5B6476]">▾</span>
+        </button>
+        <div data-faq-body class="mt-3 text-[14px] leading-relaxed text-[#5B6476]" style="display:none">
+          We offer a 14-day refund from initial purchase for new licenses. Contact support — no retention call required. See our <a href="refund.html" class="underline font-medium">Refund Policy</a> for full terms including enterprise and renewal specifics.
+        </div>
+      </div>
+      <div data-faq-item data-open="false" class="p-5">
+        <button data-faq-trigger class="w-full flex items-center justify-between gap-4 text-left">
+          <span class="text-[14px] font-semibold text-[#0F2342]">Where is my data stored and who processes it?</span>
+          <span data-faq-icon class="shrink-0 w-7 h-7 rounded-full bg-[#FAF9F7] border border-[#E8E4DE] flex items-center justify-center text-[#5B6476]">▾</span>
+        </button>
+        <div data-faq-body class="mt-3 text-[14px] leading-relaxed text-[#5B6476]" style="display:none">
+          EU is the default (Frankfurt), with a US option on request. We maintain a public sub-processor list and a DPA that you can countersign. Material sub-processor changes are notified at least 14 days in advance.
+        </div>
+      </div>
+      <div data-faq-item data-open="false" class="p-5">
+        <button data-faq-trigger class="w-full flex items-center justify-between gap-4 text-left">
+          <span class="text-[14px] font-semibold text-[#0F2342]">Do you offer SLAs and what happens if you miss them?</span>
+          <span data-faq-icon class="shrink-0 w-7 h-7 rounded-full bg-[#FAF9F7] border border-[#E8E4DE] flex items-center justify-center text-[#5B6476]">▾</span>
+        </button>
+        <div data-faq-body class="mt-3 text-[14px] leading-relaxed text-[#5B6476]" style="display:none">
+          Yes — every paid plan includes an SLA (99.5% to 99.95% depending on product and tier). Credits are issued automatically when we miss the target in a calendar month, and incidents are documented with a post-mortem.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="max-w-[1160px] mx-auto px-6 pb-12">
+  <div class="rounded-2xl bg-[#0F2342] p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+    <div>
+      <h2 class="serif text-[22px] md:text-[26px] font-semibold text-white tracking-tight">Ready to put it in production?</h2>
+      <p class="mt-2 text-[14px] text-white/70 max-w-[520px]">Start with one product or deploy the suite. Every purchase includes documentation, a sandbox, and a support channel from day one.</p>
+    </div>
+    <div class="flex flex-wrap gap-3 shrink-0">
+      <a href="products.html" class="bg-white text-[#0F2342] font-semibold text-[14px] px-6 py-3 rounded-md hover:bg-[#FAF9F7] transition-colors">View products</a>
+      <a href="contact.html" class="bg-transparent border border-white/20 text-white font-medium text-[14px] px-6 py-3 rounded-md hover:bg-white/10 transition-colors">Talk to sales</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-[#E8E4DE] bg-white">
+  <div class="max-w-[1160px] mx-auto px-6 py-10">
+    <div class="grid md:grid-cols-[1.4fr_1fr_1fr_1fr] gap-8">
+      <div>
+        <div class="flex items-center gap-2.5">
+          <span class="w-8 h-8 rounded-md bg-[#0F2342] flex items-center justify-center">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 14l3.5 3.5L17 8" stroke="#14B8A6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="serif font-semibold text-[#0F2342]">Focalis Systems</span>
+        </div>
+        <p class="mt-3 text-[13px] leading-relaxed text-[#5B6476]">Infrastructure for ambitious teams. Licensed software, managed services, and honest SLAs.</p>
+        <div class="mt-4 text-[12px] leading-relaxed text-[#78746E]">
+          Focalis Technologies S.A.S.<br>
+          12 Rue de la Paix, 75002 Paris, France<br>
+          <a href="mailto:contact@focalis.cc" class="hover:text-[#0F2342] underline underline-offset-2">contact@focalis.cc</a> · <a href="mailto:hello@focalis.cc" class="hover:text-[#0F2342] underline underline-offset-2">hello@focalis.cc</a> · +33 1 23 45 67 89
+        </div>
+        <div class="mt-4 flex flex-wrap gap-2">
+          <span class="text-[11px] font-medium text-[#57534E] bg-[#FAF9F7] border border-[#E8E4DE] rounded-full px-2.5 py-1">Dodo Payments — Merchant of Record</span>
+          <span class="text-[11px] font-medium text-[#57534E] bg-[#FAF9F7] border border-[#E8E4DE] rounded-full px-2.5 py-1">VAT FR12345678901</span>
+        </div>
+      </div>
+      <div>
+        <div class="text-[12px] font-semibold tracking-widest uppercase text-[#0F2342]">Products</div>
+        <ul class="mt-3 space-y-2 text-[13px] text-[#5B6476]">
+          <li><a href="products.html#data-pipeline" class="hover:text-[#0F2342]">Data Pipeline — $199/mo</a></li>
+          <li><a href="products.html#automation-suite" class="hover:text-[#0F2342]">Automation Suite — $349/mo</a></li>
+          <li><a href="products.html#integration-layer" class="hover:text-[#0F2342]">Integration Layer — from $49/mo</a></li>
+          <li><a href="pricing.html" class="hover:text-[#0F2342]">Pricing overview</a></li>
+          <li><a href="pricing.html#enterprise" class="hover:text-[#0F2342]">Enterprise — from $999/mo</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="text-[12px] font-semibold tracking-widest uppercase text-[#0F2342]">Company</div>
+        <ul class="mt-3 space-y-2 text-[13px] text-[#5B6476]">
+          <li><a href="about.html" class="hover:text-[#0F2342]">About Focalis</a></li>
+          <li><a href="contact.html" class="hover:text-[#0F2342]">Contact & support</a></li>
+          <li><a href="about.html#careers" class="hover:text-[#0F2342]">Careers</a></li>
+          <li><a href="contact.html" class="hover:text-[#0F2342]">Security overview</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="text-[12px] font-semibold tracking-widest uppercase text-[#0F2342]">Legal</div>
+        <ul class="mt-3 space-y-2 text-[13px] text-[#5B6476]">
+          <li><a href="privacy.html" class="hover:text-[#0F2342]">Privacy Policy</a></li>
+          <li><a href="terms.html" class="hover:text-[#0F2342]">Terms of Service</a></li>
+          <li><a href="refund.html" class="hover:text-[#0F2342]">Refund Policy</a></li>
+          <li><a href="privacy.html#subprocessors" class="hover:text-[#0F2342]">Sub-processors & DPA</a></li>
+          <li><span class="text-[12px] text-[#78746E]">Effective: 1 March 2026</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-8 pt-6 border-t border-[#E8E4DE] flex flex-col md:flex-row gap-3 md:items-center justify-between text-[12px] text-[#78746E]">
+      <span>© <span id="year"></span> Focalis Technologies S.A.S. All rights reserved. All prices in USD. Taxes calculated at checkout by Dodo Payments.</span>
+      <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-emerald-500"></span> All systems operational — <a href="contact.html" class="underline">status</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+<!-- Hero 3D — Three.js torusKnot with fallback to CSS mesh -->
+<script type="module">
+try{
+  const canvas = document.getElementById('hero-3d');
+  if(canvas){
+    const THREE = await import('three');
+    const w = canvas.clientWidth || 400;
+    const h = canvas.clientHeight || 420;
+    const dpr = Math.min(window.devicePixelRatio||1, 1.6);
+    const renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:true});
+    renderer.setSize(w, h, false);
+    renderer.setPixelRatio(dpr);
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(42, w/h, 0.1, 100);
+    camera.position.set(0, 0.2, 6.5);
+    scene.add(new THREE.AmbientLight(0xffffff, 0.9));
+    const dir = new THREE.DirectionalLight(0xffffff, 0.9);
+    dir.position.set(3,4,5);
+    scene.add(dir);
+    const point = new THREE.PointLight(0x14B8A6, 1.2, 12);
+    point.position.set(-2, 2, 3);
+    scene.add(point);
+    // TorusKnot abstract shape
+    const geom = new THREE.TorusKnotGeometry(1.15, 0.33, 160, 22);
+    const mat = new THREE.MeshStandardMaterial({color:0x14B8A6, metalness:0.45, roughness:0.32, transparent:true, opacity:0.92});
+    const mesh = new THREE.Mesh(geom, mat);
+    mesh.position.y = 0.15;
+    // Wire overlay slightly larger
+    const wireMat = new THREE.MeshStandardMaterial({color:0x0F2342, wireframe:true, transparent:true, opacity:0.10});
+    const wire = new THREE.Mesh(new THREE.TorusKnotGeometry(1.16, 0.33, 80, 16), wireMat);
+    wire.position.copy(mesh.position);
+    scene.add(mesh); scene.add(wire);
+    // Second small icosahedron for depth
+    const ico = new THREE.Mesh(new THREE.IcosahedronGeometry(0.28, 1), new THREE.MeshStandardMaterial({color:0xE8E4DE, metalness:0.2, roughness:0.5, transparent:true, opacity:0.55}));
+    ico.position.set(1.7, -0.9, 0.6);
+    scene.add(ico);
+
+    canvas.setAttribute('data-rendered','1');
+    let raf=0, t0=performance.now();
+    const dark = ()=> document.documentElement.getAttribute('data-theme')==='dark';
+    function frame(now){
+      raf=requestAnimationFrame(frame);
+      const t=(now-t0)/1000;
+      mesh.rotation.y = t*0.22;
+      mesh.rotation.x = Math.sin(t*0.18)*0.18;
+      mesh.rotation.z = Math.cos(t*0.12)*0.08;
+      wire.rotation.y = -t*0.08;
+      wire.rotation.x = t*0.05;
+      ico.rotation.y = t*0.55;
+      ico.rotation.x = t*0.35;
+      ico.position.y = -0.9 + Math.sin(t*0.9)*0.12;
+      // subtle theme-aware color shift
+      if(dark()){
+        mat.color.setHex(0x2DD4BF);
+        wireMat.opacity=0.14;
+      } else {
+        mat.color.setHex(0x14B8A6);
+        wireMat.opacity=0.10;
+      }
+      renderer.render(scene,camera);
+    }
+    frame(performance.now());
+    // handle resize
+    const ro = new ResizeObserver(()=>{
+      const cw=canvas.clientWidth, ch=canvas.clientHeight;
+      if(!cw||!ch) return;
+      renderer.setSize(cw,ch,false);
+      camera.aspect=cw/ch; camera.updateProjectionMatrix();
+    });
+    ro.observe(canvas.parentElement);
+    // pause when hidden
+    document.addEventListener('visibilitychange',()=>{
+      if(document.hidden) cancelAnimationFrame(raf);
+      else { t0=performance.now(); frame(performance.now());}
+    });
+  }
+}catch(e){
+  const c=document.getElementById('hero-3d');
+  if(c) c.style.display='none';
+  console.warn('Hero 3D fallback (CSS mesh)', e.message||e);
+}
+</script>
+<script src="/admin/bar.js"></script>
+</body>
+</html>

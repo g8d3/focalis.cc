@@ -1,0 +1,61 @@
+services:
+  caddy:
+    image: caddy:2-alpine
+    container_name: focalis-caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./variants:/srv:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - focalis-net
+    depends_on:
+      admin:
+        condition: service_started
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://127.0.0.1:80/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  admin:
+    image: python:3.12-slim
+    container_name: focalis-admin
+    restart: unless-stopped
+    working_dir: /app
+    volumes:
+      - ./admin:/app
+      - ./:/site
+      - ./variants:/srv
+    # no host port publish needed — Caddy proxies via internal network.
+    # Expose for direct host debug: use 127.0.0.1:8788
+    ports:
+      - "127.0.0.1:8788:8788"
+    environment:
+      - ADMIN_USER=${ADMIN_USER:-}
+      - ADMIN_PASS=${ADMIN_PASS:-}
+      - ACTIVE_FILE=/site/ACTIVE
+      - VARIANTS_DIR=/site/variants
+      - CREDENTIALS_FILE=/app/.credentials
+    command: bash -c "pip install --no-cache-dir Flask >/dev/null 2>&1 && python /app/app.py"
+    networks:
+      - focalis-net
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8788/admin/health', timeout=5).read()==b'ok' else 1)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
+volumes:
+  caddy_data:
+  caddy_config:
+
+networks:
+  focalis-net:
+    driver: bridge

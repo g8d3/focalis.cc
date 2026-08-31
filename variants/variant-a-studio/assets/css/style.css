@@ -1,0 +1,132 @@
+/* Focalis Studio — Minimal Premium — Variant A */
+:root{
+  --bg: #0A0A0B;
+  --bg-soft: #111113;
+  --bg-card: #141416;
+  --border: #1E1E22;
+  --border-strong: #2A2A30;
+  --text: #F5F5F7;
+  --muted: #9A9AA0;
+  --muted-2: #6E6E76;
+  --accent: #3B82F6;
+  --accent-hover: #2563EB;
+}
+*{scroll-behavior:smooth}
+html{background:var(--bg)}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+::selection{background:rgba(59,130,246,0.3)}
+::-webkit-scrollbar{width:8px;height:8px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:#232328;border-radius:999px}
+::-webkit-scrollbar-thumb:hover{background:#2e2e33}
+
+/* grid background */
+.grid-bg{
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+.grid-bg-fade{
+  background: radial-gradient(ellipse 900px 600px at 50% -10%, rgba(59,130,246,0.12), transparent 60%),
+              radial-gradient(ellipse 700px 500px at 90% 20%, rgba(59,130,246,0.06), transparent 60%);
+}
+.mono{font-family:'JetBrains Mono', monospace}
+
+/* subtle animations */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes fadeIn{from{opacity:0} to{opacity:1}}
+.animate-fadeUp{animation:fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) both}
+.animate-fadeIn{animation:fadeIn 0.6s ease both}
+.delay-100{animation-delay:0.1s}
+.delay-200{animation-delay:0.2s}
+.delay-300{animation-delay:0.3s}
+.delay-400{animation-delay:0.4s}
+
+/* reveal on scroll */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity 0.7s cubic-bezier(0.16,1,0.3,1),transform 0.7s cubic-bezier(0.16,1,0.3,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* button */
+.btn-primary{
+  background:var(--accent);
+  color:white;
+  font-weight:500;
+  font-size:14px;
+  letter-spacing:-0.01em;
+  padding:10px 18px;
+  border-radius:999px;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  transition:background 0.2s, transform 0.2s, box-shadow 0.2s;
+  box-shadow:0 1px 2px rgba(0,0,0,0.2), 0 0 0 1px rgba(59,130,246,0.2) inset;
+}
+.btn-primary:hover{background:var(--accent-hover);transform:translateY(-1px);box-shadow:0 4px 12px rgba(59,130,246,0.25)}
+.btn-secondary{
+  background:rgba(255,255,255,0.06);
+  color:var(--text);
+  border:1px solid var(--border-strong);
+  font-weight:500;
+  font-size:14px;
+  padding:10px 18px;
+  border-radius:999px;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  transition:background 0.2s, border-color 0.2s;
+}
+.btn-secondary:hover{background:rgba(255,255,255,0.09);border-color:#33333a}
+
+/* card */
+.card{
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  transition:border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+}
+.card:hover{border-color:var(--border-strong);transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,0.3)}
+.card-accent{position:relative;overflow:hidden}
+.card-accent::before{
+  content:"";
+  position:absolute;inset:0;
+  background:radial-gradient(600px 300px at 50% 0%, rgba(59,130,246,0.08), transparent 70%);
+  pointer-events:none;
+}
+
+/* nav */
+.nav-blur{
+  backdrop-filter:blur(16px) saturate(180%);
+  -webkit-backdrop-filter:blur(16px) saturate(180%);
+  background:rgba(10,10,11,0.75);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+
+/* pricing toggle etc */
+.divider{height:1px;background:var(--border)}
+.divider-vert{width:1px;background:var(--border)}
+
+/* focus */
+a:focus-visible, button:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:2px;
+}
+
+/* prose for legal */
+.prose-legal{color:#C8C8CE;line-height:1.75;font-size:15px}
+.prose-legal h2{color:var(--text);font-weight:600;font-size:18px;letter-spacing:-0.02em;margin-top:2.5em;margin-bottom:0.6em}
+.prose-legal h3{color:var(--text);font-weight:600;font-size:15px;margin-top:1.8em;margin-bottom:0.5em}
+.prose-legal p{margin-bottom:1em;color:#B8B8BE}
+.prose-legal ul{list-style:disc;padding-left:1.4em;margin-bottom:1em}
+.prose-legal li{margin-bottom:0.4em;color:#B8B8BE}
+.prose-legal a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.prose-legal strong{color:var(--text);font-weight:600}

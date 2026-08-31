@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing — Focalis Labs</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<script>tailwind.config={theme:{extend:{fontFamily:{syne:['Syne','sans-serif'],grotesk:['Space Grotesk','sans-serif']},colors:{void:'#0F0A1E',lime:'#C6FF00',magenta:'#FF006E',violet:'#7C3AED',cyan:'#00E5FF'}}}}</script>
+<style>
+  body{background:#0F0A1E;color:#fff;font-family:'Space Grotesk',sans-serif}
+  .glass{background:rgba(255,255,255,0.06);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.09)}
+  .glass-strong{background:rgba(255,255,255,0.08);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.12)}
+  ::selection{background:#C6FF00;color:#0F0A1E}
+</style>
+</head>
+<body class="antialiased">
+<nav class="sticky top-0 z-50 glass border-b border-white/10">
+  <div class="max-w-[1280px] mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3"><div class="w-9 h-9 rounded-xl bg-gradient-to-br from-lime to-cyan flex items-center justify-center font-syne font-800 text-void text-[14px]">FL</div><span class="font-syne font-800 text-[18px]">FOCALIS<span class="text-lime"> LABS</span></span></a>
+    <div class="hidden md:flex items-center gap-8 text-[13px]">
+      <a href="products.html" class="text-white/60 hover:text-white">Products</a>
+      <a href="pricing.html" class="text-white font-semibold">Pricing</a>
+      <a href="about.html" class="text-white/60 hover:text-white">About</a>
+      <a href="contact.html" class="text-white/60 hover:text-white">Contact</a>
+      <a href="#bundle" class="bg-lime text-void font-bold px-5 py-2.5 rounded-full">Get Bundle →</a>
+    </div>
+    <button id="menuBtn" class="md:hidden w-10 h-10 rounded-full glass flex items-center justify-center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+  </div>
+  <div id="mobileMenu" class="hidden md:hidden border-t border-white/10 px-6 py-6 space-y-4">
+    <a href="products.html" class="block text-white/70">Products</a>
+    <a href="pricing.html" class="block text-white font-semibold">Pricing</a>
+    <a href="about.html" class="block text-white/70">About</a>
+    <a href="contact.html" class="block text-white/70">Contact</a>
+  </div>
+</nav>
+
+<section class="px-6 pt-16 pb-10 text-center relative overflow-hidden">
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] blur-[100px] opacity-20" style="background:radial-gradient(ellipse at center, #C6FF00 0%, #7C3AED 40%, transparent 70%)"></div>
+  <div class="max-w-[800px] mx-auto relative">
+    <div class="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 text-[11px] tracking-[0.15em] text-white/60">PAY ONCE • OWN FOREVER • NO SUBSCRIPTIONS</div>
+    <h1 class="font-syne font-800 text-[42px] sm:text-[56px] leading-[0.9] mt-6">Simple pricing.<br><span class="text-white/30">Serious tools.</span></h1>
+    <p class="text-white/50 mt-4 text-[15px] max-w-[560px] mx-auto leading-relaxed">One payment per kit. Lifetime updates, commercial use, and community access included. Delivered instantly via Dodo Payments — VAT handled automatically.</p>
+  </div>
+</section>
+
+<!-- PRICING CARDS -->
+<section class="px-6 pb-8">
+  <div class="max-w-[1280px] mx-auto grid md:grid-cols-3 gap-6">
+    <!-- Starter tiers reimagined as curated stacks -->
+    <div class="glass rounded-[28px] p-8 flex flex-col">
+      <div class="text-[11px] tracking-[0.2em] text-white/40">STARTER</div>
+      <h3 class="font-syne font-700 text-[22px] mt-2">Pick a Kit</h3>
+      <p class="text-white/50 text-[13px] mt-2">Start with one. Perfect for solo builders testing the waters.</p>
+      <div class="mt-6">
+        <span class="font-syne font-800 text-[36px]">$29</span>
+        <span class="text-white/40">— $149</span>
+        <div class="text-[12px] text-white/30">per kit • one-time</div>
+      </div>
+      <ul class="mt-6 space-y-2.5 text-[13px] text-white/70 flex-1">
+        <li class="flex gap-2"><span class="text-lime">✓</span> Single kit of your choice</li>
+        <li class="flex gap-2"><span class="text-lime">✓</span> Source + docs included</li>
+        <li class="flex gap-2"><span class="text-lime">✓</span> Lifetime updates for that kit</li>
+        <li class="flex gap-2"><span class="text-lime">✓</span> Community access</li>
+        <li class="flex gap-2 text-white/30"><span>—</span> No bundle discount</li>
+      </ul>
+      <a href="products.html" class="mt-8 border border-white/15 text-white font-bold text-center py-3 rounded-full hover:bg-white hover:text-void transition">Browse Kits →</a>
+      <div class="text-center text-[11px] text-white/30 mt-3">e.g. Prompt Forge $29 • Voice Forge $79</div>
+    </div>
+
+    <!-- Creator (popular) -->
+    <div class="bg-white rounded-[28px] p-8 flex flex-col text-void relative overflow-hidden">
+      <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-lime via-cyan to-magenta"></div>
+      <div class="inline-flex items-center gap-2 bg-void text-lime rounded-full px-3 py-1 text-[11px] font-bold tracking-widest">★ MOST POPULAR</div>
+      <div class="text-[11px] tracking-[0.2em] text-void/40 mt-4">CREATOR</div>
+      <h3 class="font-syne font-800 text-[22px] mt-1">3-Kit Stack</h3>
+      <p class="text-void/50 text-[13px] mt-2">Our most popular combo. Everything you need to capture, edit, and voice your content.</p>
+      <div class="mt-6">
+        <div class="flex items-baseline gap-2">
+          <span class="font-syne font-800 text-[36px]">$279</span>
+          <span class="text-void/40 line-through text-[14px]">$327</span>
+          <span class="bg-lime text-void text-[11px] font-bold px-2 py-1 rounded-full">SAVE 15%</span>
+        </div>
+        <div class="text-[12px] text-void/40">one-time • 3 kits of your choice</div>
+      </div>
+      <ul class="mt-6 space-y-2.5 text-[13px] text-void/70 flex-1">
+        <li class="flex gap-2"><span class="text-void font-bold">✓</span> Any 3 kits (mix & match)</li>
+        <li class="flex gap-2"><span class="text-void font-bold">✓</span> All features + source</li>
+        <li class="flex gap-2"><span class="text-void font-bold">✓</span> Lifetime updates</li>
+        <li class="flex gap-2"><span class="text-void font-bold">✓</span> Priority email support</li>
+        <li class="flex gap-2"><span class="text-void font-bold">✓</span> Commercial license</li>
+      </ul>
+      <a href="#" class="mt-8 bg-void text-white font-bold text-center py-3 rounded-full hover:bg-black transition">Buy Stack with Dodo →</a>
+      <div class="text-center text-[11px] text-void/40 mt-3">Popular: HyperCapture + Voice Forge + Frame Engine</div>
+    </div>
+
+    <!-- Bundle -->
+    <div id="bundle" class="glass rounded-[28px] p-8 flex flex-col border-lime/30 relative overflow-hidden scroll-mt-24">
+      <div class="absolute inset-0 bg-gradient-to-br from-lime/10 via-cyan/5 to-magenta/10 pointer-events-none"></div>
+      <div class="relative">
+        <div class="inline-flex items-center gap-2 bg-lime text-void rounded-full px-3 py-1 text-[11px] font-bold tracking-widest">BEST VALUE • SAVE 40%</div>
+        <div class="text-[11px] tracking-[0.2em] text-white/40 mt-4">BUILDER BUNDLE</div>
+        <h3 class="font-syne font-800 text-[22px] mt-1">Everything</h3>
+        <p class="text-white/50 text-[13px] mt-2">All 6 kits + every new kit we ship in 2026. For studios and serious builders.</p>
+        <div class="mt-6">
+          <div class="flex items-baseline gap-2">
+            <span class="font-syne font-800 text-[36px]">$499</span>
+            <span class="text-white/30 line-through text-[14px]">$725+</span>
+          </div>
+          <div class="text-[12px] text-white/40">one-time • lifetime • all future kits</div>
+        </div>
+        <ul class="mt-6 space-y-2.5 text-[13px] text-white/70">
+          <li class="flex gap-2"><span class="text-lime">✓</span> All 6 kits included</li>
+          <li class="flex gap-2"><span class="text-lime">✓</span> Every new kit in 2026 (free)</li>
+          <li class="flex gap-2"><span class="text-lime">✓</span> Team license (up to 10 seats)</li>
+          <li class="flex gap-2"><span class="text-lime">✓</span> Priority support + Slack</li>
+          <li class="flex gap-2"><span class="text-lime">✓</span> Early beta access</li>
+        </ul>
+        <a href="#" class="mt-8 bg-lime text-void font-bold text-center py-3 rounded-full block hover:brightness-110 transition">Buy Bundle with Dodo →</a>
+        <div class="text-center text-[11px] text-white/30 mt-3">14-day refund • Instant delivery</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section class="px-6 pb-12">
+  <div class="max-w-[1000px] mx-auto">
+    <h2 class="font-syne font-700 text-[20px] text-center mb-6">Compare kits</h2>
+    <div class="glass rounded-[24px] overflow-hidden overflow-x-auto">
+      <table class="w-full text-[13px] min-w-[640px]">
+        <thead>
+          <tr class="border-b border-white/10 text-[11px] tracking-[0.15em] text-white/30">
+            <th class="text-left p-4 font-normal">KIT</th>
+            <th class="text-center p-4 font-normal">PRICE</th>
+            <th class="text-center p-4 font-normal">BEST FOR</th>
+            <th class="text-center p-4 font-normal">ACTION</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-white/5">
+          <tr class="hover:bg-white/[0.03]">
+            <td class="p-4"><span class="font-semibold">HyperCapture</span> <span class="text-white/40 text-[11px]">— 4K capture</span></td>
+            <td class="p-4 text-center font-bold">$149</td>
+            <td class="p-4 text-center text-white/60">Demos, content ops</td>
+            <td class="p-4 text-center"><a href="#" class="bg-lime text-void text-[12px] font-bold px-4 py-1.5 rounded-full">Buy →</a></td>
+          </tr>
+          <tr class="hover:bg-white/[0.03]">
+            <td class="p-4"><span class="font-semibold">Signal Grid</span> <span class="text-white/40 text-[11px]">— trading grid</span></td>
+            <td class="p-4 text-center font-bold">$299</td>
+            <td class="p-4 text-center text-white/60">Traders, quants</td>
+            <td class="p-4 text-center"><a href="#" class="border border-white/20 text-[12px] font-bold px-4 py-1.5 rounded-full hover:bg-white hover:text-void">Buy →</a></td>
+          </tr>
+          <tr class="hover:bg-white/[0.03]">
+            <td class="p-4"><span class="font-semibold">Voice Forge</span> <span class="text-white/40 text-[11px]">— neural TTS</span></td>
+            <td class="p-4 text-center font-bold">$79</td>
+            <td class="p-4 text-center text-white/60">Video, agents, podcasts</td>
+            <td class="p-4 text-center"><a href="#" class="border border-white/20 text-[12px] font-bold px-4 py-1.5 rounded-full hover:bg-white hover:text-void">Buy →</a></td>
+          </tr>
+          <tr class="hover:bg-white/[0.03]">
+            <td class="p-4"><span class="font-semibold">Frame Engine</span> <span class="text-white/40 text-[11px]">— HTML→MP4</span></td>
+            <td class="p-4 text-center font-bold">$99</td>
+            <td class="p-4 text-center text-white/60">Automated video</td>
+            <td class="p-4 text-center"><a href="#" class="border border-white/20 text-[12px] font-bold px-4 py-1.5 rounded-full hover:bg-white hover:text-void">Buy →</a></td>
+          </tr>
+          <tr class="hover:bg-white/[0.03]">
+            <td class="p-4"><span class="font-semibold">Prompt Forge</span> <span class="text-white/40 text-[11px]">— prompt ops</span></td>
+            <td class="p-4 text-center font-bold">$29</td>
+            <td class="p-4 text-center text-white/60">Agent builders</td>
+            <td class="p-4 text-center"><a href="#" class="border border-white/20 text-[12px] font-bold px-4 py-1.5 rounded-full hover:bg-white hover:text-void">Buy →</a></td>
+          </tr>
+          <tr class="hover:bg-white/[0.03]">
+            <td class="p-4"><span class="font-semibold">Data Lens</span> <span class="text-white/40 text-[11px]">— API dashboards</span></td>
+            <td class="p-4 text-center font-bold">$49 <span class="text-white/30 line-through text-[11px]">$99</span></td>
+            <td class="p-4 text-center text-white/60">Data, ops</td>
+            <td class="p-4 text-center"><a href="#" class="bg-lime text-void text-[12px] font-bold px-4 py-1.5 rounded-full">Buy →</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="text-center text-[11px] text-white/30 mt-4">All prices in USD. VAT calculated at checkout by Dodo Payments. One-time payment, no recurring charges.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="px-6 pb-12">
+  <div class="max-w-[800px] mx-auto">
+    <h2 class="font-syne font-700 text-[20px] text-center mb-8">Questions, answered</h2>
+    <div class="space-y-3">
+      <details class="glass rounded-2xl px-6 py-5 group open:bg-white/[0.08]">
+        <summary class="font-semibold text-[14px] cursor-pointer list-none flex justify-between items-center">Is this really one-time? No subscription? <span class="text-white/30 group-open:rotate-180 transition">⌄</span></summary>
+        <p class="text-white/50 text-[13px] leading-relaxed mt-3">Yes. Pay once, own forever. You get lifetime updates for every kit you purchase, and the Bundle includes every new kit we ship in 2026 at no extra cost. No seats, no renewals, no surprises.</p>
+      </details>
+      <details class="glass rounded-2xl px-6 py-5 group open:bg-white/[0.08]">
+        <summary class="font-semibold text-[14px] cursor-pointer list-none flex justify-between items-center">What does "Buy with Dodo" mean? <span class="text-white/30 group-open:rotate-180 transition">⌄</span></summary>
+        <p class="text-white/50 text-[13px] leading-relaxed mt-3">Dodo Payments is our merchant of record. They handle checkout, VAT/tax, invoicing, and delivery. You pay on Dodo's secure hosted checkout and get instant access. We never see your card details.</p>
+      </details>
+      <details class="glass rounded-2xl px-6 py-5 group open:bg-white/[0.08]">
+        <summary class="font-semibold text-[14px] cursor-pointer list-none flex justify-between items-center">Can I use this commercially? <span class="text-white/30 group-open:rotate-180 transition">⌄</span></summary>
+        <p class="text-white/50 text-[13px] leading-relaxed mt-3">Absolutely. Every kit includes a commercial license. Use them for client work, products, or internal tools. The Bundle covers up to 10 seats — contact us for larger teams.</p>
+      </details>
+      <details class="glass rounded-2xl px-6 py-5 group open:bg-white/[0.08]">
+        <summary class="font-semibold text-[14px] cursor-pointer list-none flex justify-between items-center">What about refunds? <span class="text-white/30 group-open:rotate-180 transition">⌄</span></summary>
+        <p class="text-white/50 text-[13px] leading-relaxed mt-3">14-day no-questions-asked refund on all digital purchases. If a kit isn't for you, email support@focalis.cc and we'll refund via Dodo Payments within 48 hours. See our <a href="refund.html" class="underline decoration-lime">Refund Policy</a>.</p>
+      </details>
+      <details class="glass rounded-2xl px-6 py-5 group open:bg-white/[0.08]">
+        <summary class="font-semibold text-[14px] cursor-pointer list-none flex justify-between items-center">How is delivery handled? <span class="text-white/30 group-open:rotate-180 transition">⌄</span></summary>
+        <p class="text-white/50 text-[13px] leading-relaxed mt-3">Instant. After checkout you receive an email with your license key, download links, and docs. You can also access everything from your Dodo customer portal.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTOM CTA -->
+<section class="px-6 pb-16">
+  <div class="max-w-[1000px] mx-auto glass rounded-[24px] p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+    <div>
+      <h3 class="font-syne font-700 text-[18px]">Still deciding?</h3>
+      <p class="text-white/50 text-[13px] mt-1">Talk to a human. We reply within 24 hours.</p>
+    </div>
+    <div class="flex gap-3">
+      <a href="contact.html" class="glass-strong px-6 py-3 rounded-full text-[13px] font-semibold hover:bg-white/10">Contact us</a>
+      <a href="products.html" class="bg-lime text-void px-6 py-3 rounded-full text-[13px] font-bold">Explore kits →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="border-t border-white/10 px-6 py-12">
+  <div class="max-w-[1280px] mx-auto">
+    <div class="grid md:grid-cols-4 gap-10">
+      <div><div class="flex items-center gap-2"><div class="w-8 h-8 rounded-lg bg-gradient-to-br from-lime to-cyan flex items-center justify-center font-syne font-800 text-void text-[12px]">FL</div><span class="font-syne font-800">FOCALIS LABS</span></div><p class="text-white/30 text-[11px] mt-4">Focalis Labs LLC • 8 The Green STE B, Dover, DE 19901 • hello@focalis.cc</p></div>
+      <div><div class="text-[11px] tracking-[0.2em] text-white/40 mb-4">PRODUCTS</div><ul class="space-y-2 text-[13px] text-white/60"><li><a href="products.html" class="hover:text-white">All Kits</a></li><li><a href="pricing.html" class="hover:text-white">Pricing</a></li></ul></div>
+      <div><div class="text-[11px] tracking-[0.2em] text-white/40 mb-4">COMPANY</div><ul class="space-y-2 text-[13px] text-white/60"><li><a href="about.html" class="hover:text-white">About</a></li><li><a href="contact.html" class="hover:text-white">Contact</a></li></ul></div>
+      <div><div class="text-[11px] tracking-[0.2em] text-white/40 mb-4">LEGAL</div><ul class="space-y-2 text-[13px] text-white/60"><li><a href="privacy.html" class="hover:text-white">Privacy</a></li><li><a href="terms.html" class="hover:text-white">Terms</a></li><li><a href="refund.html" class="hover:text-white">Refund</a></li></ul></div>
+    </div>
+    <div class="mt-10 pt-6 border-t border-white/10 flex flex-wrap justify-between gap-4 text-[11px] text-white/30"><span>© 2026 Focalis Labs LLC.</span><span>Payments by Dodo Payments.</span></div>
+  </div>
+</footer>
+<script>document.getElementById('menuBtn').addEventListener('click',()=>document.getElementById('mobileMenu').classList.toggle('hidden'))</script>
+<script src="/admin/bar.js"></script>
+</body>
+</html>

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Products — Focalis Labs</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<script>tailwind.config={theme:{extend:{fontFamily:{syne:['Syne','sans-serif'],grotesk:['Space Grotesk','sans-serif']},colors:{void:'#0F0A1E',lime:'#C6FF00',magenta:'#FF006E',violet:'#7C3AED',cyan:'#00E5FF'}}}}</script>
+<style>
+  body{background:#0F0A1E;color:#fff;font-family:'Space Grotesk',sans-serif}
+  .glass{background:rgba(255,255,255,0.06);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.09)}
+  .glass-strong{background:rgba(255,255,255,0.08);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.12)}
+  .glow-lime{box-shadow:0 0 40px rgba(198,255,0,0.2)}
+  ::selection{background:#C6FF00;color:#0F0A1E}
+</style>
+</head>
+<body class="antialiased">
+<nav class="sticky top-0 z-50 glass border-b border-white/10">
+  <div class="max-w-[1280px] mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-lime to-cyan flex items-center justify-center font-syne font-800 text-void text-[14px]">FL</div>
+      <span class="font-syne font-800 text-[18px]">FOCALIS<span class="text-lime"> LABS</span></span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-[13px]">
+      <a href="products.html" class="text-white font-semibold">Products</a>
+      <a href="pricing.html" class="text-white/60 hover:text-white">Pricing</a>
+      <a href="about.html" class="text-white/60 hover:text-white">About</a>
+      <a href="contact.html" class="text-white/60 hover:text-white">Contact</a>
+      <a href="pricing.html" class="bg-lime text-void font-bold px-5 py-2.5 rounded-full">Get Access →</a>
+    </div>
+    <button id="menuBtn" class="md:hidden w-10 h-10 rounded-full glass flex items-center justify-center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+  </div>
+  <div id="mobileMenu" class="hidden md:hidden border-t border-white/10 px-6 py-6 space-y-4">
+    <a href="products.html" class="block text-white font-semibold">Products</a>
+    <a href="pricing.html" class="block text-white/70">Pricing</a>
+    <a href="about.html" class="block text-white/70">About</a>
+    <a href="contact.html" class="block text-white/70">Contact</a>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<section class="px-6 pt-16 pb-10 relative overflow-hidden">
+  <div class="absolute -top-32 right-0 w-[600px] h-[600px] rounded-full blur-[120px] opacity-20" style="background:radial-gradient(circle,#7C3AED 0%, #FF006E 40%, transparent 70%)"></div>
+  <div class="max-w-[1280px] mx-auto relative">
+    <div class="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 text-[11px] tracking-[0.15em] text-white/60"><span class="w-2 h-2 rounded-full bg-lime"></span> 6 KITS • LIFETIME UPDATES • INSTANT DELIVERY</div>
+    <h1 class="font-syne font-800 text-[42px] sm:text-[56px] leading-[0.9] mt-6">KITS FOR<br><span class="text-white/20">EVERY</span> BUILDER</h1>
+    <p class="text-white/50 max-w-[560px] mt-4 text-[15px] leading-relaxed">Each kit is a focused, remixable tool. Buy once, own forever. All kits include source, docs, updates, and community access. Secured by Dodo Payments.</p>
+    <div class="flex flex-wrap gap-2 mt-6">
+      <a href="#hypercapture" class="glass rounded-full px-4 py-2 text-[12px] hover:bg-white/10">HyperCapture</a>
+      <a href="#signalgrid" class="glass rounded-full px-4 py-2 text-[12px] hover:bg-white/10">Signal Grid</a>
+      <a href="#voiceforge" class="glass rounded-full px-4 py-2 text-[12px] hover:bg-white/10">Voice Forge</a>
+      <a href="#frameengine" class="glass rounded-full px-4 py-2 text-[12px] hover:bg-white/10">Frame Engine</a>
+      <a href="#promptforge" class="glass rounded-full px-4 py-2 text-[12px] hover:bg-white/10">Prompt Forge</a>
+      <a href="#datalens" class="glass rounded-full px-4 py-2 text-[12px] hover:bg-white/10">Data Lens</a>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS GRID -->
+<section class="px-6 pb-20">
+  <div class="max-w-[1280px] mx-auto grid gap-6">
+
+    <!-- HyperCapture -->
+    <div id="hypercapture" class="glass rounded-[28px] overflow-hidden grid lg:grid-cols-[1.1fr_0.9fr] scroll-mt-24">
+      <div class="p-8 sm:p-10">
+        <div class="flex items-center gap-3">
+          <span class="bg-lime text-void text-[11px] font-bold tracking-widest px-3 py-1 rounded-full">001</span>
+          <span class="text-[11px] tracking-[0.2em] text-white/40">MOST POPULAR</span>
+          <span class="ml-auto text-[11px] text-white/30">4.9 ★ (342 reviews)</span>
+        </div>
+        <h2 class="font-syne font-800 text-[32px] mt-4">HyperCapture</h2>
+        <p class="text-lime text-[13px] font-semibold tracking-wide mt-1">Browser-native 4K capture & video assembly</p>
+        <p class="text-white/60 text-[14px] leading-relaxed mt-4">Record any browser workflow in pristine 4K60 — no extension, no plugin. Auto-assembles into polished demos with zoom, captions, and music. Built on headless Chrome + FFmpeg + GPU encoding.</p>
+        
+        <div class="mt-6">
+          <div class="text-[11px] tracking-[0.2em] text-white/30 mb-3">FEATURES</div>
+          <ul class="grid sm:grid-cols-2 gap-2 text-[13px] text-white/70">
+            <li class="flex gap-2"><span class="text-lime">✓</span> 4K60 capture, lossless option</li>
+            <li class="flex gap-2"><span class="text-lime">✓</span> Auto zoom & pan (AI-directed)</li>
+            <li class="flex gap-2"><span class="text-lime">✓</span> Click & keystroke overlays</li>
+            <li class="flex gap-2"><span class="text-lime">✓</span> One-command render (MP4/WebM)</li>
+            <li class="flex gap-2"><span class="text-lime">✓</span> Headless & headed modes</li>
+            <li class="flex gap-2"><span class="text-lime">✓</span> Linux / macOS / Windows</li>
+          </ul>
+        </div>
+        <div class="mt-6">
+          <div class="text-[11px] tracking-[0.2em] text-white/30 mb-3">USE CASES</div>
+          <div class="flex flex-wrap gap-2 text-[11px]">
+            <span class="glass rounded-full px-3 py-1.5">Product demos</span>
+            <span class="glass rounded-full px-3 py-1.5">Onboarding videos</span>
+            <span class="glass rounded-full px-3 py-1.5">Bug reports</span>
+            <span class="glass rounded-full px-3 py-1.5">Social content</span>
+          </div>
+        </div>
+        <div class="mt-8 flex flex-wrap items-center gap-4">
+          <div><span class="font-syne font-800 text-[30px]">$149</span> <span class="text-white/40 text-[13px]">/ one-time</span></div>
+          <a href="#" class="bg-lime text-void font-bold px-7 py-3 rounded-full hover:brightness-110 transition glow-lime">Buy with Dodo →</a>
+          <span class="text-[11px] text-white/30">Instant delivery • VAT included</span>
+        </div>
+      </div>
+      <div class="bg-gradient-to-br from-violet/30 to-lime/20 p-8 flex flex-col justify-center relative overflow-hidden min-h-[320px]">
+        <div class="glass-strong rounded-2xl p-5 relative">
+          <div class="flex items-center gap-2 text-[10px] tracking-widest text-white/40"><span class="w-2 h-2 rounded-full bg-red-400"></span> CAPTURE STUDIO</div>
+          <div class="mt-4 rounded-xl bg-black/40 border border-white/10 p-4 font-mono text-[11px] leading-relaxed text-white/70">
+            $ hypercapture record \<br>
+            &nbsp;&nbsp;--url https://app.com \<br>
+            &nbsp;&nbsp;--format 4k --fps 60<br>
+            <span class="text-lime">✓ Captured 00:42 — 3840×2160</span><br>
+            $ hypercapture render --style cinematic
+          </div>
+          <div class="mt-4 grid grid-cols-3 gap-2 text-center">
+            <div class="glass rounded-xl py-3"><div class="text-lime font-bold text-[16px]">4K</div><div class="text-[10px] text-white/40">RESOLUTION</div></div>
+            <div class="glass rounded-xl py-3"><div class="font-bold text-[16px]">60</div><div class="text-[10px] text-white/40">FPS</div></div>
+            <div class="glass rounded-xl py-3"><div class="font-bold text-[16px] text-cyan">2.4s</div><div class="text-[10px] text-white/40">RENDER</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Signal Grid -->
+    <div id="signalgrid" class="glass rounded-[28px] overflow-hidden grid lg:grid-cols-[1.1fr_0.9fr] scroll-mt-24">
+      <div class="p-8 sm:p-10">
+        <div class="flex items-center gap-3">
+          <span class="bg-magenta text-white text-[11px] font-bold tracking-widest px-3 py-1 rounded-full">002</span>
+          <span class="text-[11px] tracking-[0.2em] text-white/40">FOR TRADERS</span>
+          <span class="ml-auto text-[11px] text-white/30">4.8 ★ (189 reviews)</span>
+        </div>
+        <h2 class="font-syne font-800 text-[32px] mt-4">Signal Grid</h2>
+        <p class="text-magenta text-[13px] font-semibold tracking-wide mt-1">Volume-profile S/R with capital redistribution</p>
+        <p class="text-white/60 text-[14px] leading-relaxed mt-4">Institutional-grade support/resistance grid that redistributes capital by volume profile. Built for Hyperliquid, Bybit & Binance. Backtested, not backfitted — validated on 2 years of tick data.</p>
+        <div class="mt-6">
+          <div class="text-[11px] tracking-[0.2em] text-white/30 mb-3">FEATURES</div>
+          <ul class="grid sm:grid-cols-2 gap-2 text-[13px] text-white/70">
+            <li class="flex gap-2"><span class="text-magenta">✓</span> Dynamic S/R grid (auto-rebalance)</li>
+            <li class="flex gap-2"><span class="text-magenta">✓</span> Volume profile & VWAP confluence</li>
+            <li class="flex gap-2"><span class="text-magenta">✓</span> Telegram + webhook alerts</li>
+            <li class="flex gap-2"><span class="text-magenta">✓</span> Backtest engine (Python/TS)</li>
+            <li class="flex gap-2"><span class="text-magenta">✓</span> REST + WebSocket API</li>
+            <li class="flex gap-2"><span class="text-magenta">✓</span> Paper trading mode</li>
+          </ul>
+        </div>
+        <div class="mt-6">
+          <div class="text-[11px] tracking-[0.2em] text-white/30 mb-3">USE CASES</div>
+          <div class="flex flex-wrap gap-2 text-[11px]">
+            <span class="glass rounded-full px-3 py-1.5">Swing trading</span>
+            <span class="glass rounded-full px-3 py-1.5">Grid bots</span>
+            <span class="glass rounded-full px-3 py-1.5">Risk management</span>
+            <span class="glass rounded-full px-3 py-1.5">Signal automation</span>
+          </div>
+        </div>
+        <div class="mt-8 flex flex-wrap items-center gap-4">
+          <div><span class="font-syne font-800 text-[30px]">$299</span> <span class="text-white/40 text-[13px]">/ one-time</span></div>
+          <a href="#" class="bg-white text-void font-bold px-7 py-3 rounded-full hover:bg-white/90 transition">Buy with Dodo →</a>
+          <span class="text-[11px] text-white/30">Includes 1 year of data updates</span>
+        </div>
+      </div>
+      <div class="bg-gradient-to-br from-magenta/20 to-violet/30 p-8 flex flex-col justify-center min-h-[320px]">
+        <div class="glass-strong rounded-2xl p-5">
+          <div class="text-[10px] tracking-widest text-white/40">GRID VISUALIZER — BTC-PERP • 4H</div>
+          <div class="mt-4 h-28 relative">
+            <div class="absolute inset-0 flex items-end gap-1">
+              <div class="flex-1 bg-white/10 rounded-t" style="height:30%"></div>
+              <div class="flex-1 bg-white/10 rounded-t" style="height:55%"></div>
+              <div class="flex-1 bg-magenta rounded-t" style="height:85%"></div>
+              <div class="flex-1 bg-white/10 rounded-t" style="height:45%"></div>
+              <div class="flex-1 bg-lime rounded-t" style="height:70%"></div>
+              <div class="flex-1 bg-white/10 rounded-t" style="height:40%"></div>
+              <div class="flex-1 bg-white/10 rounded-t" style="height:60%"></div>
+            </div>
+            <div class="absolute top-1/2 w-full h-px bg-lime/50 border-dashed"></div>
+          </div>
+          <div class="mt-4 flex justify-between text-[11px]">
+            <span class="text-white/40">Support: $67,240</span>
+            <span class="text-lime font-bold">Resistance: $69,810</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Voice Forge -->
+    <div id="voiceforge" class="glass rounded-[28px] overflow-hidden grid lg:grid-cols-[1.1fr_0.9fr] scroll-mt-24">
+      <div class="p-8 sm:p-10">
+        <div class="flex items-center gap-3">
+          <span class="bg-cyan text-void text-[11px] font-bold tracking-widest px-3 py-1 rounded-full">003</span>
+          <span class="text-[11px] tracking-[0.2em] text-white/40">VOICE & AUDIO</span>
+          <span class="ml-auto text-[11px] text-white/30">4.9 ★ (412 reviews)</span>
+        </div>
+        <h2 class="font-syne font-800 text-[32px] mt-4">Voice Forge</h2>
+        <p class="text-cyan text-[13px] font-semibold tracking-wide mt-1">Studio voices that don't sound like AI</p>
+        <p class="text-white/60 text-[14px] leading-relaxed mt-4">Neural TTS with voice cloning, 40+ languages, and real-time streaming. Generate audiobooks, dub videos, or give your agent a voice — with emotion, pacing, and breath control.</p>
+        <div class="mt-6">
+          <div class="text-[11px] tracking-[0.2em] text-white/30 mb-3">FEATURES</div>
+          <ul class="grid sm:grid-cols-2 gap-2 text-[13px] text-white/70">
+            <li class="flex gap-2"><span class="text-cyan">✓</span> 40+ languages, 200+ voices</li>
+            <li class="flex gap-2"><span class="text-cyan">✓</span> 30-sec voice cloning</li>
+            <li class="flex gap-2"><span class="text-cyan">✓</span> Real-time WS streaming</li>
+            <li class="flex gap-2"><span class="text-cyan">✓</span> SSML + emotion tags</li>
+            <li class="flex gap-2"><span class="text-cyan">✓</span> Batch generation API</li>
+            <li class="flex gap-2"><span class="text-cyan">✓</span> Commercial license included</li>
+          </ul>
+        </div>
+        <div class="mt-6">
+          <div class="text-[11px] tracking-[0.2em] text-white/30 mb-3">USE CASES</div>
+          <div class="flex flex-wrap gap-2 text-[11px]">
+            <span class="glass rounded-full px-3 py-1.5">Audiobooks</span>
+            <span class="glass rounded-full px-3 py-1.5">Video dubbing</span>
+            <span class="glass rounded-full px-3 py-1.5">Agents & bots</span>
+            <span class="glass rounded-full px-3 py-1.5">Podcasts</span>
+          </div>
+        </div>
+        <div class="mt-8 flex flex-wrap items-center gap-4">
+          <div><span class="font-syne font-800 text-[30px]">$79</span> <span class="text-white/40 text-[13px]">/ one-time</span></div>
+          <a href="#" class="bg-cyan text-void font-bold px-7 py-3 rounded-full hover:brightness-110 transition">Buy with Dodo →</a>
+          <span class="text-[11px] text-white/30">+ 100k characters included</span>
+        </div>
+      </div>
+      <div class="bg-gradient-to-br from-cyan/20 to-violet/20 p-8 flex flex-col justify-center min-h-[320px]">
+        <div class="glass-strong rounded-2xl p-5">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan to-violet flex items-center justify-center text-[16px]">◉</div>
+            <div><div class="text-[13px] font-semibold">Ava — Warm & Authoritative</div><div class="text-[11px] text-white/40">EN • 40 languages • Cloned in 28s</div></div>
+            <button class="ml-auto w-8 h-8 rounded-full bg-white text-void flex items-center justify-center">▶</button>
+          </div>
+          <div class="mt-4 flex items-center gap-1 h-10">
+            <div class="flex-1 bg-cyan/60 rounded-full" style="height:40%"></div>
+            <div class="flex-1 bg-cyan rounded-full" style="height:80%"></div>
+            <div class="flex-1 bg-cyan/80 rounded-full" style="height:55%"></div>
+            <div class="flex-1 bg-white/30 rounded-full" style="height:30%"></div>
+            <div class="flex-1 bg-cyan rounded-full" style="height:90%"></div>
+            <div class="flex-1 bg-cyan/70 rounded-full" style="height:60%"></div>
+            <div class="flex-1 bg-cyan rounded-full" style="height:75%"></div>
+            <div class="flex-1 bg-white/20 rounded-full" style="height:35%"></div>
+          </div>
+          <div class="mt-3 text-[11px] text-white/40 font-mono">"We build tools for builders — and we mean it."</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Frame Engine -->
+    <div id="frameengine" class="glass rounded-[28px] overflow-hidden grid lg:grid-cols-[1.1fr_0.9fr] scroll-mt-24">
+      <div class="p-8 sm:p-10">
+        <div class="flex items-center gap-3">
+          <span class="border border-white/20 text-white text-[11px] font-bold tracking-widest px-3 py-1 rounded-full">004</span>
+          <span class="text-[11px] tracking-[0.2em] text-white/40">VIDEO ENGINE</span>
+        </div>
+        <h2 class="font-syne font-800 text-[32px] mt-4">Frame Engine</h2>
+        <p class="text-white/60 text-[13px] font-semibold tracking-wide mt-1">Programmatic video — HTML is your timeline</p>
+        <p class="text-white/60 text-[14px] leading-relaxed mt-4">Define videos as HTML + GSAP. Frame Engine renders them deterministically to MP4 via headless Chrome at 60fps. Perfect for automated explainers, data videos, and batch generation.</p>
+        <div class="mt-6">
+          <div class="text-[11px] tracking-[0.2em] text-white/30 mb-3">FEATURES</div>
+          <ul class="grid sm:grid-cols-2 gap-2 text-[13px] text-white/70">
+            <li class="flex gap-2"><span class="text-lime">✓</span> HTML → MP4 (deterministic)</li>
+            <li class="flex gap-2"><span class="text-lime">✓</span> GSAP + Lottie + Three.js adapters</li>
+            <li class="flex gap-2"><span class="text-lime">✓</span> 60fps, seek-safe timeline</li>
+            <li class="flex gap-2"><span class="text-lime">✓</span> Batch render (100+ in parallel)</li>
+            <li class="flex gap-2"><span class="text-lime">✓</span> Captions & beats auto-sync</li>
+            <li class="flex gap-2"><span class="text-lime">✓</span> Cloud + local rendering</li>
+          </ul>
+        </div>
+        <div class="mt-8 flex flex-wrap items-center gap-4">
+          <div><span class="font-syne font-800 text-[30px]">$99</span> <span class="text-white/40 text-[13px]">/ one-time</span></div>
+          <a href="#" class="border border-white/20 text-white font-bold px-7 py-3 rounded-full hover:bg-white hover:text-void transition">Buy with Dodo →</a>
+        </div>
+      </div>
+      <div class="bg-white/[0.03] p-8 flex flex-col justify-center min-h-[320px] border-l border-white/5">
+        <div class="glass rounded-2xl p-5">
+          <div class="text-[10px] tracking-widest text-white/40">COMPOSITION PREVIEW</div>
+          <div class="mt-3 grid grid-cols-3 gap-2">
+            <div class="aspect-video rounded-lg bg-gradient-to-br from-lime/40 to-cyan/40 flex items-center justify-center text-[10px]">SCENE 01</div>
+            <div class="aspect-video rounded-lg bg-gradient-to-br from-magenta/40 to-violet/40 flex items-center justify-center text-[10px]">SCENE 02</div>
+            <div class="aspect-video rounded-lg bg-gradient-to-br from-violet/40 to-lime/40 flex items-center justify-center text-[10px]">SCENE 03</div>
+          </div>
+          <div class="mt-4 h-2 rounded-full bg-white/10 overflow-hidden"><div class="h-full w-[68%] bg-lime rounded-full"></div></div>
+          <div class="mt-2 flex justify-between text-[10px] text-white/30"><span>00:14 / 00:21</span><span>● Rendering</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Prompt Forge + Data Lens mini -->
+    <div class="grid lg:grid-cols-2 gap-6">
+      <div id="promptforge" class="glass rounded-[28px] p-8 scroll-mt-24">
+        <span class="border border-white/20 text-white text-[11px] font-bold tracking-widest px-3 py-1 rounded-full">005</span>
+        <h3 class="font-syne font-700 text-[24px] mt-4">Prompt Forge</h3>
+        <p class="text-white/40 text-[13px] mt-1">Prompt management for production agents</p>
+        <p class="text-white/60 text-[13px] leading-relaxed mt-3">Version, test, and deploy prompts like code. A/B testing, evals, and one-click rollback. Works with any LLM provider.</p>
+        <ul class="mt-4 space-y-1.5 text-[13px] text-white/60">
+          <li class="flex gap-2"><span class="text-lime">✓</span> Git-style versioning</li>
+          <li class="flex gap-2"><span class="text-lime">✓</span> Eval harness & scoring</li>
+          <li class="flex gap-2"><span class="text-lime">✓</span> Provider-agnostic SDK</li>
+        </ul>
+        <div class="mt-6 flex items-center gap-3">
+          <span class="font-syne font-800 text-[22px]">$29</span>
+          <a href="#" class="ml-auto bg-white text-void text-[13px] font-bold px-5 py-2.5 rounded-full">Buy with Dodo →</a>
+        </div>
+      </div>
+      <div id="datalens" class="glass rounded-[28px] p-8 scroll-mt-24">
+        <span class="bg-gradient-to-r from-lime to-cyan text-void text-[11px] font-bold tracking-widest px-3 py-1 rounded-full">006 — NEW</span>
+        <h3 class="font-syne font-700 text-[24px] mt-4">Data Lens</h3>
+        <p class="text-white/40 text-[13px] mt-1">Turn any API into a live dashboard</p>
+        <p class="text-white/60 text-[13px] leading-relaxed mt-3">Connect Hyperliquid, Stripe, or any REST API. Get auto-generated charts, alerts, and a shareable dashboard in under 60 seconds.</p>
+        <ul class="mt-4 space-y-1.5 text-[13px] text-white/60">
+          <li class="flex gap-2"><span class="text-cyan">✓</span> 20+ connectors</li>
+          <li class="flex gap-2"><span class="text-cyan">✓</span> Real-time WebSocket sync</li>
+          <li class="flex gap-2"><span class="text-cyan">✓</span> Export to PNG / PDF</li>
+        </ul>
+        <div class="mt-6 flex items-center gap-3">
+          <span class="font-syne font-800 text-[22px]">$49</span>
+          <span class="text-white/30 text-[12px] line-through">$99</span>
+          <a href="#" class="ml-auto bg-lime text-void text-[13px] font-bold px-5 py-2.5 rounded-full">Buy with Dodo →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bundle -->
+    <div class="bg-gradient-to-br from-lime via-cyan to-violet rounded-[28px] p-8 sm:p-10 text-void relative overflow-hidden">
+      <div class="absolute inset-0 bg-black/5 pointer-events-none"></div>
+      <div class="relative flex flex-col lg:flex-row lg:items-center gap-6">
+        <div class="flex-1">
+          <div class="inline-flex items-center gap-2 bg-void text-white rounded-full px-4 py-1.5 text-[11px] tracking-widest">BUNDLE • SAVE 40%</div>
+          <h3 class="font-syne font-800 text-[28px] sm:text-[32px] leading-none mt-4">The Builder Bundle</h3>
+          <p class="text-void/60 text-[14px] mt-2 max-w-[480px]">All 6 kits + every future kit in 2026. One payment, unlimited builds. Perfect for studios and indie hackers.</p>
+          <div class="mt-4 flex gap-6 text-[13px]">
+            <span class="flex items-center gap-1.5"><span class="w-5 h-5 rounded-full bg-void text-white flex items-center justify-center text-[10px]">✓</span> Lifetime updates</span>
+            <span class="flex items-center gap-1.5"><span class="w-5 h-5 rounded-full bg-void text-white flex items-center justify-center text-[10px]">✓</span> Commercial license</span>
+            <span class="flex items-center gap-1.5"><span class="w-5 h-5 rounded-full bg-void text-white flex items-center justify-center text-[10px]">✓</span> Priority support</span>
+          </div>
+        </div>
+        <div class="text-center lg:text-right">
+          <div class="text-void/50 text-[13px] line-through">$725 value</div>
+          <div class="font-syne font-800 text-[44px] leading-none">$499</div>
+          <div class="text-void/60 text-[12px]">one-time • everything included</div>
+          <a href="#" class="inline-block mt-4 bg-void text-white font-bold px-8 py-3 rounded-full hover:bg-black transition">Buy Bundle with Dodo →</a>
+          <div class="text-[11px] text-void/50 mt-2">14-day refund • Instant delivery</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="border-t border-white/10 px-6 py-12">
+  <div class="max-w-[1280px] mx-auto">
+    <div class="grid md:grid-cols-4 gap-10">
+      <div>
+        <div class="flex items-center gap-2"><div class="w-8 h-8 rounded-lg bg-gradient-to-br from-lime to-cyan flex items-center justify-center font-syne font-800 text-void text-[12px]">FL</div><span class="font-syne font-800">FOCALIS LABS</span></div>
+        <p class="text-white/30 text-[11px] mt-4">Focalis Labs LLC • 8 The Green STE B, Dover, DE 19901 • hello@focalis.cc</p>
+      </div>
+      <div><div class="text-[11px] tracking-[0.2em] text-white/40 mb-4">PRODUCTS</div><ul class="space-y-2 text-[13px] text-white/60"><li><a href="#hypercapture" class="hover:text-white">HyperCapture</a></li><li><a href="#signalgrid" class="hover:text-white">Signal Grid</a></li><li><a href="#voiceforge" class="hover:text-white">Voice Forge</a></li></ul></div>
+      <div><div class="text-[11px] tracking-[0.2em] text-white/40 mb-4">COMPANY</div><ul class="space-y-2 text-[13px] text-white/60"><li><a href="about.html" class="hover:text-white">About</a></li><li><a href="pricing.html" class="hover:text-white">Pricing</a></li><li><a href="contact.html" class="hover:text-white">Contact</a></li></ul></div>
+      <div><div class="text-[11px] tracking-[0.2em] text-white/40 mb-4">LEGAL</div><ul class="space-y-2 text-[13px] text-white/60"><li><a href="privacy.html" class="hover:text-white">Privacy</a></li><li><a href="terms.html" class="hover:text-white">Terms</a></li><li><a href="refund.html" class="hover:text-white">Refund</a></li></ul></div>
+    </div>
+    <div class="mt-10 pt-6 border-t border-white/10 flex flex-wrap justify-between gap-4 text-[11px] text-white/30"><span>© 2026 Focalis Labs LLC.</span><span>Payments by Dodo Payments.</span></div>
+  </div>
+</footer>
+<script>document.getElementById('menuBtn').addEventListener('click',()=>document.getElementById('mobileMenu').classList.toggle('hidden'))</script>
+<script src="/admin/bar.js"></script>
+</body>
+</html>

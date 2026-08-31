@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact — Focalis Studio</title>
+  <meta name="description" content="Contact Focalis Studio — support, sales, and business inquiries. We reply within 24 hours. Email hello@focalis.cc or use the form." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{bg:'#0A0A0B',accent:'#3B82F6',muted:'#9A9AA0',border:'#1E1E22'},fontFamily:{sans:['Inter','system-ui','sans-serif'],mono:['JetBrains Mono','monospace']}}}}</script>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header class="nav-blur sticky top-0 z-50">
+    <div class="max-w-[1120px] mx-auto px-6 h-[64px] flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-lg bg-white text-black grid place-items-center font-bold text-[13px]">◈</span>
+        <span class="font-semibold tracking-tight text-[15px]">Focalis Studio</span>
+        <span class="hidden sm:inline mono text-[10px] tracking-widest text-muted border border-border px-1.5 py-0.5 rounded">S.A.S. · BOGOTÁ</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-1 text-sm">
+        <a href="products.html" class="px-3 py-1.5 rounded-full hover:bg-white/5 transition">Products</a>
+        <a href="pricing.html" class="px-3 py-1.5 rounded-full hover:bg-white/5 transition">Pricing</a>
+        <a href="about.html" class="px-3 py-1.5 rounded-full hover:bg-white/5 transition">About</a>
+        <a href="contact.html" class="px-3 py-1.5 rounded-full bg-white text-black font-medium">Contact</a>
+      </nav>
+      <div class="hidden md:flex items-center gap-3">
+        <a href="products.html" class="btn-primary text-[13px]">Browse products →</a>
+      </div>
+      <button id="menu-btn" aria-expanded="false" class="md:hidden w-9 h-9 grid place-items-center rounded-full border border-white/10">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2.5 5h11M2.5 8h11M2.5 11h11"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-white/5 bg-[#0A0A0B] px-6 py-4 space-y-1">
+      <a href="products.html" class="block py-2 text-sm">Products</a>
+      <a href="pricing.html" class="block py-2 text-sm">Pricing</a>
+      <a href="about.html" class="block py-2 text-sm">About</a>
+      <a href="contact.html" class="block py-2 text-sm font-medium">Contact</a>
+    </div>
+  </header>
+
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 grid-bg opacity-30"></div>
+    <div class="absolute inset-0 grid-bg-fade"></div>
+    <div class="relative max-w-[1120px] mx-auto px-6 pt-12 sm:pt-16 pb-8">
+      <p class="mono text-xs tracking-widest text-accent">CONTACT — WE REPLY WITHIN 24 HOURS</p>
+      <h1 class="mt-3 text-[40px] sm:text-[54px] font-extrabold tracking-[-0.04em] leading-[0.9]">Talk to a human.</h1>
+      <p class="mt-4 max-w-[640px] text-[16px] leading-7 text-muted">Support, sales, refunds, or just a question about which product fits your workflow. Real humans in Bogotá (UTC-5), no bots, no ticket maze.</p>
+    </div>
+  </section>
+
+  <section class="max-w-[1120px] mx-auto px-6 pb-16">
+    <div class="grid lg:grid-cols-5 gap-6">
+      <!-- Form -->
+      <div class="lg:col-span-3 card p-6 sm:p-8 reveal">
+        <h2 class="font-semibold tracking-tight">Send a message</h2>
+        <p class="mono text-xs text-muted mt-1">Average reply time: under 12 hours on weekdays</p>
+        <form id="contact-form" class="mt-6 space-y-4">
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="mono text-xs tracking-widest text-muted">YOUR NAME</label>
+              <input required type="text" placeholder="Ada Lovelace" class="mt-1.5 w-full rounded-xl border border-white/10 bg-white/[0.04] px-3.5 py-2.5 text-sm placeholder:text-muted focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20" />
+            </div>
+            <div>
+              <label class="mono text-xs tracking-widest text-muted">EMAIL ADDRESS</label>
+              <input required type="email" placeholder="ada@studio.co" class="mt-1.5 w-full rounded-xl border border-white/10 bg-white/[0.04] px-3.5 py-2.5 text-sm placeholder:text-muted focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20" />
+            </div>
+          </div>
+          <div>
+            <label class="mono text-xs tracking-widest text-muted">TOPIC</label>
+            <select class="mt-1.5 w-full rounded-xl border border-white/10 bg-white/[0.04] px-3.5 py-2.5 text-sm focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20">
+              <option>General question</option>
+              <option>Pre-purchase / which product?</option>
+              <option>License / download issue</option>
+              <option>Refund request</option>
+              <option>Business / partnership</option>
+            </select>
+          </div>
+          <div>
+            <label class="mono text-xs tracking-widest text-muted">MESSAGE</label>
+            <textarea required rows="5" placeholder="How can we help?" class="mt-1.5 w-full rounded-xl border border-white/10 bg-white/[0.04] px-3.5 py-2.5 text-sm placeholder:text-muted focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20"></textarea>
+          </div>
+          <div class="flex items-start gap-2 text-xs leading-5 text-muted">
+            <input type="checkbox" required class="mt-0.5 accent-accent" />
+            <span>I agree to the <a href="privacy.html" class="text-accent underline">Privacy Policy</a> and understand my message will be processed to respond to my inquiry.</span>
+          </div>
+          <button type="submit" class="btn-primary w-full justify-center py-3">Send message →</button>
+          <p class="mono text-xs text-center text-muted">This is a demo form — in production, wire it to your email or helpdesk. For now it shows a local confirmation.</p>
+        </form>
+      </div>
+
+      <!-- Contact details -->
+      <div class="lg:col-span-2 space-y-6">
+        <div class="card p-7 reveal delay-100">
+          <h3 class="font-semibold tracking-tight">Direct contact</h3>
+          <div class="mt-4 space-y-4 text-sm">
+            <div>
+              <p class="mono text-xs tracking-widest text-muted">EMAIL — FASTEST</p>
+              <a href="mailto:hello@focalis.cc" class="text-accent font-medium hover:underline">hello@focalis.cc</a>
+              <p class="text-muted text-xs mt-1">General, sales, and partnerships</p>
+            </div>
+            <div>
+              <p class="mono text-xs tracking-widest text-muted">SUPPORT</p>
+              <a href="mailto:support@focalis.cc" class="text-accent font-medium hover:underline">support@focalis.cc</a>
+              <p class="text-muted text-xs mt-1">Licenses, downloads, technical help — include your order email</p>
+            </div>
+            <div>
+              <p class="mono text-xs tracking-widest text-muted">RESPONSE TIME</p>
+              <p class="text-[#D0D0D6]">Within 24 hours, usually under 12h on weekdays (Mon–Fri, Bogotá UTC-5).</p>
+            </div>
+            <div>
+              <p class="mono text-xs tracking-widest text-muted">BUSINESS DETAILS</p>
+              <p class="text-muted leading-6">Focalis S.A.S.<br/>NIT 900.XXX.XXX-1<br/>Bogotá, D.C., Colombia<br/>Correspondence by email — full address on your Dodo invoice</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card p-7 reveal delay-200">
+          <h3 class="font-semibold tracking-tight">Before you write</h3>
+          <ul class="mt-3 space-y-2 text-sm leading-6 text-muted">
+            <li class="flex gap-2"><span class="text-accent">·</span> Lost your license? Write to <span class="text-white">support@focalis.cc</span> from your purchase email — we’ll resend within hours.</li>
+            <li class="flex gap-2"><span class="text-accent">·</span> Refund? See <a href="refund.html" class="text-accent underline">Refund Policy</a> — 14 days, no questions asked, then email support.</li>
+            <li class="flex gap-2"><span class="text-accent">·</span> Invoice/VAT? Your invoice is issued by Dodo Payments (merchant of record) and emailed after purchase.</li>
+            <li class="flex gap-2"><span class="text-accent">·</span> Not sure which product? Tell us your workflow — we’ll recommend the smallest thing that works.</li>
+          </ul>
+          <div class="mt-5 rounded-xl border border-white/5 bg-white/[0.03] p-4">
+            <p class="mono text-xs tracking-widest text-muted">MERCHANT OF RECORD</p>
+            <p class="mt-1 text-sm leading-6 text-muted">Payments, taxes, and invoices are handled by <span class="text-white font-medium">Dodo Payments</span>. For billing disputes, you can also contact Dodo support via the receipt email.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="border-t border-white/5">
+    <div class="max-w-[1120px] mx-auto px-6 py-10">
+      <div class="flex flex-col sm:flex-row justify-between gap-8">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg bg-white text-black grid place-items-center font-bold text-xs">◈</span>
+            <span class="font-semibold text-sm">Focalis Studio</span>
+          </div>
+          <p class="mt-3 text-sm text-muted max-w-[320px] leading-6">Minimal, premium tools for creators and teams. Built by Focalis S.A.S., Bogotá, Colombia. Merchant of record: Dodo Payments.</p>
+          <p class="mt-4 mono text-xs text-muted">© 2026 Focalis S.A.S. · NIT 900.XXX.XXX-1 · Bogotá, Colombia</p>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 text-sm">
+          <div>
+            <p class="mono text-xs tracking-widest text-muted mb-3">PRODUCT</p>
+            <div class="space-y-2">
+              <a href="products.html" class="block hover:text-white text-muted">Products</a>
+              <a href="pricing.html" class="block hover:text-white text-muted">Pricing</a>
+              <a href="contact.html" class="block hover:text-white text-muted">Contact</a>
+            </div>
+          </div>
+          <div>
+            <p class="mono text-xs tracking-widest text-muted mb-3">COMPANY</p>
+            <div class="space-y-2">
+              <a href="about.html" class="block hover:text-white text-muted">About</a>
+              <a href="contact.html" class="block hover:text-white text-muted">Support</a>
+              <a href="mailto:hello@focalis.cc" class="block hover:text-white text-muted">hello@focalis.cc</a>
+            </div>
+          </div>
+          <div>
+            <p class="mono text-xs tracking-widest text-muted mb-3">LEGAL</p>
+            <div class="space-y-2">
+              <a href="privacy.html" class="block hover:text-white text-muted">Privacy Policy</a>
+              <a href="terms.html" class="block hover:text-white text-muted">Terms of Service</a>
+              <a href="refund.html" class="block hover:text-white text-muted">Refund Policy</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-8 pt-6 border-t border-white/5 flex flex-col sm:flex-row gap-3 justify-between mono text-xs text-muted">
+        <span>Secure checkout powered by Dodo Payments · Encrypted & compliant</span>
+        <span>English · USD · Worldwide delivery</span>
+      </div>
+    </div>
+  </footer>
+  <script src="assets/js/main.js"></script>
+<script src="/admin/bar.js"></script>
+</body>
+</html>

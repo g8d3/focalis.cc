@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Products — Focalis Studio</title>
+  <meta name="description" content="Six focused digital products by Focalis Studio — Flow Engine, Capture Kit, Sync Layer and more. One-time purchases, instant delivery via Dodo Payments." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{bg:'#0A0A0B',accent:'#3B82F6',muted:'#9A9AA0',border:'#1E1E22'},fontFamily:{sans:['Inter','system-ui','sans-serif'],mono:['JetBrains Mono','monospace']}}}}</script>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header class="nav-blur sticky top-0 z-50">
+    <div class="max-w-[1120px] mx-auto px-6 h-[64px] flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-lg bg-white text-black grid place-items-center font-bold text-[13px]">◈</span>
+        <span class="font-semibold tracking-tight text-[15px]">Focalis Studio</span>
+        <span class="hidden sm:inline mono text-[10px] tracking-widest text-muted border border-border px-1.5 py-0.5 rounded">S.A.S. · BOGOTÁ</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-1 text-sm">
+        <a href="products.html" class="px-3 py-1.5 rounded-full bg-white text-black font-medium">Products</a>
+        <a href="pricing.html" class="px-3 py-1.5 rounded-full hover:bg-white/5 transition">Pricing</a>
+        <a href="about.html" class="px-3 py-1.5 rounded-full hover:bg-white/5 transition">About</a>
+        <a href="contact.html" class="px-3 py-1.5 rounded-full hover:bg-white/5 transition">Contact</a>
+      </nav>
+      <div class="hidden md:flex items-center gap-3">
+        <a href="pricing.html" class="btn-secondary text-[13px]">See pricing</a>
+      </div>
+      <button id="menu-btn" aria-expanded="false" class="md:hidden w-9 h-9 grid place-items-center rounded-full border border-white/10">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2.5 5h11M2.5 8h11M2.5 11h11"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-white/5 bg-[#0A0A0B] px-6 py-4 space-y-1">
+      <a href="products.html" class="block py-2 text-sm font-medium">Products</a>
+      <a href="pricing.html" class="block py-2 text-sm">Pricing</a>
+      <a href="about.html" class="block py-2 text-sm">About</a>
+      <a href="contact.html" class="block py-2 text-sm">Contact</a>
+    </div>
+  </header>
+
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 grid-bg opacity-30"></div>
+    <div class="absolute inset-0 grid-bg-fade"></div>
+    <div class="relative max-w-[1120px] mx-auto px-6 pt-12 sm:pt-16 pb-8">
+      <p class="mono text-xs tracking-widest text-accent">PRODUCTS / 06 ITEMS</p>
+      <h1 class="mt-3 text-[40px] sm:text-[56px] font-extrabold tracking-[-0.04em] leading-[0.9]">Tools you’ll actually use.</h1>
+      <p class="mt-4 max-w-[640px] text-[16px] leading-7 text-muted">Every product is a focused primitive — one job, done exceptionally. One-time purchase, instant license delivery via Dodo Payments. Use them alone or compose them together.</p>
+      <div class="mt-6 flex flex-wrap gap-2 mono text-xs">
+        <span class="px-3 py-1.5 rounded-full border border-white/10 bg-white/5">Instant delivery</span>
+        <span class="px-3 py-1.5 rounded-full border border-white/10 bg-white/5">License key by email</span>
+        <span class="px-3 py-1.5 rounded-full border border-white/10 bg-white/5">14-day refund</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-[1120px] mx-auto px-6 pb-16">
+    <div class="grid lg:grid-cols-2 gap-5">
+
+      <!-- Flow Engine -->
+      <div id="flow-engine" class="card card-accent p-7 reveal">
+        <div class="flex items-start justify-between gap-4">
+          <div class="w-10 h-10 rounded-xl bg-white text-black grid place-items-center">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2v4M12 18v4M4 12h4M16 12h4"/><rect x="7" y="7" width="10" height="10" rx="2"/></svg>
+          </div>
+          <span class="mono text-xs tracking-widest px-2.5 py-1 rounded-full bg-accent text-white font-medium">$149 — one-time</span>
+        </div>
+        <h2 class="mt-5 text-2xl font-bold tracking-tight">Flow Engine</h2>
+        <p class="mono text-xs tracking-widest text-muted mt-1">AUTOMATION · VISUAL + CODE</p>
+        <p class="mt-3 text-sm leading-6 text-muted">The workflow engine for people who ship. Connect APIs, files, browsers, and AI models in a single graph. Versioned runs, cron + webhook triggers, and local execution.</p>
+        <ul class="mt-4 space-y-2 text-sm">
+          <li class="flex gap-2"><span class="text-accent mt-0.5">✓</span><span class="text-[#D0D0D6]">80+ nodes — HTTP, files, browser, AI, SQL, email</span></li>
+          <li class="flex gap-2"><span class="text-accent mt-0.5">✓</span><span class="text-[#D0D0D6]">Visual builder with code hooks (JS/Python)</span></li>
+          <li class="flex gap-2"><span class="text-accent mt-0.5">✓</span><span class="text-[#D0D0D6]">Replay & diff any run · Git-style versioning</span></li>
+          <li class="flex gap-2"><span class="text-accent mt-0.5">✓</span><span class="text-[#D0D0D6]">Runs locally — your data never leaves your machine</span></li>
+        </ul>
+        <div class="mt-6 grid grid-cols-3 gap-2 mono text-[11px] text-muted border-y border-white/5 py-3">
+          <span>macOS / Win / Linux</span><span>• 1 seat included</span><span>• Lifetime + 1y priority</span>
+        </div>
+        <a href="#" onclick="alert('Dodo Payments checkout — placeholder. This button will link to your Dodo product once created.'); return false;" class="btn-primary w-full justify-center mt-4 py-3">Buy with Dodo — $149</a>
+        <p class="text-center mono text-[11px] text-muted mt-2">Secure checkout via Dodo Payments · Instant email delivery</p>
+      </div>
+
+      <!-- Capture Kit -->
+      <div id="capture-kit" class="card card-accent p-7 reveal delay-100">
+        <div class="flex items-start justify-between gap-4">
+          <div class="w-10 h-10 rounded-xl bg-white/10 border border-white/10 grid place-items-center">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="7" width="20" height="12" rx="2"/><path d="M8 7l2-3h4l2 3"/></svg>
+          </div>
+          <span class="mono text-xs tracking-widest px-2.5 py-1 rounded-full bg-white text-black font-medium">$79 — one-time</span>
+        </div>
+        <h2 class="mt-5 text-2xl font-bold tracking-tight">Capture Kit</h2>
+        <p class="mono text-xs tracking-widest text-muted mt-1">CAPTURE · 4K · NO WATERMARKS</p>
+        <p class="mt-3 text-sm leading-6 text-muted">Production-grade screen and browser capture for docs, courses, and launch videos. Automatic framing, cursor smoothing, and clean exports.</p>
+        <ul class="mt-4 space-y-2 text-sm">
+          <li class="flex gap-2"><span class="text-accent mt-0.5">✓</span><span class="text-[#D0D0D6]">Region, window, and full-page capture at 4K</span></li>
+          <li class="flex gap-2"><span class="text-accent mt-0.5">✓</span><span class="text-[#D0D0D6]">Auto zoom to focus + cursor inertia</span></li>
+          <li class="flex gap-2"><span class="text-accent mt-0.5">✓</span><span class="text-[#D0D0D6]">Export MP4, GIF, or frame sequence</span></li>
+          <li class="flex gap-2"><span class="text-accent mt-0.5">✓</span><span class="text-[#D0D0D6]">No watermarks, no cloud upload required</span></li>
+        </ul>
+        <div class="mt-6 grid grid-cols-3 gap-2 mono text-[11px] text-muted border-y border-white/5 py-3">
+          <span>macOS & Windows</span><span>• 2 activations</span><span>• Free updates 1 year</span>
+        </div>
+        <a href="#" onclick="alert('Dodo Payments checkout — placeholder.'); return false;" class="btn-primary w-full justify-center mt-4 py-3">Buy with Dodo — $79</a>
+        <p class="text-center mono text-[11px] text-muted mt-2">Secure checkout via Dodo Payments</p>
+      </div>
+
+      <!-- Sync Layer -->
+      <div id="sync-layer" class="card card-accent p-7 reveal">
+        <div class="flex items-start justify-between gap-4">
+          <div class="w-10 h-10 rounded-xl bg-accent/15 border border-accent/20 grid place-items-center text-accent">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 16V8l-4 4 4 4zM17 8v8l4-4-4-4z"/><path d="M12 4v16"/></svg>
+          </div>
+          <span class="mono text-xs tracking-widest px-2.5 py-1 rounded-full bg-accent text-white font-medium">$99 — one-time</span>
+        </div>
+        <h2 class="mt-5 text-2xl font-bold tracking-tight">Sync Layer</h2>
+        <p class="mono text-xs tracking-widest text-muted mt-1">SYNC · ENCRYPTED · OFFLINE-FIRST</p>
+        <p class="mt-3 text-sm leading-6 text-muted">Bidirectional sync between local folders, Notion, and cloud drives. Conflict-free merges, E2E encryption, and webhooks for your automations.</p>
+        <ul class="mt-4 space-y-2 text-sm">
+          <li class="flex gap-2"><span class="text-accent mt-0.5">✓</span><span class="text-[#D0D0D6]">Selective sync + ignore rules</span></li>
+          <li class="flex gap-2"><span class="text-accent mt-0.5">✓</span><span class="text-[#D0D0D6]">End-to-end encryption, you hold the keys</span></li>
+          <li class="flex gap-2"><span class="text-accent mt-0.5">✓</span><span class="text-[#D0D0D6]">Webhooks & API for Flow Engine</span></li>
+          <li class="flex gap-2"><span class="text-accent mt-0.5">✓</span><span class="text-[#D0D0D6]">Offline queue, auto-merge on reconnect</span></li>
+        </ul>
+        <div class="mt-6 grid grid-cols-3 gap-2 mono text-[11px] text-muted border-y border-white/5 py-3">
+          <span>All platforms</span><span>• 5k files/mo included</span><span>• Team plan available</span>
+        </div>
+        <a href="#" onclick="alert('Dodo Payments checkout — placeholder.'); return false;" class="btn-primary w-full justify-center mt-4 py-3">Buy with Dodo — $99</a>
+        <p class="text-center mono text-[11px] text-muted mt-2">Personal license · Team add-on $49</p>
+      </div>
+
+      <!-- Frame Foundry -->
+      <div id="frame-foundry" class="card card-accent p-7 reveal delay-100">
+        <div class="flex items-start justify-between gap-4">
+          <div class="w-10 h-10 rounded-xl bg-white/10 border border-white/10 grid place-items-center">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg>
+          </div>
+          <span class="mono text-xs tracking-widest px-2.5 py-1 rounded-full bg-white text-black font-medium">$299 — one-time</span>
+        </div>
+        <h2 class="mt-5 text-2xl font-bold tracking-tight">Frame Foundry</h2>
+        <p class="mono text-xs tracking-widest text-muted mt-1">VIDEO · COMPOSITION ENGINE</p>
+        <p class="mt-3 text-sm leading-6 text-muted">Programmatic video composition for agents and studios. HTML/CSS/JS in, MP4 out. Headless, deterministic, and GPU-ready.</p>
+        <ul class="mt-4 space-y-2 text-sm">
+          <li class="flex gap-2"><span class="text-accent mt-0.5">✓</span><span class="text-[#D0D0D6]">Code-driven timeline — HTML becomes video</span></li>
+          <li class="flex gap-2"><span class="text-accent mt-0.5">✓</span><span class="text-[#D0D0D6]">Deterministic rendering, frame-accurate</span></li>
+          <li class="flex gap-2"><span class="text-accent mt-0.5">✓</span><span class="text-[#D0D0D6]">Assets, fonts, and audio bundled</span></li>
+          <li class="flex gap-2"><span class="text-accent mt-0.5">✓</span><span class="text-[#D0D0D6]">CLI + API, runs locally or in CI</span></li>
+        </ul>
+        <div class="mt-6 grid grid-cols-3 gap-2 mono text-[11px] text-muted border-y border-white/5 py-3">
+          <span>Node.js 20+</span><span>• Commercial use</span><span>• 1 year updates</span>
+        </div>
+        <a href="#" onclick="alert('Dodo Payments checkout — placeholder.'); return false;" class="btn-primary w-full justify-center mt-4 py-3">Buy with Dodo — $299</a>
+        <p class="text-center mono text-[11px] text-muted mt-2">Most powerful · For studios & automation</p>
+      </div>
+
+      <!-- Signal Desk -->
+      <div id="signal-desk" class="card card-accent p-7 reveal">
+        <div class="flex items-start justify-between gap-4">
+          <div class="w-10 h-10 rounded-xl bg-white/10 border border-white/10 grid place-items-center">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 12h4l2-6 4 12 2-6h6"/></svg>
+          </div>
+          <span class="mono text-xs tracking-widest px-2.5 py-1 rounded-full bg-white text-black font-medium">$49 — one-time</span>
+        </div>
+        <h2 class="mt-5 text-2xl font-bold tracking-tight">Signal Desk</h2>
+        <p class="mono text-xs tracking-widest text-muted mt-1">MONITORING · ALERTS · DASHBOARD</p>
+        <p class="mt-3 text-sm leading-6 text-muted">A calm dashboard for noisy markets and systems. Track prices, health checks, and custom signals — alert via email, webhook, or Telegram.</p>
+        <ul class="mt-4 space-y-2 text-sm">
+          <li class="flex gap-2"><span class="text-accent mt-0.5">✓</span><span class="text-[#D0D0D6]">Price, uptime & custom metric monitors</span></li>
+          <li class="flex gap-2"><span class="text-accent mt-0.5">✓</span><span class="text-[#D0D0D6]">Threshold + anomaly alerts</span></li>
+          <li class="flex gap-2"><span class="text-accent mt-0.5">✓</span><span class="text-[#D0D0D6]">One-file dashboard, runs anywhere</span></li>
+          <li class="flex gap-2"><span class="text-accent mt-0.5">✓</span><span class="text-[#D0D0D6]">Export CSV & webhook history</span></li>
+        </ul>
+        <div class="mt-6 grid grid-cols-3 gap-2 mono text-[11px] text-muted border-y border-white/5 py-3">
+          <span>Self-hosted</span><span>• No subscription</span><span>• 3 dashboards</span>
+        </div>
+        <a href="#" onclick="alert('Dodo Payments checkout — placeholder.'); return false;" class="btn-primary w-full justify-center mt-4 py-3">Buy with Dodo — $49</a>
+        <p class="text-center mono text-[11px] text-muted mt-2">Great starter · Pair with Flow Engine</p>
+      </div>
+
+      <!-- Vault Core -->
+      <div id="vault-core" class="card card-accent p-7 reveal delay-100">
+        <div class="flex items-start justify-between gap-4">
+          <div class="w-10 h-10 rounded-xl bg-white/10 border border-white/10 grid place-items-center">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M7 8V6a5 5 0 0110 0v2"/></svg>
+          </div>
+          <span class="mono text-xs tracking-widest px-2.5 py-1 rounded-full bg-white text-black font-medium">$19 — one-time</span>
+        </div>
+        <h2 class="mt-5 text-2xl font-bold tracking-tight">Vault Core</h2>
+        <p class="mono text-xs tracking-widest text-muted mt-1">TEMPLATES · STARTER PACK</p>
+        <p class="mt-3 text-sm leading-6 text-muted">The fastest start: 40+ workflow templates, capture presets, and sync recipes. Copy, tweak, ship in minutes.</p>
+        <ul class="mt-4 space-y-2 text-sm">
+          <li class="flex gap-2"><span class="text-accent mt-0.5">✓</span><span class="text-[#D0D0D6]">40 templates for Flow + Capture + Sync</span></li>
+          <li class="flex gap-2"><span class="text-accent mt-0.5">✓</span><span class="text-[#D0D0D6]">Figma + Notion + HTML starters</span></li>
+          <li class="flex gap-2"><span class="text-accent mt-0.5">✓</span><span class="text-[#D0D0D6]">Lifetime access, free updates</span></li>
+          <li class="flex gap-2"><span class="text-accent mt-0.5">✓</span><span class="text-[#D0D0D6]">Commercial use included</span></li>
+        </ul>
+        <div class="mt-6 grid grid-cols-3 gap-2 mono text-[11px] text-muted border-y border-white/5 py-3">
+          <span>ZIP download</span><span>• 120 MB</span><span>• Instant</span>
+        </div>
+        <a href="#" onclick="alert('Dodo Payments checkout — placeholder.'); return false;" class="btn-primary w-full justify-center mt-4 py-3">Buy with Dodo — $19</a>
+        <p class="text-center mono text-[11px] text-muted mt-2">Best value to get started</p>
+      </div>
+
+    </div>
+
+    <!-- Bundle callout -->
+    <div class="mt-6 rounded-[20px] border border-accent/20 bg-accent/5 p-6 sm:p-8 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 reveal">
+      <div>
+        <p class="mono text-xs tracking-widest text-accent">BUNDLE & SAVE</p>
+        <h3 class="mt-2 text-xl font-bold tracking-tight">Studio Bundle — all six products</h3>
+        <p class="mt-2 text-sm text-muted max-w-[560px]">Get every product in one license. Flow Engine + Capture Kit + Sync Layer + Frame Foundry + Signal Desk + Vault Core. Save $140 vs buying separately.</p>
+        <p class="mt-3 mono text-xs text-muted"><span class="line-through">$694</span> · Bundle price <span class="text-white font-semibold">$554</span></p>
+      </div>
+      <a href="#" onclick="alert('Dodo Payments bundle checkout — placeholder.'); return false;" class="btn-primary px-8 py-3 shrink-0">Buy bundle with Dodo — $554</a>
+    </div>
+
+    <div class="mt-6 text-center mono text-xs text-muted">
+      All prices in USD · Secure checkout via Dodo Payments (merchant of record) · Instant delivery · <a href="refund.html" class="text-accent underline underline-offset-4">14-day refund policy</a>
+    </div>
+  </section>
+
+  <footer class="border-t border-white/5">
+    <div class="max-w-[1120px] mx-auto px-6 py-10">
+      <div class="flex flex-col sm:flex-row justify-between gap-8">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg bg-white text-black grid place-items-center font-bold text-xs">◈</span>
+            <span class="font-semibold text-sm">Focalis Studio</span>
+          </div>
+          <p class="mt-3 text-sm text-muted max-w-[320px] leading-6">Minimal, premium tools for creators and teams. Built by Focalis S.A.S., Bogotá, Colombia. Merchant of record: Dodo Payments.</p>
+          <p class="mt-4 mono text-xs text-muted">© 2026 Focalis S.A.S. · NIT 900.XXX.XXX-1 · Bogotá, Colombia</p>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 text-sm">
+          <div>
+            <p class="mono text-xs tracking-widest text-muted mb-3">PRODUCT</p>
+            <div class="space-y-2">
+              <a href="products.html" class="block hover:text-white text-muted">Products</a>
+              <a href="pricing.html" class="block hover:text-white text-muted">Pricing</a>
+              <a href="contact.html" class="block hover:text-white text-muted">Contact</a>
+            </div>
+          </div>
+          <div>
+            <p class="mono text-xs tracking-widest text-muted mb-3">COMPANY</p>
+            <div class="space-y-2">
+              <a href="about.html" class="block hover:text-white text-muted">About</a>
+              <a href="contact.html" class="block hover:text-white text-muted">Support</a>
+              <a href="mailto:hello@focalis.cc" class="block hover:text-white text-muted">hello@focalis.cc</a>
+            </div>
+          </div>
+          <div>
+            <p class="mono text-xs tracking-widest text-muted mb-3">LEGAL</p>
+            <div class="space-y-2">
+              <a href="privacy.html" class="block hover:text-white text-muted">Privacy Policy</a>
+              <a href="terms.html" class="block hover:text-white text-muted">Terms of Service</a>
+              <a href="refund.html" class="block hover:text-white text-muted">Refund Policy</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-8 pt-6 border-t border-white/5 flex flex-col sm:flex-row gap-3 justify-between mono text-xs text-muted">
+        <span>Secure checkout powered by Dodo Payments · Encrypted & compliant</span>
+        <span>English · USD · Worldwide delivery</span>
+      </div>
+    </div>
+  </footer>
+  <script src="assets/js/main.js"></script>
+<script src="/admin/bar.js"></script>
+</body>
+</html>

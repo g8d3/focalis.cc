@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terms of Service — Focalis Systems</title>
+<meta name="description" content="Terms of Service for Focalis Systems (Focalis Technologies S.A.S.) — licensed software, SLAs, billing via Dodo Payments, and customer commitments.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230F2342'/><path d='M8 16l6 6 10-12' stroke='%2314B8A6' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<script>try{var t=localStorage.getItem("focalis-theme");if(!t){t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.setAttribute("data-theme",t)}catch(e){document.documentElement.setAttribute("data-theme","light")}</script>
+</head>
+<body class="antialiased">
+
+<header class="nav-wrap">
+  <div class="max-w-[1160px] mx-auto px-6 h-[64px] flex items-center justify-between gap-8 relative">
+    <a href="index.html" class="flex items-center gap-3 shrink-0">
+      <span class="w-8 h-8 rounded-md bg-[#0F2342] flex items-center justify-center">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M7 14l3.5 3.5L17 8" stroke="#14B8A6" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><rect x="3" y="3" width="18" height="18" rx="3.5" stroke="white" stroke-opacity="0.15" stroke-width="1.2"/></svg>
+      </span>
+      <span class="serif font-semibold tracking-tight text-[17px] text-[#0F2342]">Focalis Systems</span>
+      <span class="hidden sm:inline text-[11px] font-semibold tracking-widest uppercase text-[#5B6476] border border-[#E8E4DE] rounded-full px-2 py-0.5">Enterprise</span>
+    </a>
+    <nav class="hidden lg:flex items-center gap-6 text-[14px] font-medium text-[#3A4356]">
+      <a href="products.html" class="hover:text-[#0F2342] transition-colors">Products</a>
+      <a href="pricing.html" class="hover:text-[#0F2342] transition-colors">Pricing</a>
+      <a href="about.html" class="hover:text-[#0F2342] transition-colors">About</a>
+      <a href="contact.html" class="hover:text-[#0F2342] transition-colors">Contact</a>
+    </nav>
+    <div class="hidden lg:flex items-center gap-3">
+      <a href="contact.html" class="text-[14px] font-medium text-[#0F2342] hover:underline underline-offset-4">Talk to sales</a>
+      <a href="products.html" class="btn-primary text-[13px] py-2.5">View products</a>
+    </div>
+    <button id="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false" title="Switch to dark theme">
+      <svg data-theme-icon="sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 6.34l-1.41 1.41M19.07 19.07l-1.41 1.41"/></svg>
+      <svg data-theme-icon="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <button id="menu-btn" class="lg:hidden w-9 h-9 rounded-md border border-[#E8E4DE] flex items-center justify-center text-[#0F2342]" aria-expanded="false" aria-label="Toggle menu">
+      <svg data-icon="open" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg data-icon="close" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="display:none"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div id="mobile-menu" class="mobile-menu">
+      <div class="px-6 flex flex-col gap-1 text-[14px] font-medium">
+        <a href="products.html" class="py-2.5 border-b border-[#F5F3EF] text-[#0F2342]">Products</a>
+        <a href="pricing.html" class="py-2.5 border-b border-[#F5F3EF] text-[#0F2342]">Pricing</a>
+        <a href="about.html" class="py-2.5 border-b border-[#F5F3EF] text-[#0F2342]">About</a>
+        <a href="contact.html" class="py-2.5 border-b border-[#F5F3EF] text-[#0F2342]">Contact</a>
+        <a href="privacy.html" class="py-2 text-[13px] text-[#5B6476]">Privacy</a>
+        <a href="terms.html" class="py-2.5 border-b border-[#F5F3EF] text-[#0F2342] font-semibold">Terms</a>
+        <a href="refund.html" class="py-2 text-[13px] text-[#5B6476]">Refund Policy</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="bg-[#0F2342] text-white">
+  <div class="max-w-[860px] mx-auto px-6 py-8">
+    <div class="badge bg-white/10 border border-white/20 text-white text-[11px]">Legal — Terms of Service</div>
+    <h1 class="serif text-[28px] md:text-[32px] font-semibold tracking-tight mt-3">Terms of Service</h1>
+    <p class="mt-2 text-[13px] text-white/70">Focalis Technologies S.A.S. — 12 Rue de la Paix, 75002 Paris, France — contact@focalis.cc · hello@focalis.cc</p>
+    <div class="mt-4 flex flex-wrap gap-2 text-[12px]">
+      <span class="bg-white text-[#0F2342] rounded-full px-3 py-1 font-medium">Effective: 1 March 2026</span>
+      <span class="bg-white/10 border border-white/20 rounded-full px-3 py-1 text-white/80">Last updated: 1 March 2026</span>
+    </div>
+  </div>
+</div>
+
+<div class="max-w-[860px] mx-auto px-6 py-8">
+  <div class="bg-white border border-[#E8E4DE] rounded-xl p-6 md:p-8 prose-legal">
+
+    <div class="callout">
+      <strong>In plain language:</strong> You buy a license to Focalis software (Data Pipeline, Automation Suite, Integration Layer) plus, where you choose it, a managed hosting and support commitment with an SLA. You own your data and configurations. We commit to operate reliably, respond to support per your plan, and handle billing transparently via Dodo Payments as merchant of record.
+    </div>
+
+    <h2>1. Agreement and parties</h2>
+    <p>These Terms of Service (“Terms”) form a binding agreement between <strong>Focalis Technologies S.A.S.</strong>, a simplified joint-stock company registered in France (“Focalis,” “we,” “us”), and the individual or entity that purchases or uses Focalis products (“Customer,” “you”). By purchasing, installing, or using any Focalis product — including via self-serve checkout processed by <strong>Dodo Payments</strong> as merchant of record — you agree to these Terms, together with the <a href="privacy.html">Privacy Policy</a>, <a href="refund.html">Refund Policy</a>, and, where executed, the Data Processing Agreement (DPA) and any enterprise order form or statement of work that references these Terms.</p>
+    <p>If you are entering into these Terms on behalf of a company, you represent that you have authority to bind that company. If you do not agree, do not purchase or use the products.</p>
+
+    <h2>2. Products — what you are buying</h2>
+    <h3>2.1 Licensed software</h3>
+    <p>Focalis products are <strong>licensed software</strong>, not a sale of goods. We grant you a non-exclusive, non-transferable, revocable license to install, configure, and use the product in accordance with these Terms, your plan, and the documentation. The software may be deployed as:</p>
+    <ul>
+      <li><strong>Managed option</strong> (we host) — included in Team/Business/Pro plans and available for Enterprise as dedicated tenancy; or</li>
+      <li><strong>Self-hosted / VPC option</strong> — available on Enterprise, deployed in your environment under the same license.</li>
+    </ul>
+    <p>Licenses are per-workspace with seat and volume limits described at purchase and in the documentation. You are responsible for credential and workspace management.</p>
+    <h3>2.2 Services</h3>
+    <p>Support, onboarding assistance, and, on Enterprise, migration and architecture reviews are services provided under these Terms and any applicable service description. They do not transfer ownership of the software.</p>
+    <h3>2.3 Product descriptions and pricing</h3>
+    <p>Current offerings at the time of these Terms:</p>
+    <table>
+      <tr><th>Product</th><th>Plan</th><th>Price (USD)</th><th>Notes</th></tr>
+      <tr><td>Data Pipeline</td><td>Team</td><td>$199 / month</td><td>50M events / mo included; $0.18 per 1k thereafter (capped)</td></tr>
+      <tr><td>Automation Suite</td><td>Business</td><td>$349 / month</td><td>500k runs / mo included; $0.12 per 1k thereafter (capped)</td></tr>
+      <tr><td>Integration Layer</td><td>Starter</td><td>$49 / month</td><td>100k API calls / mo; 5 connectors</td></tr>
+      <tr><td>Integration Layer</td><td>Pro</td><td>$499 / month</td><td>1M API calls / mo; all 40+ connectors</td></tr>
+      <tr><td>Any product</td><td>Enterprise</td><td>From $999 / month</td><td>Annual contract; dedicated tenancy/VPC; 99.95% SLA</td></tr>
+    </table>
+    <p>All prices are in USD. Taxes (VAT/GST) are calculated at checkout by Dodo Payments and added where applicable. Annual billing saves approximately 17% versus monthly (two months free). We may update pricing with at least 30 days’ notice; changes do not affect the current billing period already paid.</p>
+
+    <h2>3. Accounts, eligibility, and acceptable use</h2>
+    <h3>3.1 Eligibility</h3>
+    <p>You must be at least 18 years old and, where you represent a company, authorized to bind it. Our products are for business use.</p>
+    <h3>3.2 Account responsibilities</h3>
+    <p>You are responsible for: (a) the accuracy of account information; (b) maintaining the confidentiality of credentials and license keys; (c) activity under your workspaces; and (d) promptly notifying us of unauthorized access. We may suspend or terminate accounts that are compromised or in violation of these Terms after notice where feasible.</p>
+    <h3>3.3 Acceptable use</h3>
+    <p>You will not, and will not allow others to:</p>
+    <ul>
+      <li>Reverse engineer, decompile, or attempt to derive source code except to the extent permitted by law or where we make source or APIs available;</li>
+      <li>Resell, sublicense, or provide the software as a competing hosted service to third parties without our written consent;</li>
+      <li>Use the software to transmit unlawful, infringing, or harmful content, or to violate the rights or privacy of others;</li>
+      <li>Circumvent seat, volume, or rate limits, or interfere with the integrity or performance of the service (including abusive load, scraping, or bypassing authentication);</li>
+      <li>Use the software to process data you do not have the right to process, or in a manner that violates applicable law.</li>
+    </ul>
+
+    <h2>4. Billing, merchant of record, and taxes</h2>
+    <h3>4.1 Dodo Payments as merchant of record</h3>
+    <p>All self-serve purchases and renewals are processed by <strong>Dodo Payments</strong> as merchant of record. Dodo Payments handles checkout, payment collection, VAT/GST calculation and remittance, invoicing, subscription management, and receipts. For billing inquiries, invoice copies, or payment-method updates, use the billing portal linked from your Dodo Payments receipt or contact us and we will coordinate with Dodo Payments. Enterprise annual contracts may alternatively be invoiced via wire with our prior approval.</p>
+    <h3>4.2 Subscription and renewal</h3>
+    <p>Subscriptions renew automatically at the end of each billing period (monthly or annual) at the then-current price unless you cancel before renewal via the billing portal or by contacting us. Access continues through the end of the paid period after cancellation. Failure to pay when due may result in suspension after notice.</p>
+    <h3>4.3 Overage</h3>
+    <p>Usage above included volumes (events, runs, API calls) is measured monthly and invoiced the following month by Dodo Payments at the rates described in Section 2.3 and in the documentation. Overage is capped so a traffic spike does not produce an uncapped bill — caps and alerts are configurable in your workspace.</p>
+    <h3>4.4 Taxes</h3>
+    <p>Prices are exclusive of applicable taxes. Dodo Payments calculates and collects VAT/GST at checkout and issues a compliant invoice. You are responsible for any taxes you are legally obligated to pay beyond what is collected at checkout, except where we are required to collect.</p>
+
+    <h2>5. Delivery, support, and SLA</h2>
+    <h3>5.1 Delivery</h3>
+    <p>Upon purchase, you receive a license key and access to documentation and a sandbox workspace immediately. The product is delivered electronically — there is no physical shipment.</p>
+    <h3>5.2 Support</h3>
+    <table>
+      <tr><th>Plan</th><th>Support</th><th>Response target (business days unless noted)</th></tr>
+      <tr><td>Starter</td><td>Email</td><td>&lt;24 hours</td></tr>
+      <tr><td>Team / Pro</td><td>Email + critical on-call (Data Pipeline Team)</td><td>&lt;4 hours business hours; &lt;1 hour critical</td></tr>
+      <tr><td>Business (Automation Suite)</td><td>Priority</td><td>&lt;2 hours</td></tr>
+      <tr><td>Enterprise</td><td>Named technical account manager</td><td>&lt;1 hour critical; otherwise per order form</td></tr>
+    </table>
+    <p>Support covers the product and its documented behavior. It does not include general consulting unrelated to Focalis products unless agreed in a statement of work.</p>
+    <h3>5.3 SLA and credits</h3>
+    <p>We commit to monthly uptime as follows: Starter 99.5%; Team, Pro, and Automation Suite Business 99.9%; Enterprise 99.95%. “Uptime” is measured as the product’s ability to process requests per documentation, excluding scheduled maintenance (notified at least 72 hours in advance) and causes outside our reasonable control. If we fall below the committed SLA in a calendar month, you may claim credits: 10% of that month’s fee for each full 0.1% below target, up to 30% of the monthly fee. Credits are applied to future invoices. To claim, contact support within 30 days after the affected month. The SLA and credits are your sole remedy for availability failures.</p>
+
+    <h2>6. Data, privacy, and DPA</h2>
+    <p>Our handling of personal data as controller is described in our <a href="privacy.html">Privacy Policy</a>. Where we process customer data on your behalf as processor (for example, records you send through a pipeline or automation), the DPA governs — including our commitments on sub-processors (listed in the Privacy Policy), confidentiality, security, breach notification, and return/deletion at termination. The DPA includes the EU Standard Contractual Clauses for international transfers where applicable. To execute the DPA, contact <a href="mailto:legal@focalis.cc">legal@focalis.cc</a>.</p>
+    <p>You represent that you have the rights and lawful basis to provide any data you send through the products and that your instructions to us comply with applicable law.</p>
+
+    <h2>7. Intellectual property</h2>
+    <p>We and our licensors retain all rights, title, and interest in the software, documentation, and our trademarks. You retain all rights in your data, configurations, and workflows. You grant us a limited license to process your data solely to provide the products and support, and to use aggregated, de-identified usage metrics to improve the products. We will not use your data to train models that are provided to other customers.</p>
+
+    <h2>8. Confidentiality</h2>
+    <p>Each party will protect the other’s non-public, confidential information with at least reasonable care and will not disclose it except to personnel who need to know and are bound by confidentiality, or as required by law (with prompt notice where permitted). Customer data and the non-public aspects of our software are confidential.</p>
+
+    <h2>9. Warranties and disclaimers</h2>
+    <p>We warrant that the products will perform materially as described in the documentation under normal use. This is your exclusive warranty. Except as expressly stated, the products are provided “as is” and we disclaim all implied warranties, including merchantability, fitness for a particular purpose, and non-infringement, to the fullest extent permitted by law. We do not warrant that the products will be uninterrupted or error-free, or that they will meet every custom requirement — we do warrant that we will operate and support them per the SLA and support commitments above.</p>
+
+    <h2>10. Limitation of liability</h2>
+    <p>To the fullest extent permitted by law: (a) neither party is liable for indirect, incidental, special, consequential, or punitive damages, or for loss of profits, revenue, data, or business opportunity, even if advised of the possibility; and (b) each party’s aggregate liability arising out of or related to these Terms is limited to the amount you paid to Focalis (via Dodo Payments or otherwise) for the affected product in the 12 months preceding the claim. The foregoing does not limit liability for willful misconduct, or for amounts that cannot be limited by law. Nothing here excludes liability that cannot be excluded under French law.</p>
+
+    <h2>11. Indemnification</h2>
+    <p>You will indemnify and defend us against third-party claims arising from your data, your use of the products in violation of these Terms or law, or your instructions to us. We will indemnify and defend you against third-party claims that the unmodified Focalis software as provided by us infringes a third party’s intellectual property right — provided you promptly notify us, allow us to control the defense, and reasonably cooperate. If infringement is found, we will at our option replace or modify the software to be non-infringing, obtain a license, or terminate the affected product and refund prepaid, unused fees.</p>
+
+    <h2>12. Term, suspension, and termination</h2>
+    <p>These Terms apply until your subscription ends and, where applicable, through any post-termination deletion or transition period. You may cancel self-serve subscriptions via the billing portal (or by contacting us) — access continues through the paid period. We may suspend or terminate for material breach (including non-payment) after notice and a 14-day cure period, or immediately where required for security, legal compliance, or to prevent harm. Upon termination, your license ends, and we will handle your data per the DPA — generally making export available and deleting customer data within 30 days (with backup expiry within 90 days), or per the enterprise order form. Sections that by nature should survive — including billing for amounts due, IP, confidentiality, warranties, liability limits, and governing law — survive.</p>
+
+    <h2>13. Refunds</h2>
+    <p>Refunds are governed by our <a href="refund.html">Refund Policy</a> (14 days from initial purchase for new licenses; enterprise and renewal specifics described there). To request a refund, contact us via <a href="contact.html">contact</a> or your billing portal. Refunds are processed via the original payment method through Dodo Payments.</p>
+
+    <h2>14. Changes to terms</h2>
+    <p>We may update these Terms to reflect product, legal, or operational changes. Material changes are notified by email to account contacts at least 14 days before taking effect (30 days for pricing changes per Section 2.3), and by updating the “Last updated” date. Continued use after the effective date constitutes acceptance. Enterprise order forms that reference a specific version of these Terms control over conflicting updates for the order term.</p>
+
+    <h2>15. Governing law and disputes</h2>
+    <p>These Terms are governed by the laws of France, without regard to conflict-of-law principles. The courts of Paris, France have exclusive jurisdiction, except where mandatory consumer-protection or data-protection law requires otherwise. Before filing a claim, the parties will attempt to resolve the dispute informally by contacting <a href="mailto:legal@focalis.cc">legal@focalis.cc</a> — we commit to respond within 10 business days and to negotiate in good faith for 30 days.</p>
+
+    <h2>16. General</h2>
+    <ul>
+      <li><strong>Entire agreement:</strong> These Terms, together with the Privacy Policy, Refund Policy, DPA, and any order form or SOW that references them, are the entire agreement for the products.</li>
+      <li><strong>Assignment:</strong> You may not assign these Terms without our consent, except in connection with a merger or acquisition of your company (with notice). We may assign in connection with a corporate reorganization or sale.</li>
+      <li><strong>Notices:</strong> We will send notices to the account email; you may notify us at <a href="mailto:legal@focalis.cc">legal@focalis.cc</a> and via <a href="contact.html">contact</a>.</li>
+      <li><strong>Severability:</strong> If any provision is held unenforceable, it will be modified to the minimum extent needed to be enforceable, and the rest remains in effect.</li>
+      <li><strong>Waiver:</strong> Failure to enforce a provision is not a waiver.</li>
+      <li><strong>Language:</strong> These Terms are in English; translations are for convenience only.</li>
+    </ul>
+
+    <h2>17. Contact</h2>
+    <p>Focalis Technologies S.A.S., 12 Rue de la Paix, 75002 Paris, France — <a href="mailto:contact@focalis.cc">contact@focalis.cc</a> — Legal/DPA: <a href="mailto:legal@focalis.cc">legal@focalis.cc</a> — Phone: +33 1 23 45 67 89 — Support: <a href="mailto:support@focalis.cc">support@focalis.cc</a>. For billing and invoices, see your Dodo Payments receipt/billing portal or contact us.</p>
+
+    <div class="callout callout-navy">
+      <strong>Companion documents:</strong> <a href="privacy.html">Privacy Policy</a> · <a href="refund.html">Refund Policy</a> · DPA on request via <a href="mailto:legal@focalis.cc">legal@focalis.cc</a>
+    </div>
+  </div>
+
+  <div class="mt-6 flex flex-wrap gap-2 text-[12px] text-[#78746E]">
+    <span>Related:</span>
+    <a href="privacy.html" class="underline">Privacy Policy</a>
+    <span>·</span>
+    <a href="refund.html" class="underline">Refund Policy</a>
+    <span>·</span>
+    <a href="contact.html" class="underline">Contact</a>
+  </div>
+</div>
+
+<footer class="border-t border-[#E8E4DE] bg-white mt-10">
+  <div class="max-w-[860px] mx-auto px-6 py-8">
+    <div class="flex flex-col md:flex-row gap-3 md:items-center justify-between text-[12px] text-[#78746E]">
+      <span>© <span id="year"></span> Focalis Technologies S.A.S. · <a href="privacy.html" class="underline font-medium">Privacy</a> · <a href="terms.html" class="underline">Terms</a> · <a href="refund.html" class="underline">Refund</a></span>
+      <span><a href="index.html" class="underline">Home</a> · <a href="products.html" class="underline">Products</a> · <a href="pricing.html" class="underline">Pricing</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+<script src="/admin/bar.js"></script>
+</body>
+</html>

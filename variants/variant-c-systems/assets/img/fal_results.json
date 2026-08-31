@@ -1,0 +1,34 @@
+{
+  "hero": {
+    "url": "https://v3b.fal.media/files/b/0aa88093/6xoJ14QlttpqM0UL0fWtR.jpg",
+    "file": "hero.jpg",
+    "size": 193670,
+    "elapsed": 2.4468157291412354,
+    "prompt": "minimal premium tech infrastructure isometric illustration, light background off-white #FAF9F7, floating translucent data pipeline nodes connected by thin teal lines, soft shadows, navy #0F2342 accents, clean enterprise SaaS hero, ultra sharp, 8k, no text, no people",
+    "image_size": "landscape_16_9"
+  },
+  "data-pipeline": {
+    "url": "https://v3b.fal.media/files/b/0aa88094/AS6ALp7ZCV9iLUQlNKbgv.jpg",
+    "file": "data-pipeline.jpg",
+    "size": 723548,
+    "elapsed": 2.8612430095672607,
+    "prompt": "abstract data pipeline visualization, light stone background, flowing particle streams through geometric pipes, teal and navy, minimal, premium tech product image, no text",
+    "image_size": "square_hd"
+  },
+  "automation-suite": {
+    "url": "https://v3b.fal.media/files/b/0aa88094/383fL-oVzTOXHWUlYmXaF.jpg",
+    "file": "automation-suite.jpg",
+    "size": 422936,
+    "elapsed": 2.389134645462036,
+    "prompt": "workflow automation visual, interconnected workflow cards floating in light space, subtle glass morphism, teal connections, navy typography accents, premium enterprise software, no text, no people",
+    "image_size": "square_hd"
+  },
+  "integration-layer": {
+    "url": "https://v3b.fal.media/files/b/0aa88094/vvfuCuxSOuHX6ovsrsFPy.jpg",
+    "file": "integration-layer.jpg",
+    "size": 713535,
+    "elapsed": 2.372493267059326,
+    "prompt": "API integration layer abstract, 40+ connector nodes as minimalist icons orbiting a central hub, light background, fine lines, navy and teal, clean, no text",
+    "image_size": "square_hd"
+  }
+}

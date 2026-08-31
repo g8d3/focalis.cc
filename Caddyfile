@@ -1,0 +1,62 @@
+{
+	email hello@focalis.cc
+	admin off
+	auto_https disable_redirects
+}
+
+:80 {
+	encode zstd gzip
+	log {
+		output stdout
+		format console
+	}
+	handle /health* {
+		respond "ok" 200
+	}
+	handle /admin* {
+		reverse_proxy admin:8788
+	}
+	handle_path /selector/* {
+		root * /srv/selector
+		file_server
+	}
+	handle_path /studio/* {
+		root * /srv/variant-a-studio
+		file_server
+	}
+	handle_path /variant-a/* {
+		root * /srv/variant-a-studio
+		file_server
+	}
+	handle_path /labs/* {
+		root * /srv/variant-b-labs
+		file_server
+	}
+	handle_path /variant-b/* {
+		root * /srv/variant-b-labs
+		file_server
+	}
+	handle_path /systems/* {
+		root * /srv/variant-c-systems
+		file_server
+	}
+	handle_path /variant-c/* {
+		root * /srv/variant-c-systems
+		file_server
+	}
+	redir /selector /selector/ 308
+	redir /studio /studio/ 308
+	redir /variant-a /variant-a/ 308
+	redir /labs /labs/ 308
+	redir /variant-b /variant-b/ 308
+	redir /systems /systems/ 308
+	redir /variant-c /variant-c/ 308
+	handle / {
+		root * /srv/active
+		file_server
+	}
+	handle {
+		root * /srv/active
+		file_server
+	}
+}

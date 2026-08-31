@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Products — Focalis Systems</title>
+<meta name="description" content="Focalis Systems products: Data Pipeline, Automation Suite, and Integration Layer. Licensed software with SLAs, from $49 to $999 per month.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230F2342'/><path d='M8 16l6 6 10-12' stroke='%2314B8A6' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<script>try{var t=localStorage.getItem("focalis-theme");if(!t){t=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.setAttribute("data-theme",t)}catch(e){document.documentElement.setAttribute("data-theme","light")}</script>
+</head>
+<body class="antialiased">
+
+<header class="nav-wrap">
+  <div class="max-w-[1160px] mx-auto px-6 h-[64px] flex items-center justify-between gap-8 relative">
+    <a href="index.html" class="flex items-center gap-3 shrink-0">
+      <span class="w-8 h-8 rounded-md bg-[#0F2342] flex items-center justify-center">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M7 14l3.5 3.5L17 8" stroke="#14B8A6" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><rect x="3" y="3" width="18" height="18" rx="3.5" stroke="white" stroke-opacity="0.15" stroke-width="1.2"/></svg>
+      </span>
+      <span class="serif font-semibold tracking-tight text-[17px] text-[#0F2342]">Focalis Systems</span>
+      <span class="hidden sm:inline text-[11px] font-semibold tracking-widest uppercase text-[#5B6476] border border-[#E8E4DE] rounded-full px-2 py-0.5">Enterprise</span>
+    </a>
+    <nav class="hidden lg:flex items-center gap-6 text-[14px] font-medium text-[#3A4356]">
+      <a href="products.html" class="text-[#0F2342] border-b-2 border-[#0F2342] pb-0.5">Products</a>
+      <a href="pricing.html" class="hover:text-[#0F2342] transition-colors">Pricing</a>
+      <a href="about.html" class="hover:text-[#0F2342] transition-colors">About</a>
+      <a href="contact.html" class="hover:text-[#0F2342] transition-colors">Contact</a>
+    </nav>
+    <div class="hidden lg:flex items-center gap-3">
+      <a href="contact.html" class="text-[14px] font-medium text-[#0F2342] hover:underline underline-offset-4">Talk to sales</a>
+      <a href="pricing.html" class="btn-primary text-[13px] py-2.5">See pricing</a>
+    </div>
+    <button id="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false" title="Switch to dark theme">
+      <svg data-theme-icon="sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 6.34l-1.41 1.41M19.07 19.07l-1.41 1.41"/></svg>
+      <svg data-theme-icon="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display:none"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <button id="menu-btn" class="lg:hidden w-9 h-9 rounded-md border border-[#E8E4DE] flex items-center justify-center text-[#0F2342]" aria-expanded="false" aria-label="Toggle menu">
+      <svg data-icon="open" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg data-icon="close" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="display:none"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div id="mobile-menu" class="mobile-menu">
+      <div class="px-6 flex flex-col gap-1 text-[14px] font-medium">
+        <a href="products.html" class="py-2.5 border-b border-[#F5F3EF] text-[#0F2342] font-semibold">Products</a>
+        <a href="pricing.html" class="py-2.5 border-b border-[#F5F3EF] text-[#0F2342]">Pricing</a>
+        <a href="about.html" class="py-2.5 border-b border-[#F5F3EF] text-[#0F2342]">About</a>
+        <a href="contact.html" class="py-2.5 border-b border-[#F5F3EF] text-[#0F2342]">Contact</a>
+        <a href="privacy.html" class="py-2 text-[13px] text-[#5B6476]">Privacy</a>
+        <a href="terms.html" class="py-2 text-[13px] text-[#5B6476]">Terms</a>
+        <a href="refund.html" class="py-2 text-[13px] text-[#5B6476]">Refund Policy</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero-gradient border-b border-[#E8E4DE]">
+  <div class="max-w-[1160px] mx-auto px-6 py-10 md:py-12">
+    <div class="badge badge-teal mb-4">Products — licensed software & managed services</div>
+    <h1 class="serif text-[30px] md:text-[40px] font-semibold leading-[1.05] tracking-[-0.03em] text-[#0F2342] max-w-[720px]">Software you can put in production and keep there.</h1>
+    <p class="mt-3 text-[16px] leading-relaxed text-[#3A4356] max-w-[640px]">Every Focalis product is licensed software with documentation, versioned releases, and a contractual SLA. Buy self-serve via Dodo Payments or contract via sales — same product, same commitment.</p>
+    <div class="mt-6 flex flex-wrap gap-2 text-[12px]">
+      <span class="inline-flex items-center gap-1.5 bg-white border border-[#E8E4DE] rounded-full px-3 py-1.5 font-medium text-[#3A4356]"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Invoicing via Dodo Payments</span>
+      <span class="inline-flex items-center gap-1.5 bg-white border border-[#E8E4DE] rounded-full px-3 py-1.5 font-medium text-[#3A4356]">14-day refund on new licenses</span>
+      <span class="inline-flex items-center gap-1.5 bg-white border border-[#E8E4DE] rounded-full px-3 py-1.5 font-medium text-[#3A4356]">EU / US residency choice</span>
+      <span class="inline-flex items-center gap-1.5 bg-white border border-[#E8E4DE] rounded-full px-3 py-1.5 font-medium text-[#3A4356]"><a href="pricing.html" class="underline">Compare pricing →</a></span>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT 1 -->
+<section id="data-pipeline" class="max-w-[1160px] mx-auto px-6 py-10 md:py-12">
+  <div class="grid lg:grid-cols-[1.15fr_0.85fr] gap-8 items-start">
+    <div>
+      <div class="flex items-center gap-3 mb-3">
+        <span class="w-10 h-10 rounded-lg bg-[#E6F7F5] border border-[#BFE9E4] flex items-center justify-center">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0F766E" stroke-width="1.7"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="3.5"/></svg>
+        </span>
+        <div>
+          <div class="text-[11px] font-semibold tracking-widest uppercase text-[#0F766E]">Product 01 — Licensed software + managed option</div>
+          <h2 class="serif text-[22px] md:text-[26px] font-semibold text-[#0F2342] tracking-tight">Data Pipeline</h2>
+        </div>
+      </div>
+      <p class="text-[14px] leading-relaxed text-[#3A4356]">Move data from where it is produced to where it is needed — warehouses, lakes, queues, and SaaS — with exactly-once delivery, schema enforcement, and full lineage. Built for teams that run pipelines to power reporting, billing, and product.</p>
+
+      <div class="mt-6 rounded-lg border border-[#E8E4DE] overflow-hidden bg-white">
+        <table class="data-table">
+          <thead><tr><th>Capability</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td class="text-[13px] font-medium">Ingest</td><td class="text-[13px] text-[#3A4356]">Change-data capture, file, API, streaming. Backpressure-aware. Exactly-once with idempotent sinks.</td></tr>
+            <tr><td class="text-[13px] font-medium">Validate</td><td class="text-[13px] text-[#3A4356]">Schema registry, contract tests, quarantine & replay for malformed records.</td></tr>
+            <tr><td class="text-[13px] font-medium">Deliver</td><td class="text-[13px] text-[#3A4356]">Snowflake, BigQuery, Postgres, S3/GCS, Kafka, plus 18 warehouse & storage connectors.</td></tr>
+            <tr><td class="text-[13px] font-medium">Observe</td><td class="text-[13px] text-[#3A4356]">Per-record lineage, lag and throughput dashboards, alerting via PagerDuty / Slack / webhook.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-5 grid grid-cols-2 gap-3">
+        <div class="bg-white border border-[#E8E4DE] rounded-lg p-3">
+          <div class="text-[11px] font-semibold tracking-widest uppercase text-[#5B6476]">Volume</div>
+          <div class="text-[13px] text-[#0F2342] font-medium">50M events / month included</div>
+          <div class="text-[12px] text-[#78746E]">Then $0.18 per 1k events — capped.</div>
+        </div>
+        <div class="bg-white border border-[#E8E4DE] rounded-lg p-3">
+          <div class="text-[11px] font-semibold tracking-widest uppercase text-[#5B6476]">Support</div>
+          <div class="text-[13px] text-[#0F2342] font-medium">Business-hours + on-call critical</div>
+          <div class="text-[12px] text-[#78746E]">Response &lt;4h business hours, &lt;1h critical.</div>
+        </div>
+      </div>
+
+      <div class="mt-5">
+        <div class="text-[11px] font-semibold tracking-widest uppercase text-[#5B6476] mb-2">Features included</div>
+        <ul class="grid sm:grid-cols-2 gap-x-4 gap-y-1.5 text-[13px] text-[#3A4356]">
+          <li class="flex gap-2"><svg class="check mt-0.5" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Schema registry & contract tests</li>
+          <li class="flex gap-2"><svg class="check mt-0.5" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Exactly-once delivery</li>
+          <li class="flex gap-2"><svg class="check mt-0.5" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Full lineage & audit log (12 mo)</li>
+          <li class="flex gap-2"><svg class="check mt-0.5" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Terraform module & Helm chart</li>
+          <li class="flex gap-2"><svg class="check mt-0.5" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> EU/US residency choice</li>
+          <li class="flex gap-2"><svg class="check mt-0.5" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> SOC 2 controls on request</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lg:sticky lg:top-[80px]">
+      <div class="card p-6">
+        <div class="flex items-center justify-between">
+          <div class="text-[11px] font-semibold tracking-widest uppercase text-[#5B6476]">Team license</div>
+          <span class="badge badge-teal">99.9% SLA</span>
+        </div>
+        <div class="mt-3 flex items-baseline gap-2">
+          <span class="text-[32px] font-semibold tracking-tight text-[#0F2342] serif">$199</span>
+          <span class="text-[14px] text-[#5B6476]">/ month</span>
+          <span class="ml-auto text-[12px] bg-[#FAF9F7] border border-[#E8E4DE] rounded-full px-2.5 py-1 font-medium text-[#57534E]">billed monthly</span>
+        </div>
+        <p class="mt-2 text-[12px] text-[#78746E]">Annual option saves ~17%. Taxes calculated at checkout by Dodo Payments.</p>
+        <button data-dodo-checkout data-product="Data Pipeline — Team ($199/mo)" class="btn-teal w-full justify-center mt-5">Buy with Dodo — $199 / month</button>
+        <p class="mt-2 text-center text-[11px] text-[#78746E]">Secure checkout via Dodo Payments. 14-day refund on new licenses.</p>
+        <div class="mt-4 pt-4 border-t border-[#E8E4DE] space-y-2 text-[12px] text-[#5B6476]">
+          <div class="flex justify-between"><span>License</span><span class="font-medium text-[#0F2342]">Per-workspace, up to 12 seats</span></div>
+          <div class="flex justify-between"><span>SLA</span><span class="font-medium text-[#0F2342]">99.9% monthly uptime</span></div>
+          <div class="flex justify-between"><span>Data retention</span><span class="font-medium text-[#0F2342]">30 days replay · 12 mo logs</span></div>
+          <div class="flex justify-between"><span>Delivery</span><span class="font-medium text-[#0F2342]">Instant license key + docs</span></div>
+        </div>
+        <a href="pricing.html" class="mt-4 flex items-center justify-center gap-1.5 text-[13px] font-medium text-[#0F2342] hover:underline underline-offset-4">Compare all plans →</a>
+      </div>
+      <div class="mt-3 bg-[#FAF9F7] border border-[#E8E4DE] rounded-lg p-3 flex gap-2.5">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="shrink-0 mt-0.5"><path d="M8 3.5a4.5 4.5 0 100 9 4.5 4.5 0 000-9z" stroke="#57534E" stroke-width="1.3"/></svg>
+        <p class="text-[12px] leading-relaxed text-[#57534E]"><strong class="text-[#0F2342]">What happens after purchase?</strong> You receive a license key, docs, and a sandbox workspace. First pipeline in under an hour — guided quick-start included.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="max-w-[1160px] mx-auto px-6"><div class="divider"></div></div>
+
+<!-- PRODUCT 2 -->
+<section id="automation-suite" class="max-w-[1160px] mx-auto px-6 py-10 md:py-12">
+  <div class="grid lg:grid-cols-[1.15fr_0.85fr] gap-8 items-start">
+    <div>
+      <div class="flex items-center gap-3 mb-3">
+        <span class="w-10 h-10 rounded-lg bg-[#0F2342] flex items-center justify-center">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.7"><path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/></svg>
+        </span>
+        <div>
+          <div class="flex items-center gap-2"><span class="text-[11px] font-semibold tracking-widest uppercase text-[#0F2342]">Product 02 — Licensed software</span><span class="badge badge-navy text-[10px]">Most adopted</span></div>
+          <h2 class="serif text-[22px] md:text-[26px] font-semibold text-[#0F2342] tracking-tight">Automation Suite</h2>
+        </div>
+      </div>
+      <p class="text-[14px] leading-relaxed text-[#3A4356]">Orchestrate work across your stack — approvals, ETL jobs, notifications, retries, and human-in-the-loop. Visual builder and code are the same graph. Git is the source of truth; deploys are reviewed and audited.</p>
+
+      <div class="mt-6 rounded-lg border border-[#E8E4DE] overflow-hidden bg-white">
+        <table class="data-table">
+          <thead><tr><th>Capability</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td class="text-[13px] font-medium">Builder</td><td class="text-[13px] text-[#3A4356]">Visual DAG + YAML. Branch, diff, and review like code. Dry-run before deploy.</td></tr>
+            <tr><td class="text-[13px] font-medium">Execution</td><td class="text-[13px] text-[#3A4356]">500k runs / month included. Retries with backoff, idempotency keys, timeouts, and concurrency caps.</td></tr>
+            <tr><td class="text-[13px] font-medium">Integrations</td><td class="text-[13px] text-[#3A4356]">HTTP, SQL, warehouses, queues, plus 30+ SaaS connectors. No workflow stored outside your boundary on Enterprise.</td></tr>
+            <tr><td class="text-[13px] font-medium">Governance</td><td class="text-[13px] text-[#3A4356]">RBAC, environment promotion, approval gates, and immutable audit trail.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-5 grid grid-cols-2 gap-3">
+        <div class="bg-white border border-[#E8E4DE] rounded-lg p-3">
+          <div class="text-[11px] font-semibold tracking-widest uppercase text-[#5B6476]">Runs</div>
+          <div class="text-[13px] text-[#0F2342] font-medium">500k / month, then $0.12 per 1k</div>
+          <div class="text-[12px] text-[#78746E]">Burst to 2× without throttling.</div>
+        </div>
+        <div class="bg-white border border-[#E8E4DE] rounded-lg p-3">
+          <div class="text-[11px] font-semibold tracking-widest uppercase text-[#5B6476]">Identity</div>
+          <div class="text-[13px] text-[#0F2342] font-medium">SSO (SAML 2.0) + SCIM</div>
+          <div class="text-[12px] text-[#78746E]">Included on Business & Enterprise.</div>
+        </div>
+      </div>
+
+      <div class="mt-5">
+        <div class="text-[11px] font-semibold tracking-widest uppercase text-[#5B6476] mb-2">Features included</div>
+        <ul class="grid sm:grid-cols-2 gap-x-4 gap-y-1.5 text-[13px] text-[#3A4356]">
+          <li class="flex gap-2"><svg class="check mt-0.5" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Unlimited workflows</li>
+          <li class="flex gap-2"><svg class="check mt-0.5" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Git-backed deploys & diff</li>
+          <li class="flex gap-2"><svg class="check mt-0.5" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> SSO, RBAC, audit logs</li>
+          <li class="flex gap-2"><svg class="check mt-0.5" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> PagerDuty / Slack / webhooks</li>
+          <li class="flex gap-2"><svg class="check mt-0.5" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Secrets manager integration</li>
+          <li class="flex gap-2"><svg class="check mt-0.5" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Self-host on Enterprise (VPC)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lg:sticky lg:top-[80px]">
+      <div class="card-highlight p-6">
+        <div class="flex items-center justify-between">
+          <div class="text-[11px] font-semibold tracking-widest uppercase text-[#5B6476]">Business license</div>
+          <span class="badge badge-teal">99.9% SLA</span>
+        </div>
+        <div class="mt-3 flex items-baseline gap-2">
+          <span class="text-[32px] font-semibold tracking-tight text-[#0F2342] serif">$349</span>
+          <span class="text-[14px] text-[#5B6476]">/ month</span>
+          <span class="ml-auto text-[12px] bg-[#FAF9F7] border border-[#E8E4DE] rounded-full px-2.5 py-1 font-medium text-[#57534E]">billed monthly</span>
+        </div>
+        <p class="mt-2 text-[12px] text-[#78746E]">Annual billing: $3,490 / year (two months free). Dodo Payments calculates tax at checkout.</p>
+        <button data-dodo-checkout data-product="Automation Suite — Business ($349/mo)" class="btn-primary w-full justify-center mt-5">Buy with Dodo — $349 / month</button>
+        <p class="mt-2 text-center text-[11px] text-[#78746E]">Secure checkout via Dodo Payments. 14-day refund on new licenses.</p>
+        <div class="mt-4 pt-4 border-t border-[#E8E4DE] space-y-2 text-[12px] text-[#5B6476]">
+          <div class="flex justify-between"><span>License</span><span class="font-medium text-[#0F2342]">Per-workspace, up to 25 seats</span></div>
+          <div class="flex justify-between"><span>SLA</span><span class="font-medium text-[#0F2342]">99.9% monthly uptime</span></div>
+          <div class="flex justify-between"><span>Support</span><span class="font-medium text-[#0F2342]">Priority · &lt;2h response</span></div>
+          <div class="flex justify-between"><span>Deploy</span><span class="font-medium text-[#0F2342]">Cloud or self-host (Enterprise)</span></div>
+        </div>
+        <a href="contact.html" class="mt-4 flex items-center justify-center gap-1.5 text-[13px] font-medium text-[#0F2342] hover:underline underline-offset-4">Talk to sales for annual or Enterprise →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="max-w-[1160px] mx-auto px-6"><div class="divider"></div></div>
+
+<!-- PRODUCT 3 -->
+<section id="integration-layer" class="max-w-[1160px] mx-auto px-6 py-10 md:py-12">
+  <div class="grid lg:grid-cols-[1.15fr_0.85fr] gap-8 items-start">
+    <div>
+      <div class="flex items-center gap-3 mb-3">
+        <span class="w-10 h-10 rounded-lg bg-[#FAF9F7] border border-[#E8E4DE] flex items-center justify-center">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#57534E" stroke-width="1.7"><rect x="3" y="7" width="18" height="10" rx="2"/><path d="M7 7V5.5A2.5 2.5 0 019.5 3h5A2.5 2.5 0 0117 5.5V7"/><circle cx="12" cy="12" r="2"/></svg>
+        </span>
+        <div>
+          <div class="text-[11px] font-semibold tracking-widest uppercase text-[#78746E]">Product 03 — Licensed software + services</div>
+          <h2 class="serif text-[22px] md:text-[26px] font-semibold text-[#0F2342] tracking-tight">Integration Layer</h2>
+        </div>
+      </div>
+      <p class="text-[14px] leading-relaxed text-[#3A4356]">A unified API and event bus for your internal tools. Stop building one-off integrations — define a contract once, connect many times. Contract-tested SDKs catch breaking changes before they reach production.</p>
+
+      <div class="mt-6 rounded-lg border border-[#E8E4DE] overflow-hidden bg-white">
+        <table class="data-table">
+          <thead><tr><th>Capability</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td class="text-[13px] font-medium">Connectors</td><td class="text-[13px] text-[#3A4356]">40+ prebuilt (CRM, ERP, HRIS, support, warehouse, storage). Custom connector on Enterprise.</td></tr>
+            <tr><td class="text-[13px] font-medium">Events</td><td class="text-[13px] text-[#3A4356]">Idempotent webhooks with HMAC signing, retry with dedup, and replay window.</td></tr>
+            <tr><td class="text-[13px] font-medium">API</td><td class="text-[13px] text-[#3A4356]">Unified REST + webhooks. OpenAPI spec, SDKs for TypeScript, Python, Go. Contract tests in CI.</td></tr>
+            <tr><td class="text-[13px] font-medium">Ops</td><td class="text-[13px] text-[#3A4356]">Per-tenant rate limits, request logs, and latency breakdowns. No per-seat pricing.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-5 grid grid-cols-2 gap-3">
+        <div class="bg-white border border-[#E8E4DE] rounded-lg p-3">
+          <div class="text-[11px] font-semibold tracking-widest uppercase text-[#5B6476]">Included ops</div>
+          <div class="text-[13px] text-[#0F2342] font-medium">100k API calls / month (Starter)</div>
+          <div class="text-[12px] text-[#78746E]">1M on Pro, then $0.08 per 1k.</div>
+        </div>
+        <div class="bg-white border border-[#E8E4DE] rounded-lg p-3">
+          <div class="text-[11px] font-semibold tracking-widest uppercase text-[#5B6476]">SLA</div>
+          <div class="text-[13px] text-[#0F2342] font-medium">99.5% (Starter) · 99.9% (Pro)</div>
+          <div class="text-[12px] text-[#78746E]">Credits if we miss target.</div>
+        </div>
+      </div>
+
+      <div class="mt-5">
+        <div class="text-[11px] font-semibold tracking-widest uppercase text-[#5B6476] mb-2">Features included</div>
+        <ul class="grid sm:grid-cols-2 gap-x-4 gap-y-1.5 text-[13px] text-[#3A4356]">
+          <li class="flex gap-2"><svg class="check mt-0.5" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> 40+ connectors</li>
+          <li class="flex gap-2"><svg class="check mt-0.5" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Signed webhooks & replay</li>
+          <li class="flex gap-2"><svg class="check mt-0.5" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> SDKs: TS / Python / Go / REST</li>
+          <li class="flex gap-2"><svg class="check mt-0.5" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> OpenAPI & contract tests</li>
+          <li class="flex gap-2"><svg class="check mt-0.5" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Rate limits & request logs</li>
+          <li class="flex gap-2"><svg class="check mt-0.5" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8l3 3 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Community & email support</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lg:sticky lg:top-[80px]">
+      <!-- Dual tier card -->
+      <div class="card p-0 overflow-hidden">
+        <div class="grid grid-cols-2 divide-x divide-[#E8E4DE]">
+          <div class="p-5">
+            <div class="text-[11px] font-semibold tracking-widest uppercase text-[#5B6476]">Starter</div>
+            <div class="mt-2 flex items-baseline gap-1"><span class="text-[24px] font-semibold text-[#0F2342] serif">$49</span><span class="text-[12px] text-[#5B6476]">/mo</span></div>
+            <p class="mt-1 text-[12px] text-[#78746E]">For side projects & small teams. Email support.</p>
+            <ul class="mt-3 space-y-1 text-[12px] text-[#3A4356]">
+              <li class="flex gap-1.5"><span class="text-[#14B8A6]">✓</span> 100k calls / mo</li>
+              <li class="flex gap-1.5"><span class="text-[#14B8A6]">✓</span> 5 connectors</li>
+              <li class="flex gap-1.5"><span class="text-[#14B8A6]">✓</span> 99.5% SLA</li>
+            </ul>
+            <button data-dodo-checkout data-product="Integration Layer — Starter ($49/mo)" class="btn-secondary w-full justify-center mt-4 text-[13px]">Buy Starter — $49</button>
+          </div>
+          <div class="p-5 bg-[#FAF9F7]">
+            <div class="flex items-center gap-2"><span class="text-[11px] font-semibold tracking-widest uppercase text-[#0F2342]">Pro</span><span class="badge badge-teal text-[10px]">Popular</span></div>
+            <div class="mt-2 flex items-baseline gap-1"><span class="text-[24px] font-semibold text-[#0F2342] serif">$499</span><span class="text-[12px] text-[#5B6476]">/mo</span></div>
+            <p class="mt-1 text-[12px] text-[#78746E]">For production workloads. Priority support.</p>
+            <ul class="mt-3 space-y-1 text-[12px] text-[#3A4356]">
+              <li class="flex gap-1.5"><span class="text-[#14B8A6]">✓</span> 1M calls / mo</li>
+              <li class="flex gap-1.5"><span class="text-[#14B8A6]">✓</span> All 40+ connectors</li>
+              <li class="flex gap-1.5"><span class="text-[#14B8A6]">✓</span> 99.9% SLA · SSO</li>
+            </ul>
+            <button data-dodo-checkout data-product="Integration Layer — Pro ($499/mo)" class="btn-teal w-full justify-center mt-4 text-[13px]">Buy Pro — $499</button>
+          </div>
+        </div>
+        <div class="px-5 py-3 bg-white border-t border-[#E8E4DE] flex items-center justify-between text-[12px] text-[#5B6476]">
+          <span>Need more? <a href="pricing.html#enterprise" class="underline font-medium text-[#0F2342]">Enterprise from $999/mo</a></span>
+          <span class="hidden sm:inline">14-day refund on new licenses</span>
+        </div>
+      </div>
+      <p class="mt-3 text-center text-[11px] text-[#78746E]">Both tiers: instant license key · invoiced via Dodo Payments · taxes calculated at checkout</p>
+    </div>
+  </div>
+</section>
+
+<!-- Enterprise banner -->
+<section class="max-w-[1160px] mx-auto px-6 pb-10">
+  <div class="rounded-xl bg-[#0F2342] p-7 md:p-8 flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
+    <div>
+      <div class="inline-flex items-center gap-2 text-[11px] font-semibold tracking-widest uppercase text-white/60 border border-white/15 rounded-full px-3 py-1">Enterprise</div>
+      <h3 class="serif text-[20px] font-semibold text-white mt-3">For regulated or high-volume workloads</h3>
+      <p class="mt-2 text-[13px] leading-relaxed text-white/70 max-w-[560px]">Dedicated tenancy or VPC deployment, custom connectors and data residency, 99.95% SLA, and a named technical account manager. Annual contract, invoiced via Dodo Payments or wire. We respond to procurement packs within one business day.</p>
+      <div class="mt-4 flex flex-wrap gap-2 text-[12px]">
+        <span class="bg-white/10 border border-white/15 rounded-full px-3 py-1 text-white/85">VPC / dedicated tenancy</span>
+        <span class="bg-white/10 border border-white/15 rounded-full px-3 py-1 text-white/85">Custom connectors</span>
+        <span class="bg-white/10 border border-white/15 rounded-full px-3 py-1 text-white/85">99.95% SLA</span>
+        <span class="bg-white/10 border border-white/15 rounded-full px-3 py-1 text-white/85">DPA & sub-processors</span>
+      </div>
+    </div>
+    <div class="shrink-0 bg-white rounded-lg p-5 min-w-[220px]">
+      <div class="text-[11px] font-semibold tracking-widest uppercase text-[#5B6476]">Enterprise license</div>
+      <div class="mt-1 flex items-baseline gap-2"><span class="text-[26px] font-semibold text-[#0F2342] serif">From $999</span><span class="text-[13px] text-[#5B6476]">/ month</span></div>
+      <p class="text-[12px] text-[#78746E]">Annual contract · custom scope</p>
+      <a href="contact.html" class="btn-primary w-full justify-center mt-4">Contact sales</a>
+      <a href="pricing.html#enterprise" class="mt-2 flex justify-center text-[12px] font-medium text-[#0F2342] underline underline-offset-4">See Enterprise details →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Comparison table -->
+<section class="bg-white border-y border-[#E8E4DE]">
+  <div class="max-w-[1160px] mx-auto px-6 py-10">
+    <h2 class="serif text-[20px] font-semibold text-[#0F2342]">Compare products</h2>
+    <p class="text-[13px] text-[#5B6476] mt-1">All prices in USD. Taxes calculated at checkout by Dodo Payments.</p>
+    <div class="mt-6 rounded-lg border border-[#E8E4DE] overflow-x-auto">
+      <table class="data-table min-w-[640px]">
+        <thead><tr><th style="width:28%"></th><th>Data Pipeline<br><span class="normal-case tracking-normal text-[11px] text-[#5B6476] font-medium">$199 / mo</span></th><th>Automation Suite<br><span class="normal-case tracking-normal text-[11px] text-[#5B6476] font-medium">$349 / mo</span></th><th>Integration Layer<br><span class="normal-case tracking-normal text-[11px] text-[#5B6476] font-medium">$49 / $499</span></th></tr></thead>
+        <tbody>
+          <tr><td class="text-[12px] font-semibold tracking-widest uppercase text-[#5B6476]">Best for</td><td class="text-[13px]">Data & warehouse teams</td><td class="text-[13px]">Ops & platform teams</td><td class="text-[13px]">Product & engineering</td></tr>
+          <tr><td class="text-[12px] font-semibold tracking-widest uppercase text-[#5B6476]">Primary job</td><td class="text-[13px]">Ingest → validate → deliver</td><td class="text-[13px]">Orchestrate workflows & approvals</td><td class="text-[13px]">Unified API & event bus</td></tr>
+          <tr><td class="text-[12px] font-semibold tracking-widest uppercase text-[#5B6476]">Included volume</td><td class="text-[13px]">50M events / mo</td><td class="text-[13px]">500k runs / mo</td><td class="text-[13px]">100k (Starter) / 1M (Pro) calls</td></tr>
+          <tr><td class="text-[12px] font-semibold tracking-widest uppercase text-[#5B6476]">SLA</td><td class="text-[13px]">99.9%</td><td class="text-[13px]">99.9%</td><td class="text-[13px]">99.5% / 99.9%</td></tr>
+          <tr><td class="text-[12px] font-semibold tracking-widest uppercase text-[#5B6476]">Support</td><td class="text-[13px]">&lt;4h + on-call critical</td><td class="text-[13px]">Priority &lt;2h</td><td class="text-[13px]">Email / Priority (Pro)</td></tr>
+          <tr><td class="text-[12px] font-semibold tracking-widest uppercase text-[#5B6476]">SSO / SAML</td><td class="text-[13px]">Business add-on</td><td class="text-[13px]">Included</td><td class="text-[13px]">Pro & above</td></tr>
+          <tr><td class="text-[12px] font-semibold tracking-widest uppercase text-[#5B6476]">Self-host</td><td class="text-[13px]">Enterprise</td><td class="text-[13px]">Enterprise (VPC)</td><td class="text-[13px]">Enterprise</td></tr>
+          <tr><td class="text-[12px] font-semibold tracking-widest uppercase text-[#5B6476]">Buy</td>
+            <td><button data-dodo-checkout data-product="Data Pipeline" class="btn-teal text-[12px] px-3 py-1.5">Buy with Dodo</button></td>
+            <td><button data-dodo-checkout data-product="Automation Suite" class="btn-primary text-[12px] px-3 py-1.5">Buy with Dodo</button></td>
+            <td><button data-dodo-checkout data-product="Integration Layer" class="btn-secondary text-[12px] px-3 py-1.5">Buy with Dodo</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<footer class="border-t border-[#E8E4DE] bg-white">
+  <div class="max-w-[1160px] mx-auto px-6 py-10">
+    <div class="grid md:grid-cols-[1.4fr_1fr_1fr_1fr] gap-8">
+      <div>
+        <div class="flex items-center gap-2.5">
+          <span class="w-8 h-8 rounded-md bg-[#0F2342] flex items-center justify-center">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 14l3.5 3.5L17 8" stroke="#14B8A6" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="serif font-semibold text-[#0F2342]">Focalis Systems</span>
+        </div>
+        <p class="mt-3 text-[13px] leading-relaxed text-[#5B6476]">Infrastructure for ambitious teams.</p>
+        <div class="mt-4 text-[12px] leading-relaxed text-[#78746E]">Focalis Technologies S.A.S.<br>12 Rue de la Paix, 75002 Paris, France<br>contact@focalis.cc · hello@focalis.cc · +33 1 23 45 67 89</div>
+      </div>
+      <div>
+        <div class="text-[12px] font-semibold tracking-widest uppercase text-[#0F2342]">Products</div>
+        <ul class="mt-3 space-y-2 text-[13px] text-[#5B6476]">
+          <li><a href="#data-pipeline" class="hover:text-[#0F2342]">Data Pipeline — $199/mo</a></li>
+          <li><a href="#automation-suite" class="hover:text-[#0F2342]">Automation Suite — $349/mo</a></li>
+          <li><a href="#integration-layer" class="hover:text-[#0F2342]">Integration Layer — from $49/mo</a></li>
+          <li><a href="pricing.html" class="hover:text-[#0F2342]">Pricing overview</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="text-[12px] font-semibold tracking-widest uppercase text-[#0F2342]">Company</div>
+        <ul class="mt-3 space-y-2 text-[13px] text-[#5B6476]">
+          <li><a href="about.html" class="hover:text-[#0F2342]">About</a></li>
+          <li><a href="contact.html" class="hover:text-[#0F2342]">Contact & support</a></li>
+          <li><a href="index.html" class="hover:text-[#0F2342]">Home</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="text-[12px] font-semibold tracking-widest uppercase text-[#0F2342]">Legal</div>
+        <ul class="mt-3 space-y-2 text-[13px] text-[#5B6476]">
+          <li><a href="privacy.html" class="hover:text-[#0F2342]">Privacy Policy</a></li>
+          <li><a href="terms.html" class="hover:text-[#0F2342]">Terms of Service</a></li>
+          <li><a href="refund.html" class="hover:text-[#0F2342]">Refund Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-8 pt-6 border-t border-[#E8E4DE] flex flex-col md:flex-row gap-3 md:items-center justify-between text-[12px] text-[#78746E]">
+      <span>© <span id="year"></span> Focalis Technologies S.A.S. All rights reserved. Prices in USD. Taxes via Dodo Payments.</span>
+      <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-emerald-500"></span> All systems operational</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+<script src="/admin/bar.js"></script>
+</body>
+</html>
