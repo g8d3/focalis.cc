@@ -10,11 +10,25 @@
 		output stdout
 		format console
 	}
+	@storyo host storyo.focalis.cc
+	handle @storyo {
+		reverse_proxy 172.17.0.1:8180
+	}
 	handle /health* {
 		respond "ok" 200
 	}
 	handle /admin* {
 		reverse_proxy admin:8788
+	}
+	handle /api/* {
+		reverse_proxy admin:8788
+	}
+	# instant path test — no DNS needed: https://focalis.cc/storyo/
+	handle_path /storyo/* {
+		reverse_proxy 172.17.0.1:8180
+	}
+	handle /storyo {
+		reverse_proxy 172.17.0.1:8180
 	}
 	handle_path /selector/* {
 		root * /srv/selector
@@ -44,6 +58,20 @@
 		root * /srv/variant-c-systems
 		file_server
 	}
+	handle_path /world/* {
+		root * /srv/variant-d-world
+		file_server
+	}
+	handle_path /variant-d/* {
+		root * /srv/variant-d-world
+		file_server
+	}
+	# public report: "The Transcript Tax" (source: github.com/g8d3/transcript-tax)
+	handle_path /tps/* {
+		root * /srv-tps
+		file_server
+	}
+	redir /tps /tps/ 308
 	redir /selector /selector/ 308
 	redir /studio /studio/ 308
 	redir /variant-a /variant-a/ 308
@@ -51,6 +79,8 @@
 	redir /variant-b /variant-b/ 308
 	redir /systems /systems/ 308
 	redir /variant-c /variant-c/ 308
+	redir /world /world/ 308
+	redir /variant-d /variant-d/ 308
 	handle / {
 		root * /srv/active
 		file_server

@@ -10,6 +10,8 @@ services:
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
       - ./variants:/srv:ro
+      # public report (clone of github.com/g8d3/transcript-tax) served at /tps/
+      - /home/vuos/srv/tps:/srv-tps:ro
       - caddy_data:/data
       - caddy_config:/config
     networks:
