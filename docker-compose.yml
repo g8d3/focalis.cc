@@ -11,7 +11,8 @@ services:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
       - ./variants:/srv:ro
       # public report (clone of github.com/g8d3/transcript-tax) served at /tps/
-      - /home/vuos/srv/tps:/srv-tps:ro
+      # and the audit offer page served at /audit/ (see /home/vuos/srv)
+      - /home/vuos/srv:/srv-pub:ro
       - caddy_data:/data
       - caddy_config:/config
     networks:

@@ -68,10 +68,16 @@
 	}
 	# public report: "The Transcript Tax" (source: github.com/g8d3/transcript-tax)
 	handle_path /tps/* {
-		root * /srv-tps
+		root * /srv-pub/tps
 		file_server
 	}
 	redir /tps /tps/ 308
+	# the audit offer page (built from the sales pack, contact hola@focalis.cc)
+	handle_path /audit/* {
+		root * /srv-pub/audit
+		file_server
+	}
+	redir /audit /audit/ 308
 	redir /selector /selector/ 308
 	redir /studio /studio/ 308
 	redir /variant-a /variant-a/ 308
