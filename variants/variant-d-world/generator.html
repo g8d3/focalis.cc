@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Focalis — Generador Procedural (Mundo Vivo)</title>
+<meta name="description" content="Generador procedural básico para Focalis World. Mundo 3D low-poly que nunca es igual: 1-5 caminos, semillas, bloques colaborativos y eventos estocásticos.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Instrument+Sans:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script>
+<style>
+  :root{ --paper:#FAF6F1; --ink:#1A2E2A; --border:#E8E0D6; }
+  body{ background:var(--paper); color:var(--ink); font-family:'Instrument Sans',system-ui,sans-serif; }
+  .serif{ font-family:'Fraunces',serif } .mono{ font-family:'JetBrains Mono',monospace }
+  canvas{ display:block }
+  #view3d{ width:100%; height:420px; border-radius:16px; background:#0F1E1B }
+  #map2d{ image-rendering: pixelated; border-radius:12px; border:1px solid var(--border) }
+</style>
+</head>
+<body class="antialiased">
+<header class="max-w-[1160px] mx-auto px-6 py-6 flex items-center justify-between">
+  <a href="index.html" class="flex items-center gap-2 serif font-bold text-[18px]"><span class="w-8 h-8 rounded-lg bg-[#1A2E2A] grid place-items-center text-white text-[12px]">◈</span> Focalis <span class="mono text-[10px] tracking-widest border border-[#E8E0D6] rounded-full px-2 py-0.5">WORLD · GENERADOR</span></a>
+  <a href="index.html" class="mono text-[12px] border border-[#E8E0D6] bg-white rounded-full px-4 py-2">← Volver</a>
+</header>
+
+<main class="max-w-[1160px] mx-auto px-6 pb-12">
+  <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-8 items-start">
+    <div>
+      <h1 class="serif text-[32px] md:text-[42px] font-bold leading-[0.95] tracking-tight">Un mundo que <span class="text-[#2A7F6F]">nunca es igual.</span></h1>
+      <p class="mt-3 text-[15px] leading-relaxed text-[#3A3A3A] max-w-[560px]">Generador procedural básico. Misma historia, distinta semilla, distintos caminos. 1 a 5 bifurcaciones, eventos raros (5%) y bloques que dejas tú — como en Minecraft — y que verá el siguiente visitante.</p>
+
+      <!-- CONTROLS -->
+      <div class="mt-6 bg-white border border-[#E8E0D6] rounded-2xl p-4 flex flex-wrap gap-3 items-end">
+        <label class="flex-1 min-w-[180px]">
+          <span class="mono text-[11px] tracking-widest uppercase text-[#8A8A8A]">Semilla (seed)</span>
+          <input id="seedInput" class="mt-1 w-full mono text-[13px] border border-[#E8E0D6] rounded-lg px-3 py-2 bg-[#FAF6F1]" value="focalis-001" aria-label="Semilla del mundo">
+        </label>
+        <button id="btnGenerate" class="bg-[#1A2E2A] text-white mono text-[13px] font-semibold px-5 py-2.5 rounded-full hover:bg-black transition">↻ Generar</button>
+        <button id="btnRandom" class="bg-white border border-[#E8E0D6] mono text-[13px] font-semibold px-5 py-2.5 rounded-full hover:border-[#1A2E2A] transition">🎲 Aleatorio</button>
+        <button id="btnAddBlock" class="bg-[#C96442] text-white mono text-[13px] font-semibold px-5 py-2.5 rounded-full hover:bg-[#A84E32] transition">+ Dejar bloque</button>
+        <div class="w-full flex flex-wrap gap-2 mono text-[11px] pt-2 border-t border-[#F2EDE6] mt-1">
+          <span id="statPaths" class="bg-[#EAF4F0] border border-[#C8E6DE] rounded-full px-3 py-1"></span>
+          <span id="statRare" class="bg-[#FFF1EB] border border-[#E8D9D0] rounded-full px-3 py-1"></span>
+          <span id="statBlocks" class="bg-white border border-[#E8E0D6] rounded-full px-3 py-1"></span>
+        </div>
+      </div>
+
+      <!-- 2D MAP -->
+      <div class="mt-5">
+        <div class="flex items-center justify-between">
+          <h3 class="mono text-[11px] tracking-widest uppercase text-[#8A8A8A]">Mapa procedural (2D · vista cenital · accesible sin WebGL)</h3>
+          <span class="mono text-[11px] text-[#8A8A8A]">32×32 · fractal + ruido</span>
+        </div>
+        <canvas id="map2d" width="512" height="512" class="w-full mt-2" aria-label="Mapa procedural 2D del mundo"></canvas>
+        <p class="mono text-[11px] text-[#8A8A8A] mt-2">Colores: <span class="inline-block w-3 h-3 bg-[#E8E0D6] border border-[#D6D0C4] align-middle"></span> suelo · <span class="inline-block w-3 h-3 bg-[#C8E6DE] align-middle"></span> camino · <span class="inline-block w-3 h-3 bg-[#C96442] align-middle"></span> bifurcación · <span class="inline-block w-3 h-3 bg-[#F5D547] align-middle"></span> evento raro (5%) · <span class="inline-block w-3 h-3 bg-[#2A7F6F] align-middle"></span> tu bloque</p>
+      </div>
+    </div>
+
+    <!-- 3D VIEW -->
+    <div class="space-y-4">
+      <div class="bg-white border border-[#E8E0D6] rounded-2xl p-3">
+        <div class="flex items-center justify-between px-1 pb-2">
+          <h3 class="mono text-[11px] tracking-widest uppercase text-[#8A8A8A]">Vista 3D low-poly (voxel · instanciado)</h3>
+          <span class="mono text-[11px] bg-[#1A2E2A] text-white rounded-full px-2 py-1" id="mode3d">Three.js · &lt;250kb</span>
+        </div>
+        <canvas id="view3d" aria-label="Vista 3D del mundo procedural"></canvas>
+        <div class="mt-2 flex gap-2">
+          <button id="btnOrbit" class="mono text-[11px] border border-[#E8E0D6] bg-[#FAF6F1] rounded-full px-3 py-1.5">⟡ Orbitar</button>
+          <button id="btnTop" class="mono text-[11px] border border-[#E8E0D6] bg-white rounded-full px-3 py-1.5">⬡ Cenital</button>
+          <span class="mono text-[11px] text-[#8A8A8A] ml-auto">Arrastrá / scroll · WASD si hacés click</span>
+        </div>
+      </div>
+
+      <div class="bg-[#1A2E2A] text-white rounded-2xl p-5">
+        <h3 class="serif text-[18px] font-bold">¿Cómo funciona? (básico pero fractal)</h3>
+        <ol class="mt-2 space-y-1.5 text-[13px] leading-relaxed text-white/80 list-decimal list-inside">
+          <li><b class="text-white">Seed → PRNG</b> determinista (mulberry32). Misma semilla = mismo mundo.</li>
+          <li><b class="text-white">Ruido 2D</b> (value noise suavizado) → altura del terreno 0-3 bloques.</li>
+          <li><b class="text-white">Camino fractal:</b> avanza desde el centro, cada N pasos bifurca en 1-5 direcciones. Misma regla a distinta escala.</li>
+          <li><b class="text-white">Estocástico:</b> cada baldosa del camino tiene 5% de generar evento raro (oro/niebla/banca).</li>
+          <li><b class="text-white">Colaborativo:</b> tus bloques se guardan en localStorage (luego API) y se pintan como voxels verdes. Cada visita cambia el mundo.</li>
+        </ol>
+        <div class="mt-4 mono text-[11px] bg-white/10 rounded-lg p-3">
+          <div>Semilla actual: <span id="seedLabel" class="text-white font-bold"></span></div>
+          <div class="text-white/60 break-all" id="seedHash"></div>
+        </div>
+      </div>
+
+      <div class="bg-white border border-[#E8E0D6] rounded-2xl p-4">
+        <h4 class="mono text-[11px] tracking-widest uppercase text-[#8A8A8A]">Frases dejadas (bloques colaborativos)</h4>
+        <ul id="blockList" class="mt-2 space-y-2 text-[13px]"></ul>
+        <p class="mono text-[11px] text-[#8A8A8A] mt-2">Se guardan localmente. En producción → <code class="bg-[#FAF6F1] border border-[#E8E0D6] rounded px-1">POST /api/bloques</code></p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script type="module">
+import * as THREE from 'three';
+
+// ---------- PRNG + HASH ----------
+function hashString(str){
+  let h=2166136261>>>0;
+  for(let i=0;i<str.length;i++){ h ^= str.charCodeAt(i); h = Math.imul(h,16777619); }
+  return h>>>0;
+}
+function mulberry32(a){
+  return function(){
+    a|=0; a=a+0x6D2B79F5|0;
+    let t=Math.imul(a^a>>>15,1|a);
+    t=t+Math.imul(t^t>>>7,61|t)^t;
+    return ((t^t>>>14)>>>0)/4294967296;
+  }
+}
+function lerp(a,b,t){ return a+(b-a)*t; }
+function smooth(t){ return t*t*(3-2*t); }
+
+// ---------- VALUE NOISE 2D ----------
+function makeNoise(seed){
+  const rand = mulberry32(hashString(seed+'-noise'));
+  const N=16;
+  const grid = Array.from({length:N+1},()=>Array.from({length:N+1},()=>rand()));
+  return (x,y)=>{
+    // x,y in 0..1
+    const gx = x*(N-1), gy = y*(N-1);
+    const x0=Math.floor(gx), y0=Math.floor(gy);
+    const x1=Math.min(x0+1,N-1), y1=Math.min(y0+1,N-1);
+    const fx=smooth(gx-x0), fy=smooth(gy-y0);
+    const v00=grid[y0][x0], v10=grid[y0][x1], v01=grid[y1][x0], v11=grid[y1][x1];
+    const vx0=lerp(v00,v10,fx), vx1=lerp(v01,v11,fx);
+    return lerp(vx0,vx1,fy);
+  }
+}
+
+// ---------- WORLD GEN ----------
+const SIZE=32;
+let userBlocks = JSON.parse(localStorage.getItem('focalis_blocks')||'[]');
+
+function generateWorld(seed){
+  const rnd = mulberry32(hashString(seed));
+  const noise = makeNoise(seed);
+  // heightmap 0..3
+  const height = Array.from({length:SIZE},(_,z)=>Array.from({length:SIZE},(_,x)=>{
+    const n = noise(x/SIZE, z/SIZE);
+    const n2 = noise(x/SIZE*2+5.3, z/SIZE*2+1.1)*0.5;
+    return Math.floor((n*0.7+n2*0.3)*3.2); // 0-3
+  }));
+  // paths: set of "x,z"
+  const pathSet = new Set();
+  const rareSet = new Set();
+  const branchPoints = [];
+  // start at center
+  let branches = 1 + Math.floor(rnd()*5); // 1-5 as requested
+  // ensure at least 1
+  // fractal walk: recursive
+  function walk(x,z, dir, len, depth){
+    for(let i=0;i<len;i++){
+      const nx = Math.round(x), nz=Math.round(z);
+      if(nx>=0&&nx<SIZE&&nz>=0&&nz<SIZE){
+        pathSet.add(nx+','+nz);
+        if(rnd()<0.05) rareSet.add(nx+','+nz); // stochastic unlock
+      }
+      // step
+      x += Math.cos(dir)*0.9;
+      z += Math.sin(dir)*0.9;
+      // small jitter
+      dir += (rnd()-0.5)*0.35;
+    }
+    if(depth<=0) return;
+    const nBranches = depth===2 ? branches : 1+Math.floor(rnd()*3); // first level = seed branches, deeper = 1-3
+    for(let b=0;b<nBranches;b++){
+      const nd = dir + (rnd()-0.5)*1.8 + (b - nBranches/2)*0.6;
+      branchPoints.push([Math.round(x),Math.round(z)]);
+      walk(x,z, nd, 6+Math.floor(rnd()*7), depth-1);
+    }
+  }
+  const center=SIZE/2;
+  // initial fan of directions distributed
+  for(let i=0;i<branches;i++){
+    const ang = (i/branches)*Math.PI*2 + rnd()*0.4;
+    walk(center, center, ang, 8+Math.floor(rnd()*5), 2);
+  }
+  return {height, pathSet, rareSet, branches, branchPoints};
+}
+
+// ---------- 2D RENDER ----------
+const mapCanvas=document.getElementById('map2d');
+const mctx=mapCanvas.getContext('2d');
+function draw2D(world){
+  const {height, pathSet, rareSet}=world;
+  const W=mapCanvas.width, H=mapCanvas.height;
+  const cell=W/SIZE;
+  mctx.clearRect(0,0,W,H);
+  // terrain
+  for(let z=0;z<SIZE;z++) for(let x=0;x<SIZE;x++){
+    const h=height[z][x];
+    const base = h===0 ? '#F2EDE6' : h===1 ? '#E8E0D6' : h===2 ? '#D6D0C4' : '#C2B8A8';
+    mctx.fillStyle=base;
+    mctx.fillRect(x*cell, z*cell, cell, cell);
+    // subtle height dot
+    if(h>0){ mctx.fillStyle='rgba(26,46,42,'+(0.06*h)+')'; mctx.fillRect(x*cell, z*cell, cell, cell); }
+  }
+  // paths
+  mctx.fillStyle='#C8E6DE';
+  for(const k of pathSet){
+    const [x,z]=k.split(',').map(Number);
+    mctx.fillRect(x*cell+1, z*cell+1, cell-2, cell-2);
+  }
+  // branch points
+  mctx.fillStyle='#C96442';
+  for(const k of pathSet){
+    // highlight intersections: count neighbors?
+  }
+  // rare
+  for(const k of rareSet){
+    const [x,z]=k.split(',').map(Number);
+    mctx.fillStyle='#F5D547';
+    mctx.beginPath();
+    mctx.arc(x*cell+cell/2, z*cell+cell/2, cell*0.32, 0, Math.PI*2);
+    mctx.fill();
+    mctx.strokeStyle='#C9A900'; mctx.lineWidth=1; mctx.stroke();
+  }
+  // user blocks
+  mctx.fillStyle='#2A7F6F';
+  for(const b of userBlocks){
+    if(b.seed!==document.getElementById('seedInput').value) continue;
+    mctx.fillRect(b.x*cell+2, b.z*cell+2, cell-4, cell-4);
+    mctx.strokeStyle='white'; mctx.lineWidth=1; mctx.strokeRect(b.x*cell+2, b.z*cell+2, cell-4, cell-4);
+  }
+  // center
+  mctx.fillStyle='#1A2E2A';
+  mctx.beginPath(); mctx.arc(SIZE/2*cell, SIZE/2*cell, 5,0,Math.PI*2); mctx.fill();
+  mctx.fillStyle='white'; mctx.font='8px JetBrains Mono'; mctx.textAlign='center'; mctx.fillText('INICIO', SIZE/2*cell, SIZE/2*cell-9);
+}
+
+// ---------- 3D RENDER ----------
+const canvas3d=document.getElementById('view3d');
+const renderer=new THREE.WebGLRenderer({canvas:canvas3d, antialias:true, alpha:true});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio,1.7));
+renderer.setClearColor(0x0F1E1B,1);
+const scene=new THREE.Scene();
+scene.fog=new THREE.Fog(0x0F1E1B, 22, 42);
+const camera=new THREE.PerspectiveCamera(48, 1, 0.1, 100);
+camera.position.set(18,16,18);
+camera.lookAt(0,0,0);
+scene.add(new THREE.AmbientLight(0xffffff,0.85));
+const dirL=new THREE.DirectionalLight(0xffffff,0.9); dirL.position.set(10,18,8); scene.add(dirL);
+const hemi=new THREE.HemisphereLight(0xEAF4F0,0x1A2E2A,0.5); scene.add(hemi);
+
+// instanced meshes
+let instTerrain, instPath, instRare, instUser;
+let dummy=new THREE.Object3D();
+
+function build3D(world){
+  // cleanup
+  [instTerrain,instPath,instRare,instUser].forEach(m=>{ if(m) scene.remove(m); });
+  const {height, pathSet, rareSet}=world;
+  // terrain cubes 32x32 (max 1024)
+  const geo=new THREE.BoxGeometry(0.92,0.6,0.92);
+  const matTerr=new THREE.MeshStandardMaterial({color:0xE8E0D6, roughness:0.85});
+  const matPath=new THREE.MeshStandardMaterial({color:0x2A7F6F, roughness:0.4});
+  const matRare=new THREE.MeshStandardMaterial({color:0xF5D547, roughness:0.3, metalness:0.2, emissive:0x332800, emissiveIntensity:0.15});
+  const matUser=new THREE.MeshStandardMaterial({color:0x3DD598, roughness:0.35});
+
+  // count
+  const terrCount=SIZE*SIZE;
+  instTerrain=new THREE.InstancedMesh(geo, matTerr, terrCount);
+  let idx=0;
+  for(let z=0;z<SIZE;z++) for(let x=0;x<SIZE;x++){
+    const h=height[z][x];
+    dummy.position.set((x-SIZE/2)*1.0, h*0.3 -0.3, (z-SIZE/2)*1.0);
+    dummy.scale.set(1, 0.6+ h*0.45, 1);
+    dummy.updateMatrix();
+    instTerrain.setMatrixAt(idx++, dummy.matrix);
+    const c=new THREE.Color(h===0?'#E8E0D6':h===1?'#DDD5C6':h===2?'#C2B8A8':'#A99E8E');
+    instTerrain.setColorAt(idx-1,c);
+  }
+  instTerrain.instanceMatrix.needsUpdate=true; instTerrain.instanceColor.needsUpdate=true;
+  scene.add(instTerrain);
+
+  // paths as slightly taller blocks
+  const pathArr=[...pathSet];
+  instPath=new THREE.InstancedMesh(geo, matPath, pathArr.length||1);
+  pathArr.forEach((k,i)=>{
+    const [x,z]=k.split(',').map(Number);
+    const h=height[z][x];
+    dummy.position.set((x-SIZE/2), h*0.3+0.22, (z-SIZE/2));
+    dummy.scale.set(1,0.22,1);
+    dummy.updateMatrix(); instPath.setMatrixAt(i,dummy.matrix);
+  });
+  instPath.instanceMatrix.needsUpdate=true; scene.add(instPath);
+
+  // rare
+  const rareArr=[...rareSet];
+  const geoRare=new THREE.OctahedronGeometry(0.42,0);
+  instRare=new THREE.InstancedMesh(geoRare, matRare, Math.max(1,rareArr.length));
+  rareArr.forEach((k,i)=>{
+    const [x,z]=k.split(',').map(Number);
+    const h=height[z][x];
+    dummy.position.set((x-SIZE/2), h*0.3+0.85, (z-SIZE/2));
+    dummy.rotation.set(0,0,0); dummy.scale.set(1,1,1); dummy.updateMatrix();
+    instRare.setMatrixAt(i,dummy.matrix);
+  });
+  instRare.instanceMatrix.needsUpdate=true; scene.add(instRare);
+
+  // user blocks - taller pillars
+  const userForSeed=userBlocks.filter(b=>b.seed===document.getElementById('seedInput').value);
+  const geoUser=new THREE.BoxGeometry(0.72,1.1,0.72);
+  instUser=new THREE.InstancedMesh(geoUser, matUser, Math.max(1,userForSeed.length));
+  userForSeed.forEach((b,i)=>{
+    const h=height[b.z]?.[b.x]||0;
+    dummy.position.set((b.x-SIZE/2), h*0.3+0.9, (b.z-SIZE/2));
+    dummy.scale.set(1,1,1); dummy.updateMatrix();
+    instUser.setMatrixAt(i,dummy.matrix);
+  });
+  instUser.instanceMatrix.needsUpdate=true; scene.add(instUser);
+  if(userForSeed.length===0){ instUser.count=0; }
+}
+
+function resize3d(){
+  const r=canvas3d.getBoundingClientRect();
+  renderer.setSize(r.width, r.height, false);
+  camera.aspect=r.width/r.height; camera.updateProjectionMatrix();
+}
+window.addEventListener('resize', resize3d);
+
+// simple orbit
+let isDrag=false, lastX=0, lastY=0, yaw=0.78, pitch=0.62, dist=28;
+function updateCam(){
+  const y = Math.sin(pitch)*dist;
+  const r = Math.cos(pitch)*dist;
+  camera.position.set(Math.cos(yaw)*r, y, Math.sin(yaw)*r);
+  camera.lookAt(0,0,0);
+}
+canvas3d.addEventListener('pointerdown', e=>{ isDrag=true; lastX=e.clientX; lastY=e.clientY; canvas3d.setPointerCapture(e.pointerId); });
+canvas3d.addEventListener('pointerup', ()=>isDrag=false);
+canvas3d.addEventListener('pointermove', e=>{
+  if(!isDrag) return;
+  yaw -= (e.clientX-lastX)*0.006;
+  pitch = Math.max(0.15, Math.min(1.35, pitch - (e.clientY-lastY)*0.005));
+  lastX=e.clientX; lastY=e.clientY; updateCam();
+});
+canvas3d.addEventListener('wheel', e=>{
+  e.preventDefault();
+  dist = Math.max(10, Math.min(42, dist + e.deltaY*0.02));
+  updateCam();
+},{passive:false});
+
+document.getElementById('btnOrbit').onclick=()=>{ yaw+=0.7; updateCam(); };
+document.getElementById('btnTop').onclick=()=>{ pitch=1.35; dist=26; yaw=0.78; updateCam(); };
+updateCam();
+resize3d();
+function animate(){ requestAnimationFrame(animate); if(instRare) instRare.rotation.y+=0.004; renderer.render(scene,camera); }
+animate();
+
+// ---------- CONTROLS ----------
+const seedInput=document.getElementById('seedInput');
+const statPaths=document.getElementById('statPaths');
+const statRare=document.getElementById('statRare');
+const statBlocks=document.getElementById('statBlocks');
+const seedLabel=document.getElementById('seedLabel');
+const seedHash=document.getElementById('seedHash');
+const blockList=document.getElementById('blockList');
+
+function refresh(){
+  const seed=seedInput.value.trim()||'focalis';
+  const world=generateWorld(seed);
+  draw2D(world);
+  build3D(world);
+  statPaths.textContent=`↗ ${world.branches} camino(s) · ${world.pathSet.size} baldosas`;
+  statRare.textContent=`✦ ${world.rareSet.size} eventos raros (5%)`;
+  const mine=userBlocks.filter(b=>b.seed===seed).length;
+  statBlocks.textContent=`⬢ ${mine} bloque(s) tuyos`;
+  seedLabel.textContent=seed;
+  seedHash.textContent='hash '+hashString(seed).toString(16)+' · noise 16×16 + fractal depth 2';
+  // list
+  blockList.innerHTML='';
+  const list=userBlocks.filter(b=>b.seed===seed).slice(-8).reverse();
+  if(list.length===0) blockList.innerHTML='<li class="mono text-[11px] text-[#8A8A8A]">Aún no dejaste bloques en esta semilla. Probá con "+ Dejar bloque".</li>';
+  else list.forEach(b=>{
+    const li=document.createElement('li');
+    li.className='bg-[#FAF6F1] border border-[#E8E0D6] rounded-xl px-3 py-2';
+    li.innerHTML=`<span class="mono text-[11px] text-[#8A8A8A]">${b.x},${b.z}</span> — “${b.text}”`;
+    blockList.appendChild(li);
+  });
+}
+document.getElementById('btnGenerate').onclick=refresh;
+document.getElementById('btnRandom').onclick=()=>{
+  const r=Math.random().toString(36).slice(2,7);
+  seedInput.value='focalis-'+r;
+  refresh();
+};
+document.getElementById('btnAddBlock').onclick=()=>{
+  const seed=seedInput.value.trim();
+  const world=generateWorld(seed);
+  const paths=[...world.pathSet];
+  const pick=paths[Math.floor(Math.random()*paths.length)]||'16,16';
+  const [x,z]=pick.split(',').map(Number);
+  const text=prompt('¿Qué frase deja tu bloque para el siguiente visitante? (1 frase corta)');
+  if(!text) return;
+  userBlocks.push({seed, x, z, text: text.slice(0,80), at: Date.now()});
+  localStorage.setItem('focalis_blocks', JSON.stringify(userBlocks.slice(-200)));
+  refresh();
+};
+// click map to add block
+mapCanvas.addEventListener('click', e=>{
+  const rect=mapCanvas.getBoundingClientRect();
+  const scaleX=SIZE/rect.width, scaleY=SIZE/rect.height;
+  const x=Math.floor((e.clientX-rect.left)*scaleX);
+  const z=Math.floor((e.clientY-rect.top)*scaleY);
+  const text=prompt(`Dejar bloque en ${x},${z} — tu frase:`);
+  if(!text) return;
+  userBlocks.push({seed:seedInput.value.trim(), x, z, text: text.slice(0,80), at: Date.now()});
+  localStorage.setItem('focalis_blocks', JSON.stringify(userBlocks.slice(-200)));
+  refresh();
+});
+seedInput.addEventListener('keydown', e=>{ if(e.key==='Enter') refresh(); });
+
+// init
+refresh();
+</script>
+</body>
+</html>

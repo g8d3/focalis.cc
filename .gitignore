@@ -22,3 +22,14 @@ node_modules/
 __pycache__/
 *.pyc
 .venv/
+
+# Private personal data - never commit
+variants/variant-d-world/site.config.private.json
+EMAIL_TODO.private.md
+*private*.json
+*private*.md
+
+# The taste loop writes 35 MB of screenshots per variant; the pages and their tools are what
+# matter, and the shots are reproducible with tools/capture.py.
+variants/*/rounds/
+variants/*/shots/

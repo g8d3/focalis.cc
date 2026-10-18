@@ -1,0 +1,28 @@
+{
+  "site": {
+    "domain": "focalis.cc",
+    "title": "Focalis",
+    "tagline": "Technology that gives time back"
+  },
+  "company": {
+    "legalName": "Focalis S.A.S.",
+    "location": "Bogotá, Colombia",
+    "fullAddress": "Bogotá, D.C., Colombia",
+    "founded": "2019"
+  },
+  "contact": {
+    "primaryEmail": "hello@focalis.cc",
+    "supportEmail": "contact@focalis.cc",
+    "legalEmail": "contact@focalis.cc",
+    "responseTime": "within 24 hours on business days (Mon–Fri, Bogotá UTC-5)"
+  },
+  "private": {
+    "_comment": "NOT public - set via gitignored file. See site.config.private.json",
+    "forwardTo": "CHANGEME@gmail.com",
+    "smtpUser": "hello@focalis.cc"
+  },
+  "meta": {
+    "configVersion": 1,
+    "lastUpdated": "2026-08-31T19:34:04.119117+00:00"
+  }
+}

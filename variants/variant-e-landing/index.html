@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Focalis — the agent fleet tax, measured and cut</title>
+<meta name="description" content="A no-op turn costs 2.4 to 3.4 s median on every harness we tested. Read-only audit of your agent fleet: measure the tax, find it, cut it. Fixed fee, published prices.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Focalis — the agent fleet tax, measured and cut">
+<meta property="og:description" content="A no-op turn costs 2.4 to 3.4 s median on every harness we tested. Read-only audit of your agent fleet: measure the tax, find it, cut it.">
+<meta property="og:url" content="https://focalis.cc/">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%2314171a'/><path d='M9 22V10h11M9 16h8' stroke='%23e8ddcb' stroke-width='2.2' fill='none' stroke-linecap='square'/></svg>">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  :root{
+    --ink:#14171a; --paper:#fbfaf7; --muted:#5c6169; --line:#e4ded4; --line-soft:#efeae1;
+    --accent:#b3400f; --accent-soft:#fbeee6; --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font:16px/1.55 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;overflow-wrap:anywhere}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+  h1,h2,h3{margin:0;line-height:1.12;letter-spacing:-0.02em;font-weight:700}
+  p{margin:0}
+  /* every interactive element is a >=44x44 tap target */
+  a,button{min-height:48px;min-width:48px;display:inline-flex;align-items:center;gap:8px}
+  a{color:inherit;text-decoration:none}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+
+  header{border-bottom:1px solid var(--line)}
+  .brand{display:inline-flex;align-items:center;gap:10px;min-height:60px;font-weight:700;letter-spacing:-0.01em}
+  .brand svg{display:block}
+
+  .hero{padding:44px 0 40px;border-bottom:1px solid var(--line)}
+  .eyebrow{font:600 12px/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  h1{font-size:clamp(1.85rem,7.2vw,3.4rem);margin:14px 0 0;max-width:19ch}
+  .lede{margin:18px 0 0;font-size:clamp(1rem,4.1vw,1.2rem);color:#2b2f34;max-width:60ch}
+  .lede b{background:var(--accent-soft);padding:1px 4px;border-radius:3px;font-weight:700}
+  .cta{margin-top:26px;background:var(--accent);color:#fff;font-weight:700;font-size:1.05rem;
+    padding:14px 22px;border-radius:10px;flex-direction:column;align-items:flex-start;gap:2px;
+    min-height:60px;justify-content:center;width:100%;max-width:420px}
+  .cta .sub{font:500 12.5px/1.3 var(--mono);opacity:.92;letter-spacing:.02em}
+  .micro{margin-top:14px;font-size:.9rem;color:var(--muted);max-width:56ch}
+
+  section{padding:40px 0;border-bottom:1px solid var(--line)}
+  .kicker{font:600 12px/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+  h2{font-size:clamp(1.4rem,5.2vw,2rem);margin:10px 0 0}
+  .sub{margin:12px 0 0;color:#2b2f34;max-width:62ch}
+
+  .stats{margin:26px 0 0;display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .stat{background:#fff;padding:16px 18px}
+  .stat .n{font:700 clamp(1.5rem,6vw,2rem)/1.1 var(--mono);letter-spacing:-0.02em}
+  .stat .n small{font-size:.55em;font-weight:600;color:var(--muted)}
+  .stat .l{margin-top:6px;font-size:.92rem;color:#2b2f34}
+  .stat .s{margin-top:8px;font:500 11.5px/1.35 var(--mono);color:var(--muted)}
+  @media(min-width:720px){.stats{grid-template-columns:1fr 1fr}}
+
+  ol.steps{margin:26px 0 0;padding:0;list-style:none;counter-reset:s}
+  ol.steps li{counter-increment:s;padding:18px 0 18px 46px;position:relative;border-top:1px solid var(--line-soft)}
+  ol.steps li:first-child{border-top:0}
+  ol.steps li::before{content:counter(s);position:absolute;left:0;top:18px;width:30px;height:30px;
+    display:grid;place-items:center;background:var(--ink);color:#fff;border-radius:8px;font:700 14px/1 var(--mono)}
+  ol.steps h3{font-size:1.05rem}
+  ol.steps p{margin-top:6px;color:#2b2f34;font-size:.95rem}
+  .step-link{margin-top:2px}
+  .step-link a{font-weight:600;color:var(--accent)}
+
+  .note{margin-top:22px;background:#fff;border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px;padding:16px 18px}
+  .note p{font-size:.95rem;color:#2b2f34}
+  .note p+p{margin-top:10px}
+
+  .tiers{margin:26px 0 0;display:grid;gap:14px}
+  @media(min-width:760px){.tiers{grid-template-columns:1fr 1fr}}
+  .tier{display:block;background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;color:inherit;text-decoration:none}
+  .tier:hover{border-color:var(--accent)}
+  .tier.pop{border-color:var(--accent);box-shadow:0 1px 0 var(--accent) inset}
+  .tier .role{font:600 11.5px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .tier h3{font-size:1.1rem;margin-top:6px}
+  .tier .price{font:700 1.7rem/1.1 var(--mono);margin-top:8px}
+  .tier p{margin-top:8px;font-size:.92rem;color:#2b2f34}
+  .tier .meta{margin-top:10px;font:500 11.5px/1.4 var(--mono);color:var(--muted)}
+  .pop-tag{display:inline-block;background:var(--accent);color:#fff;font:700 10.5px/1 var(--mono);
+    letter-spacing:.08em;text-transform:uppercase;padding:4px 7px;border-radius:99px;margin-left:8px;vertical-align:middle}
+
+  table{border-collapse:collapse;width:100%;margin-top:22px;font-size:.92rem}
+  caption{text-align:left;font:500 12px/1.4 var(--mono);color:var(--muted);padding-bottom:8px}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line-soft)}
+  th{font:600 11.5px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  td.num{font:600 .95rem/1.4 var(--mono);white-space:nowrap}
+  @media(max-width:719px){
+    thead{display:none}
+    tr{display:block;border:1px solid var(--line);border-radius:10px;background:#fff;padding:10px 12px;margin-bottom:10px}
+    td{display:flex;justify-content:space-between;gap:12px;border:0;padding:5px 0}
+    td::before{content:attr(data-h);font:600 11px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+    td.num{white-space:normal}
+  }
+
+  ul.links{margin:24px 0 0;padding:0;list-style:none;display:grid;gap:10px}
+  ul.links li{background:#fff;border:1px solid var(--line);border-radius:10px}
+  ul.links a{padding:12px 16px;width:100%;justify-content:space-between;align-items:flex-start;flex-direction:column;gap:4px}
+  ul.links .t{font-weight:700}
+  ul.links .d{font-size:.88rem;color:var(--muted)}
+  @media(min-width:760px){ul.links{grid-template-columns:1fr 1fr}}
+
+  .final{background:var(--ink);color:#f4efe7;border-bottom:0}
+  .final h2{color:#fff}
+  .final .sub{color:#cfc7bb}
+  .final .cta{background:#fff;color:var(--ink);margin-top:24px}
+  .final ul.links li{background:#1e2226;border-color:#333940}
+  .final ul.links .d{color:#a9b0b8}
+  .final a:focus-visible{outline-color:#fff}
+
+  footer{padding:26px 0 40px;font-size:.88rem;color:var(--muted)}
+  footer .row{display:flex;flex-wrap:wrap;gap:4px 18px}
+  footer .row a{min-height:48px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Focalis home">
+      <svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#14171a"/><path d="M9 22V10h11M9 16h8" stroke="#e8ddcb" stroke-width="2.2" fill="none"/></svg>
+      Focalis
+    </a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Read-only audit · agent fleet latency</p>
+      <h1>Your agents are slow and expensive even when they do nothing.</h1>
+      <p class="lede">A no-op turn — reply with one word, call no tools — costs <b>2.4 to 3.4 s median</b> on every harness we tested. We measure where your loops lose that time, then we cut it. Read-only audit, fixed fee, published prices.</p>
+      <a class="cta" id="hero-cta" href="/audit/">See the audit and its fixed prices
+        <span class="sub">Tier 1 $290 · Tier 2 $1,400 · Tier 3 $3,900</span>
+      </a>
+      <p class="micro">Fixed fee, prepaid 50% and balance on delivery. No access to your keys, funds or production secrets — read-only first, changes behind your review.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="kicker">The measurement</p>
+      <h2>Six numbers from our own fleet, not from a slide.</h2>
+      <p class="sub">65 runs, 3 harnesses, one night, plus 500 live turns from the fleet we run ourselves. The raw CSV, the per-run logs and the three mechanisms we had to retract are all public.</p>
+      <div class="stats">
+        <div class="stat"><div class="n">2.4–3.4 s</div><div class="l">Median no-op turn, every harness tested.</div><div class="s">65 runs · 3 harnesses · one-word turns</div></div>
+        <div class="stat"><div class="n">929 <small>ms</small></div><div class="l">Process boot inside that turn — before anything is sent to a provider.</div><div class="s">+ 1451 ms before the response · + 2 ms of model</div></div>
+        <div class="stat"><div class="n">7.2 <small>s</small></div><div class="l">Median wall per turn on the window we publish (500 turns, mean 16.3 s): 25% model, 23% tools, 52% the provider round-trip &mdash; the slice the older harness log called &ldquo;unaccounted&rdquo;. Paper §9 has the table.</div><div class="s">fleet/ in the repo · 500 rows · recompute it yourself</div></div>
+        <div class="stat"><div class="n">3.2%</div><div class="l">Of turns produced nothing at all (16 of 500: 15 errors, 1 aborted).</div><div class="s">we quote the rate, not a dollar figure</div></div>
+        <div class="stat"><div class="n">~52 <small>min/day</small></div><div class="l">Ten loops × 100 turns a day burn that in pure no-op overhead.</div><div class="s">1,000 no-op turns ≈ 52 min · 3.14 s median</div></div>
+        <div class="stat"><div class="n">300 <small>s</small></div><div class="l">Worst turn in the published window &mdash; five minutes on one turn.</div><div class="s">the tail is where the wall hides, not the median</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="kicker">What we sell</p>
+      <h2>Four steps, one deliverable: the number on your loops.</h2>
+      <ol class="steps">
+        <li>
+          <h3>Measure</h3>
+          <p>Per-turn wall, model span, pre-response span, unaccounted span, input tokens, cached tokens. You can run the first half of that yourself, on your own log, in the browser — nothing is uploaded.</p>
+          <p class="step-link"><a href="/audit/preview/">Open the free preview on your own log →</a></p>
+        </li>
+        <li>
+          <h3>Locate the tax</h3>
+          <p>Boot, pre-response, stream and tools per turn, measured from outside the harness; the token re-spend of carried context; the slow-turn tail; the share of turns that burn budget and produce nothing. Pre-response is reported as a bound — nothing outside the loop can split it into dispatch versus provider, so we do not pretend to.</p>
+        </li>
+        <li>
+          <h3>Cut it</h3>
+          <p>The one lever we measured as real and removable is boot: 929 ms of every turn if your loop spawns a process per turn, zero if it keeps one warm — 65 wall-hours a year for a 10-loop fleet. Everything else comes from your profile, not from a preset playbook.</p>
+        </li>
+        <li>
+          <h3>Lock it in</h3>
+          <p>A per-turn budget formula with your numbers, plus a regression check you keep and run after we leave: it fails at +20% wall or 5% waste, and it never re-baselines itself.</p>
+        </li>
+      </ol>
+      <div class="note">
+        <p><strong>We retracted three of our own mechanisms.</strong> Cache discipline, startup-scan scoping and a transcript-size slope all failed to reproduce in our data (paper sections 6, 7 and 8), so we no longer sell them. Our cache sample did not separate fast turns from slow ones, and we publish that negative result instead of hiding it.</p>
+        <p>If the numbers do not survive your reading, tell us and we drop the pitch.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="kicker">Prices</p>
+      <h2>Fixed fee. Published. Prepaid 50%, balance on delivery.</h2>
+      <div class="tiers">
+        <a class="tier" href="/audit/#pricing">
+          <div class="role">Tier 1</div>
+          <h3>Single-loop measure</h3>
+          <div class="price">$290</div>
+          <p>One loop that feels slow, instrumented for up to 3 days: 50+ no-op and live turns, one breakdown page, a turn-budget formula with your numbers, a 30-minute readout.</p>
+          <div class="meta">Delivery: 5 business days from access</div>
+        </a>
+        <a class="tier pop" href="/audit/#pricing">
+          <div class="role">Tier 2 <span class="pop-tag">Most popular</span></div>
+          <h3>Fleet audit</h3>
+          <div class="price">$1,400</div>
+          <p>Up to 5 loops: cache measured and reported, a transcript-size curve measured in ranges, a prioritized cut list with expected seconds and tokens per fix, and the regression check you keep.</p>
+          <div class="meta">Delivery: 10 business days from access</div>
+        </a>
+        <a class="tier" href="/audit/#pricing">
+          <div class="role">Tier 3</div>
+          <h3>Fleet audit + cut</h3>
+          <div class="price">$3,900</div>
+          <p>Up to 12 loops, and we implement the cuts your profile shows, behind your code review. Before/after proof on the same 50-turn protocol. Reference target: 20 to 50 percent off steady-state wall on measured loops, or the implementation half is refunded.</p>
+          <div class="meta">Delivery: 20 business days from access</div>
+        </a>
+        <a class="tier" href="/audit/#pricing">
+          <div class="role">Retainer</div>
+          <h3>Fleet tax monitoring</h3>
+          <div class="price">$490<small style="font:600 .9rem/1 var(--mono);color:var(--muted)">/month</small></div>
+          <p>For teams that already had an audit, or run our monitor: continuous per-turn telemetry, a monthly one-page report, alerts when the floor, the cache-hit rate or the wasted share moves more than 20% (the gate you kept fires at +20% wall or 5% waste), and a quarterly re-measurement. Cancel any month.</p>
+          <div class="meta">Worth it when the avoided regression exceeds it</div>
+        </a>
+      </div>
+
+      <table>
+        <caption>Does it pay for itself? Payback on Tier 2, from our own sweep — saving assumed at 35% of the input-token line and a 70% cache hit.</caption>
+        <thead><tr><th>Fleet</th><th>Model class</th><th>Payback</th></tr></thead>
+        <tbody>
+          <tr><td data-h="Fleet">10 loops × 100 turns/day</td><td data-h="Model class">DeepSeek-class</td><td class="num" data-h="Payback">769 working days — do not buy</td></tr>
+          <tr><td data-h="Fleet">10 loops × 100 turns/day</td><td data-h="Model class">Sonnet-class</td><td class="num" data-h="Payback">90 working days</td></tr>
+          <tr><td data-h="Fleet">10 loops × 100 turns/day</td><td data-h="Model class">Opus-class</td><td class="num" data-h="Payback">18 working days</td></tr>
+          <tr><td data-h="Fleet">100 loops × 200 turns/day</td><td data-h="Model class">DeepSeek-class</td><td class="num" data-h="Payback">38 working days</td></tr>
+        </tbody>
+      </table>
+      <p class="sub" style="margin-top:16px">The audit is a token-cost play above roughly <strong>$19k/year</strong> of token spend. Below that we sell the wall-clock case — a ~3 s floor per turn and 3–6× wall on a cache miss — or we tell you not to buy. A 10-loop DeepSeek fleet spends ~$1.4k/year in tokens: we will not sell that fleet a token saving, though it still burns ~208 wall-hours/year.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="kicker">Read the numbers first</p>
+      <h2>Everything is public before you talk to us.</h2>
+      <ul class="links">
+        <li><a href="/tps/"><span class="t">The paper — Transcript Tax 2026</span><span class="d">65 runs, methods, the three retractions, our own 500 live turns.</span></a></li>
+        <li><a href="https://github.com/g8d3/transcript-tax"><span class="t">Repo: code, bench.csv, figures</span><span class="d">MIT / CC BY 4.0, plus the claims audit of this page (CLAIMS.md).</span></a></li>
+        <li><a href="/audit/routes/"><span class="t">Where the token enters changes what it costs</span><span class="d">The same model costs up to 29.1× more on one route than another; the cheapest route is not the fastest (1748 ms vs 290 ms to first token).</span></a></li>
+        <li><a href="https://github.com/g8d3/pi-web-tps-monitor"><span class="t">The instrument we audit with</span><span class="d">Open. Every turn row carries pre-response ms next to the model span, and it refuses to print a rate for a one-word reply.</span></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap">
+      <p class="kicker" style="color:#f3b28f">Next step</p>
+      <h2>Pick a tier. One loop, one day, one breakdown page.</h2>
+      <p class="sub">Start with the audit page: prices, what each tier includes, and what we do when the numbers say you should not buy. See the shape of the deliverable first — a blank template filled with one labelled example loop, no client data in it.</p>
+      <a class="cta" id="final-cta" href="/audit/">See the audit and its fixed prices
+        <span class="sub">$290 · $1,400 · $3,900 · $490/month</span>
+      </a>
+      <ul class="links">
+        <li><a href="/audit/sample/"><span class="t">A filled example breakdown</span><span class="d">The deliverable, with one labelled example loop.</span></a></li>
+        <li><a href="/audit/intake/"><span class="t">The three questions we ask</span><span class="d">What to attach, what you get, and what we do with it.</span></a></li>
+        <li><a href="/audit/preview/"><span class="t">Free preview on your own log</span><span class="d">Runs in your browser. Nothing is uploaded.</span></a></li>
+        <li><a href="mailto:hello@focalis.cc?subject=TAX"><span class="t">hello@focalis.cc</span><span class="d">Subject TAX. We are a small studio in UTC-5, not a sales floor.</span></a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Focalis S.A.S. — a small software studio in Bogotá, Colombia (UTC-5). We run our own agent fleet, which is where the 500-turn dataset in the paper comes from, and we built the instrument we measure it with. We sell the measurement, and only the measurement.</p>
+    <div class="row" style="margin-top:14px">
+      <a href="/company">Company</a>
+      <a href="/terms">Terms</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/refunds">Refunds</a>
+      <a href="/contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -78,6 +78,21 @@
 		file_server
 	}
 	redir /audit /audit/ 308
+	# clean URLs for the company/legal pages (payment-provider and merchant-of-record review)
+	redir /company /company.html 308
+	redir /terms /terms.html 308
+	redir /privacy /privacy.html 308
+	redir /refund /refund.html 308
+	redir /refunds /refund.html 308
+	redir /contact /contact.html 308
+	# The seller/legal pages and their assets always come from variant-d-world, whatever
+	# the active variant is: swapping the landing must not break the pages a payment
+	# provider reads (they are what /company /terms /privacy /refunds /contact serve).
+	@legal path /company.html /terms.html /privacy.html /refund.html /contact.html /about.html /products.html /pricing.html /assets/*
+	handle @legal {
+		root * /srv/variant-d-world
+		file_server
+	}
 	redir /selector /selector/ 308
 	redir /studio /studio/ 308
 	redir /variant-a /variant-a/ 308

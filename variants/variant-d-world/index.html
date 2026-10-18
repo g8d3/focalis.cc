@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Focalis World — Juega los 5 caminos</title>
+<meta name="description" content="Focalis World: videojuego procedural. 5 caminos fractales. Camina, descubre, sin formularios.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231A2E2A'/><circle cx='16' cy='16' r='6' stroke='%23C96442' stroke-width='1.8' fill='none'/></svg>">
+<script src="assets/js/es-module-shims.js"></script>
+<script type="importmap">{"imports":{"three":"./assets/js/three.module.js"}}</script>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Instrument+Sans:wght@500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{ --ink:#1A2E2A; --paper:#FAF6F1; }
+  body{ background:#0F1E1B; color:white; font-family:'Instrument Sans',system-ui,sans-serif; overflow:hidden; overscroll-behavior:none }
+  .serif{ font-family:'Fraunces',serif } .mono{ font-family:'JetBrains Mono',monospace }
+  #game{ position:fixed; inset:0; width:100%; height:100%; display:block; }
+  #hud{ position:fixed; inset:0; pointer-events:none; display:flex; flex-direction:column; justify-content:space-between; padding:14px; }
+  #hud > *{ pointer-events:auto }
+  .glass{ background:rgba(15,30,27,0.72); backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,0.12); border-radius:16px; }
+  #topbar{ display:flex; align-items:center; gap:10px; padding:10px 14px; }
+  #storyBar{ text-align:center; padding:10px 16px; max-width:720px; margin:0 auto; }
+  #storyBar b{ color:#3DD598 }
+  #controls{ display:flex; gap:10px; align-items:center; justify-content:space-between; }
+  .btn{ background:white; color:#1A2E2A; border:none; border-radius:999px; padding:10px 16px; font-weight:700; font-size:13px; cursor:pointer; }
+  .btn-ghost{ background:rgba(255,255,255,0.12); color:white; border:1px solid rgba(255,255,255,0.18); }
+  .btn:active{ transform:scale(0.98) }
+  #joystick{ position:fixed; left:16px; bottom: calc(22px + env(safe-area-inset-bottom, 0px)); width:144px; height:144px; border-radius:50%; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.20); touch-action:none; display:none; z-index:30; padding-bottom: env(safe-area-inset-bottom, 0px); }
+  #joystick::after{ content:'MOVER'; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); mono:''; font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:0.14em; color:rgba(255,255,255,0.45); pointer-events:none; margin-top:34px }
+  #stick{ position:absolute; left:50%; top:50%; width:60px; height:60px; margin:-30px 0 0 -30px; border-radius:50%; background:rgba(255,255,255,0.96); box-shadow:0 8px 20px rgba(0,0,0,0.35); transition: transform 0.05s; }
+  #camHint{ position:fixed; right:16px; bottom: calc(22px + env(safe-area-inset-bottom, 0px)); width:144px; height:144px; border-radius:50%; background:rgba(255,255,255,0.04); border:1px dashed rgba(255,255,255,0.18); display:none; place-items:center; text-align:center; z-index:29; touch-action:none; pointer-events:none; }
+  #camHint span{ font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:0.12em; color:rgba(255,255,255,0.55); line-height:1.3 }
+  @media (max-width: 860px){ #joystick{ display:block } #camHint{ display:grid } #desktopHint{ display:none } #minimap{ display:none } #topbar{ padding:8px 12px } #storyBar{ font-size:13px } #controls{ justify-content:flex-end; padding-bottom: 158px; pointer-events:none } #controls .btn{ pointer-events:auto } }
+  #minimap{ width:148px; height:148px; border-radius:12px; border:1px solid rgba(255,255,255,0.14); background:rgba(255,255,255,0.96); image-rendering:pixelated; }
+</style>
+</head>
+<body>
+<canvas id="game" aria-label="Focalis World - videojuego procedural"></canvas>
+
+<div id="hud">
+  <div id="topbar" class="glass">
+    <div class="w-8 h-8 rounded-lg bg-white grid place-items-center text-[#1A2E2A] font-bold">◈</div>
+    <div>
+      <div class="serif font-bold leading-none">Focalis World</div>
+      <div class="mono text-[10px] tracking-widest opacity-60">5 CAMINOS · PROCEDURAL · VIDEOJUEGO</div>
+    </div>
+    <div class="ml-auto hidden md:flex items-center gap-2 mono text-[11px]">
+      <span id="seedLabel" class="bg-white text-[#1A2E2A] rounded-full px-3 py-1.5 font-bold"></span>
+      <span id="rareLabel" class="bg-[#F5D547] text-[#1A2E2A] rounded-full px-3 py-1.5 font-bold">✦ 0/ ?</span>
+    </div>
+    <button id="btnNew" class="btn" style="padding:8px 14px">🎲 Nuevo mundo</button>
+  </div>
+
+  <div id="storyBar" class="glass" style="padding:12px 14px">
+    <div id="storyTitle" class="mono text-[10px] tracking-widest opacity-60">CAMINA — USA WASD / FLECHAS</div>
+    <div id="storyText" class="serif text-[15px] md:text-[16px] font-bold leading-tight mt-1">Elige un camino. Cada uno es la misma mañana vista distinto.</div>
+    <div id="progress" class="mono text-[11px] opacity-60 mt-1">Descubiertos 0/5 caminos · 0 tesoros</div>
+  </div>
+
+  <div id="controls">
+    <div class="flex items-center gap-3">
+      <canvas id="minimap" width="148" height="148" aria-label="Minimapa"></canvas>
+      <div class="hidden md:block mono text-[11px] leading-relaxed glass" style="padding:10px 12px">
+        <div id="desktopHint"><b>WASD / Flechas</b> mover<br><b>Shift</b> correr · <b>R</b> nuevo mundo</div>
+      </div>
+    </div>
+    <div class="flex gap-2">
+      <button id="btnOrbit" class="btn btn-ghost">⟡ Cámara</button>
+      <a href="generator.html" class="btn btn-ghost" style="text-decoration:none; display:inline-flex; align-items:center">⚙︎ Generador</a>
+      <a href="/audit/" class="btn btn-ghost" style="text-decoration:none; display:inline-flex; align-items:center">◈ Auditoría de agentes</a>
+    </div>
+  </div>
+</div>
+
+<div id="joystick" aria-label="Joystick mover — pulgar izquierdo"><div id="stick"></div></div>
+<div id="camHint" aria-hidden="true"><span>👁️ CÁMARA<br>1 dedo gira<br>2 dedos zoom</span></div>
+
+<script type="module">
+import * as THREE from 'three';
+
+// ---------- PRNG + NOISE (igual que antes, básico) ----------
+function hashString(s){ let h=2166136261>>>0; for(let i=0;i<s.length;i++){ h^=s.charCodeAt(i); h=Math.imul(h,16777619);} return h>>>0; }
+function mulberry32(a){ return function(){ a|=0; a=a+0x6D2B79F5|0; let t=Math.imul(a^a>>>15,1|a); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; } }
+function lerp(a,b,t){ return a+(b-a)*t } function smooth(t){ return t*t*(3-2*t) }
+function makeNoise(seed){
+  const rnd=mulberry32(hashString(seed+'-noise')); const N=16;
+  const grid=Array.from({length:N+1},()=>Array.from({length:N+1},()=>rnd()));
+  return (x,y)=>{
+    // wrap to 0..1 para soportar offsets como +5.3 (evita lectura fuera de rango 79)
+    x=((x%1)+1)%1; y=((y%1)+1)%1;
+    const gx=x*(N-1), gy=y*(N-1); const x0=Math.floor(gx), y0=Math.floor(gy); const x1=Math.min(x0+1,N-1), y1=Math.min(y0+1,N-1); const fx=smooth(gx-x0), fy=smooth(gy-y0); const v00=grid[y0][x0], v10=grid[y0][x1], v01=grid[y1][x0], v11=grid[y1][x1]; return lerp(lerp(v00,v10,fx), lerp(v01,v11,fx), fy); };
+}
+const SIZE=32;
+const PATHS=[
+  { name:'El Inicio', color:'#2A7F6F', act:'Acto 0 — 7:12am', text:'No un plan gigante. Solo 10 minutos. El gesto mínimo.' },
+  { name:'El Ritmo', color:'#3A8FB7', act:'Acto 1 — El ritmo', text:'De 10 a 12. De 1 a 2. Lo pequeño acumulado dibuja una curva.' },
+  { name:'La Cima', color:'#8B6FCF', act:'Acto 2 — La cima frágil', text:'Te sentiste bien y dijiste sí a todo. La trampa.' },
+  { name:'El Fondo', color:'#C96442', act:'Acto 3-4 — El fondo', text:'Misma cocina, de noche. Caíste debajo del inicio. Ahí entendiste lo fractal.' },
+  { name:'El Gesto', color:'#B09A2F', act:'Acto 5-6 — El gesto', text:'Misma mañana, mismas zapatillas. Ahora caminas por caminar.' },
+];
+function generateWorld(seed){
+  const rnd=mulberry32(hashString(seed));
+  const noise=makeNoise(seed);
+  const height=Array.from({length:SIZE},(_,z)=>Array.from({length:SIZE},(_,x)=>{
+    const n=noise(x/SIZE, z/SIZE); const n2=noise(x/SIZE*2+5.3, z/SIZE*2+1.1)*0.5; return Math.floor((n*0.7+n2*0.3)*3.2);
+  }));
+  const pathGroups=[[],[],[],[],[]];
+  const rare=[];
+  function walk(gi, x,z, dir, len, depth){
+    for(let i=0;i<len;i++){
+      const nx=Math.round(x), nz=Math.round(z);
+      if(nx>=0&&nx<SIZE&&nz>=0&&nz<SIZE){
+        pathGroups[gi].push({x:nx,z:nz});
+        if(rnd()<0.045) rare.push({x:nx,z:nz, id: gi+'-'+i+'-'+Math.floor(rnd()*9999)});
+      }
+      x+=Math.cos(dir)*0.92; z+=Math.sin(dir)*0.92; dir+=(rnd()-0.5)*0.32;
+    }
+    if(depth<=0) return;
+    const nB= depth>1?2:1+Math.floor(rnd()*2);
+    for(let b=0;b<nB;b++){ walk(gi, x,z, dir+(rnd()-0.5)*1.0, 5+Math.floor(rnd()*6), depth-1); }
+  }
+  for(let i=0;i<5;i++){
+    const ang=(i/5)*Math.PI*2 + rnd()*0.2;
+    walk(i, SIZE/2, SIZE/2, ang, 10+Math.floor(rnd()*3), 2);
+  }
+  return {height, pathGroups, rare};
+}
+let seed = new URL(location.href).searchParams.get('seed') || 'focalis-'+Math.random().toString(36).slice(2,6);
+let world = generateWorld(seed);
+
+// ---------- THREE ----------
+const canvas=document.getElementById('game');
+const renderer=new THREE.WebGLRenderer({canvas, antialias:true});
+const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || innerWidth < 860;
+renderer.setPixelRatio(Math.min(devicePixelRatio, isMobile ? 1.2 : 1.7));
+renderer.setClearColor(0x87C7A8,1);
+renderer.shadowMap.enabled = !isMobile; // sin sombras en móvil para 60fps
+if(!isMobile) renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+const scene=new THREE.Scene();
+scene.fog=new THREE.Fog(0xDDEBDF, 18, 44);
+const camera=new THREE.PerspectiveCamera(58, innerWidth/innerHeight, 0.1, 100);
+let camMode=0; // 0 follow, 1 top
+let camYaw=0.78, camPitch=0.62, camDist=14;
+
+scene.add(new THREE.HemisphereLight(0xFFF6E8, 0x2A4A3A, 0.9));
+const sun=new THREE.DirectionalLight(0xffffff, 1.1); sun.position.set(14,22,10); sun.castShadow=true;
+sun.shadow.mapSize.set(1024,1024); sun.shadow.camera.near=0.5; sun.shadow.camera.far=60;
+sun.shadow.camera.left=-20; sun.shadow.camera.right=20; sun.shadow.camera.top=20; sun.shadow.camera.bottom=-20;
+scene.add(sun);
+scene.add(new THREE.AmbientLight(0xffffff,0.35));
+
+// ground + terrain
+const geoBox=new THREE.BoxGeometry(0.96,0.6,0.96);
+const dummy=new THREE.Object3D();
+let terrMesh, pathMeshes=[], rareMeshes=[], rareObjs=[];
+function buildWorld(){
+  // clear
+  pathMeshes.forEach(m=>scene.remove(m)); pathMeshes=[]; rareMeshes.forEach(m=>scene.remove(m)); rareMeshes=[]; rareObjs=[];
+  if(terrMesh) scene.remove(terrMesh);
+  // terrain as instanced
+  const matTerr=new THREE.MeshStandardMaterial({color:0xE8E0D6, roughness:0.9});
+  terrMesh=new THREE.InstancedMesh(geoBox, matTerr, SIZE*SIZE);
+  terrMesh.receiveShadow=true; terrMesh.castShadow=false;
+  let idx=0;
+  for(let z=0;z<SIZE;z++) for(let x=0;x<SIZE;x++){
+    const h=world.height[z][x];
+    dummy.position.set((x-SIZE/2), h*0.3-0.3, (z-SIZE/2));
+    dummy.scale.set(1, 0.6+h*0.45, 1); dummy.updateMatrix();
+    terrMesh.setMatrixAt(idx, dummy.matrix); idx++;
+  }
+  terrMesh.instanceMatrix.needsUpdate=true; terrMesh.instanceColor=null;
+  scene.add(terrMesh);
+  // paths per group
+  world.pathGroups.forEach((grp, gi)=>{
+    const col=PATHS[gi].color;
+    const mat=new THREE.MeshStandardMaterial({color: col, roughness:0.5});
+    const m=new THREE.InstancedMesh(geoBox, mat, grp.length);
+    m.castShadow=false; m.receiveShadow=true;
+    grp.forEach((p,i)=>{
+      const h=world.height[p.z][p.x];
+      dummy.position.set((p.x-SIZE/2), h*0.3+0.22, (p.z-SIZE/2));
+      dummy.scale.set(1,0.18,1); dummy.updateMatrix(); m.setMatrixAt(i,dummy.matrix);
+    });
+    m.instanceMatrix.needsUpdate=true; scene.add(m); pathMeshes.push(m);
+  });
+  // rare as diamonds
+  const geoRare=new THREE.OctahedronGeometry(0.38,0);
+  world.rare.forEach(r=>{
+    const h=world.height[r.z][r.x];
+    const mat=new THREE.MeshStandardMaterial({color:0xFFD84D, emissive:0xFFD84D, emissiveIntensity:0.35, metalness:0.2, roughness:0.3});
+    const mesh=new THREE.Mesh(geoRare, mat);
+    mesh.position.set((r.x-SIZE/2), h*0.3+1.0, (r.z-SIZE/2));
+    mesh.castShadow=true;
+    mesh.userData={rare:true, id:r.id, collected:false, baseY: mesh.position.y};
+    scene.add(mesh); rareMeshes.push(mesh); rareObjs.push(mesh);
+  });
+  // start marker
+  const startGeo=new THREE.CylinderGeometry(0.5,0.5,0.12,18);
+  const startMat=new THREE.MeshStandardMaterial({color:0x1A2E2A});
+  const start=new THREE.Mesh(startGeo, startMat);
+  const hc=world.height[Math.floor(SIZE/2)][Math.floor(SIZE/2)];
+  start.position.set(0, hc*0.3+0.32, 0); start.receiveShadow=true; scene.add(start);
+}
+buildWorld();
+
+// player
+const playerGeo=new THREE.CapsuleGeometry(0.32,0.55,6,12);
+const playerMat=new THREE.MeshStandardMaterial({color:0x1A2E2A, roughness:0.45});
+const player=new THREE.Mesh(playerGeo, playerMat);
+player.castShadow=true;
+player.position.set(0, 2, 0);
+scene.add(player);
+let vel=new THREE.Vector3();
+let onGround=true;
+
+// input
+const keys=new Set();
+addEventListener('keydown', e=>{
+  keys.add(e.key.toLowerCase());
+  if(e.key.toLowerCase()==='r'){ newWorld(); }
+});
+addEventListener('keyup', e=> keys.delete(e.key.toLowerCase()));
+
+// ── MOBILE GIZMOS: pulgar izquierdo = mover, pulgar/ dedos derechos = cámara (1 dedo gira, 2 dedos pinza zoom) ──
+let joy={x:0,y:0, active:false, id:null};
+const joyEl=document.getElementById('joystick'), stick=document.getElementById('stick');
+function setJoyFromPoint(clientX, clientY){
+  const rect=joyEl.getBoundingClientRect();
+  let x=(clientX - rect.left - rect.width/2)/(rect.width/2);
+  let y=(clientY - rect.top - rect.height/2)/(rect.height/2);
+  const len=Math.hypot(x,y);
+  if(len>1){ x/=len; y/=len; }
+  // dead zone 0.12
+  if(len<0.12){ x=0; y=0; }
+  joy.x=x; joy.y=y;
+  stick.style.transform=`translate(${x*38}px, ${y*38}px)`;
+}
+// joystick: pointer events with capture, solo ese dedo
+joyEl.addEventListener('pointerdown', e=>{
+  joy.active=true; joy.id=e.pointerId; joyEl.setPointerCapture(e.pointerId);
+  setJoyFromPoint(e.clientX, e.clientY); e.preventDefault();
+});
+joyEl.addEventListener('pointermove', e=>{ if(!joy.active || e.pointerId!==joy.id) return; setJoyFromPoint(e.clientX, e.clientY); });
+joyEl.addEventListener('pointerup', e=>{ if(e.pointerId!==joy.id) return; joy.active=false; joy.id=null; joy.x=0; joy.y=0; stick.style.transform='translate(0,0)'; });
+joyEl.addEventListener('pointercancel', e=>{ if(e.pointerId!==joy.id) return; joy.active=false; joy.id=null; joy.x=0; joy.y=0; stick.style.transform='translate(0,0)'; });
+// touch fallback for joystick (iOS sometimes)
+joyEl.addEventListener('touchstart', e=>{ const t=e.touches[0]; if(!t) return; joy.active=true; setJoyFromPoint(t.clientX,t.clientY); e.preventDefault(); },{passive:false});
+joyEl.addEventListener('touchmove', e=>{ const t=e.touches[0]; if(!t||!joy.active) return; setJoyFromPoint(t.clientX,t.clientY); e.preventDefault(); },{passive:false});
+joyEl.addEventListener('touchend', ()=>{ joy.active=false; joy.x=0; joy.y=0; stick.style.transform='translate(0,0)'; });
+
+// cámara: 1 dedo = orbit, 2 dedos = pinch zoom (+ rotación suave). No interfiere con joystick
+let camDrag=false, camId=null, lastX=0, lastY=0, pinchStartDist=0, pinchStartCamDist=14;
+function getTouchesOnCanvas(e){
+  // for pointer events, single point
+  if(e.touches) return [...e.touches].filter(t=>{
+    const el=document.elementFromPoint(t.clientX,t.clientY);
+    return el!==joyEl && !joyEl.contains(el) && el!==document.getElementById('camHint') && !document.getElementById('camHint').contains(el);
+  });
+  return [];
+}
+canvas.addEventListener('pointerdown', e=>{
+  if(e.target!==canvas) return;
+  // si es el dedo del joystick, ignorar
+  if(joy.active && joy.id===e.pointerId) return;
+  camDrag=true; camId=e.pointerId; lastX=e.clientX; lastY=e.clientY;
+  canvas.setPointerCapture(e.pointerId);
+});
+addEventListener('pointerup', e=>{ if(e.pointerId===camId){ camDrag=false; camId=null; } });
+addEventListener('pointermove', e=>{
+  if(!camDrag || e.pointerId!==camId) return;
+  // si hay 2 dedos activos, el pinch lo maneja touch handler, no este
+  camYaw -= (e.clientX-lastX)*0.0055;
+  camPitch = Math.max(0.18, Math.min(1.35, camPitch - (e.clientY-lastY)*0.0055));
+  lastX=e.clientX; lastY=e.clientY;
+});
+canvas.addEventListener('touchstart', e=>{
+  if(e.touches.length===2){
+    camDrag=false; // pausar orbit
+    const dx=e.touches[0].clientX - e.touches[1].clientX;
+    const dy=e.touches[0].clientY - e.touches[1].clientY;
+    pinchStartDist=Math.hypot(dx,dy);
+    pinchStartCamDist=camDist;
+  } else if(e.touches.length===1){
+    const t=e.touches[0]; const el=document.elementFromPoint(t.clientX,t.clientY);
+    if(el===joyEl || joyEl.contains(el)) return;
+    lastX=t.clientX; lastY=t.clientY;
+  }
+  if(e.touches.length>0) e.preventDefault();
+},{passive:false});
+canvas.addEventListener('touchmove', e=>{
+  if(e.touches.length===2){
+    const dx=e.touches[0].clientX - e.touches[1].clientX;
+    const dy=e.touches[0].clientY - e.touches[1].clientY;
+    const dist=Math.hypot(dx,dy);
+    const delta=(pinchStartDist - dist)*0.035; // pinza = zoom como gizmo
+    camDist=Math.max(7, Math.min(28, pinchStartCamDist + delta));
+    e.preventDefault();
+  } else if(e.touches.length===1 && !joy.active){
+    const t=e.touches[0];
+    camYaw -= (t.clientX-lastX)*0.0055;
+    camPitch = Math.max(0.18, Math.min(1.35, camPitch - (t.clientY-lastY)*0.0055));
+    lastX=t.clientX; lastY=t.clientY;
+    e.preventDefault();
+  }
+},{passive:false});
+canvas.addEventListener('touchend', e=>{
+  if(e.touches.length===1){
+    lastX=e.touches[0].clientX; lastY=e.touches[0].clientY;
+  }
+});
+canvas.addEventListener('wheel', e=>{
+  e.preventDefault(); camDist=Math.max(7, Math.min(28, camDist + e.deltaY*0.02));
+},{passive:false});
+document.getElementById('btnOrbit').onclick=()=>{
+  camMode = camMode===0?1:0;
+  if(camMode===1){ camPitch=1.28; camDist=22; } else { camPitch=0.62; camDist=14; }
+};
+
+function updateCamera(){
+  const target=player.position.clone();
+  if(camMode===1){
+    camera.position.set(target.x, 22, target.z+0.1);
+    camera.lookAt(target);
+  } else {
+    const y=Math.sin(camPitch)*camDist;
+    const r=Math.cos(camPitch)*camDist;
+    camera.position.set(target.x + Math.cos(camYaw)*r, target.y + y, target.z + Math.sin(camYaw)*r);
+    camera.lookAt(target.x, target.y+0.6, target.z);
+  }
+}
+
+// minimap
+const mini=document.getElementById('minimap');
+const mctx=mini.getContext('2d');
+function drawMini(){
+  const W=mini.width, H=mini.height, cell=W/SIZE;
+  mctx.clearRect(0,0,W,H);
+  for(let z=0;z<SIZE;z++) for(let x=0;x<SIZE;x++){
+    const h=world.height[z][x];
+    mctx.fillStyle= h===0?'#EDE7DA':h===1?'#DDD5C6':h===2?'#CFC5B3':'#B8AD98';
+    mctx.fillRect(x*cell, z*cell, cell, cell);
+  }
+  world.pathGroups.forEach((grp,gi)=>{
+    mctx.fillStyle=PATHS[gi].color;
+    grp.forEach(p=> mctx.fillRect(p.x*cell+1, p.z*cell+1, cell-2, cell-2));
+  });
+  rareObjs.forEach(m=>{
+    if(m.userData.collected) return;
+    const x=Math.round(m.position.x+SIZE/2), z=Math.round(m.position.z+SIZE/2);
+    mctx.fillStyle='#FFD84D'; mctx.beginPath(); mctx.arc(x*cell+cell/2, z*cell+cell/2, 2.5,0,Math.PI*2); mctx.fill();
+  });
+  // player
+  const px=Math.round(player.position.x+SIZE/2), pz=Math.round(player.position.z+SIZE/2);
+  mctx.fillStyle='#1A2E2A'; mctx.beginPath(); mctx.arc(px*cell+cell/2, pz*cell+cell/2, 4,0,Math.PI*2); mctx.fill();
+  mctx.strokeStyle='white'; mctx.lineWidth=1.2; mctx.stroke();
+}
+
+// game state
+let discovered=new Set(), collected=0, totalRare=world.rare.length;
+const storyTitle=document.getElementById('storyTitle'), storyText=document.getElementById('storyText'), progress=document.getElementById('progress');
+function setStory(gi){
+  const p=PATHS[gi];
+  storyTitle.textContent=p.act+' · '+p.name.toUpperCase();
+  storyText.textContent=p.text;
+}
+function updateHUD(){
+  document.getElementById('seedLabel').textContent='semilla '+seed;
+  document.getElementById('rareLabel').textContent=`✦ ${collected}/${totalRare}`;
+  progress.textContent=`Descubiertos ${discovered.size}/5 caminos · ${collected} tesoros · Mantén Shift para correr`;
+}
+
+function checkTriggers(){
+  // path discovery: nearest path group
+  let best=-1, bestD=1.6;
+  world.pathGroups.forEach((grp,gi)=>{
+    for(const p of grp){
+      const dx=player.position.x - (p.x-SIZE/2), dz=player.position.z - (p.z-SIZE/2);
+      const d=Math.hypot(dx,dz);
+      if(d<bestD){ bestD=d; best=gi; }
+    }
+  });
+  if(best!==-1 && !discovered.has(best)){
+    discovered.add(best);
+    setStory(best);
+    // pulse path
+    pathMeshes[best].material.emissive=new THREE.Color(PATHS[best].color);
+    pathMeshes[best].material.emissiveIntensity=0.4;
+    setTimeout(()=>{ pathMeshes[best].material.emissiveIntensity=0; }, 900);
+  } else if(best!==-1){
+    // update story if standing on different path
+    const curTitle=storyTitle.textContent;
+    if(!curTitle.includes(PATHS[best].name.toUpperCase())) setStory(best);
+  }
+  // rare collect auto without stopping
+  rareObjs.forEach(m=>{
+    if(m.userData.collected) return;
+    if(player.position.distanceTo(m.position) < 1.0){
+      m.userData.collected=true; collected++;
+      m.visible=false;
+      // tiny pop
+      storyTitle.textContent='✦ TESORO ESTOCÁSTICO';
+      storyText.textContent='Contenido raro desbloqueado. Solo 1 de cada 20 lo ve aquí. Sigue caminando.';
+      pathMeshes.forEach(mm=>{ mm.material.emissiveIntensity=0.18; setTimeout(()=>mm.material.emissiveIntensity=0,300); });
+      updateHUD();
+    }
+  });
+}
+
+function resize(){
+  renderer.setSize(innerWidth, innerHeight, false);
+  camera.aspect=innerWidth/innerHeight; camera.updateProjectionMatrix();
+}
+addEventListener('resize', resize); resize();
+
+let last=performance.now();
+function loop(){
+  requestAnimationFrame(loop);
+  const now=performance.now(); const dt=Math.min(0.033, (now-last)/1000); last=now;
+
+  // input vector relative to camera yaw
+  let ix=0, iz=0;
+  if(keys.has('w')||keys.has('arrowup')) iz-=1;
+  if(keys.has('s')||keys.has('arrowdown')) iz+=1;
+  if(keys.has('a')||keys.has('arrowleft')) ix-=1;
+  if(keys.has('d')||keys.has('arrowright')) ix+=1;
+  ix+=joy.x; iz+=-joy.y;
+  const len=Math.hypot(ix,iz);
+  if(len>0){ ix/=len; iz/=len; }
+  const isRunning = keys.has('shift') || Math.hypot(joy.x, joy.y) > 0.88; // en móvil: empuja joystick al borde para correr
+  const speed = isRunning ? 6.4 : 3.6;
+  // camera-relative movement
+  const yaw = camMode===1 ? 0 : camYaw;
+  const fwdX=Math.cos(yaw), fwdZ=Math.sin(yaw);
+  const rightX=Math.cos(yaw+Math.PI/2), rightZ=Math.sin(yaw+Math.PI/2);
+  let mvx= ix*rightX + iz*fwdX;
+  let mvz= ix*rightZ + iz*fwdZ;
+  // apply
+  player.position.x += mvx * speed * dt;
+  player.position.z += mvz * speed * dt;
+  // clamp to world
+  player.position.x=Math.max(-SIZE/2+1, Math.min(SIZE/2-1, player.position.x));
+  player.position.z=Math.max(-SIZE/2+1, Math.min(SIZE/2-1, player.position.z));
+  // height follow terrain (sample nearest cell)
+  const gx=Math.round(player.position.x+SIZE/2), gz=Math.round(player.position.z+SIZE/2);
+  const h = world.height[Math.max(0,Math.min(SIZE-1,gz))][Math.max(0,Math.min(SIZE-1,gx))] *0.3 + 0.9;
+  player.position.y += (h - player.position.y)*0.18;
+  // lean
+  if(len>0.1) player.rotation.y = Math.atan2(mvz, mvx);
+
+  // rare bob
+  rareObjs.forEach(m=>{
+    if(m.userData.collected) return;
+    m.rotation.y+= dt*1.8;
+    m.position.y = m.userData.baseY + Math.sin(now*0.003 + m.position.x)*0.18;
+  });
+
+  checkTriggers();
+  updateCamera();
+  drawMini();
+  renderer.render(scene,camera);
+}
+updateHUD();
+loop();
+
+function newWorld(){
+  seed='focalis-'+Math.random().toString(36).slice(2,6);
+  world=generateWorld(seed);
+  totalRare=world.rare.length; collected=0; discovered.clear();
+  buildWorld();
+  player.position.set(0,2,0);
+  storyTitle.textContent='NUEVO MUNDO GENERADO';
+  storyText.textContent='5 caminos nuevos. Camina para descubrirlos. Sin parar, sin formularios.';
+  const url=new URL(location.href); url.searchParams.set('seed',seed); history.replaceState(null,'',url);
+  updateHUD();
+}
+document.getElementById('btnNew').onclick=newWorld;
+
+// init from URL
+const urlSeed=new URL(location.href).searchParams.get('seed');
+if(urlSeed){ seed=urlSeed; world=generateWorld(seed); totalRare=world.rare.length; buildWorld(); updateHUD(); }
+drawMini();
+</script>
+</body>
+</html>

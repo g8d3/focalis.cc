@@ -45,6 +45,11 @@ services:
       - ACTIVE_FILE=/site/ACTIVE
       - VARIANTS_DIR=/site/variants
       - CREDENTIALS_FILE=/app/.credentials
+    # the mail leg for contact-form leads (AgentMail key + sender). Kept outside the repo:
+    # /home/vuos/.secrets/focalis-admin.env (0600). Without it a submission is only logged
+    # and nobody is told — which is what happened until 2026-10-18.
+    env_file:
+      - /home/vuos/.secrets/focalis-admin.env
     command: bash -c "pip install --no-cache-dir Flask >/dev/null 2>&1 && python /app/app.py"
     networks:
       - focalis-net
