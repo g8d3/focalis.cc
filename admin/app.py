@@ -25,6 +25,11 @@ ALLOWED_VARIANTS = {
     "variant-b-labs":   {"label": "Labs",   "title": "Focalis Labs",   "sub": "Experiments you can ship",    "color": "#FF4D00", "bg": "#FFFBF5", "desc": "Bold, bento, experimental.", "preview": "/labs/"},
     "variant-c-systems":{"label": "Systems","title": "Focalis Systems","sub": "Infrastructure you can trust","color": "#0F2342", "bg": "#FFFFFF", "desc": "Enterprise, light, SLA-grade.", "preview": "/systems/"},
     "variant-d-world":  {"label": "World",  "title": "Focalis — World",  "sub": "Technology that gives time back", "color": "#2A7F6F", "bg": "#FAF6F1", "desc": "Human, warm, story-driven. No direct sales — studio showcase.", "preview": "/world/"},
+    # The variant that is actually live at the root (set with `ln -sfn variant-e-landing
+    # variants/active` when the taste-loop finalist was deployed). It was missing from this map and
+    # from ACTIVE, so the panel reported the 3D game as the live site and could not select the page
+    # that sells. Keep this entry in step with the `variants/active` symlink.
+    "variant-e-landing": {"label": "Landing", "title": "Focalis — the agent fleet tax", "sub": "Measure it, find it, cut it", "color": "#1C5FD4", "bg": "#FFFFFF", "desc": "The money page: the measured tax, the free preview, the offer.", "preview": "/"},
 }
 VARIANT_ALIASES = {
     "studio": "variant-a-studio",
@@ -35,6 +40,8 @@ VARIANT_ALIASES = {
     "variant-c": "variant-c-systems",
     "world": "variant-d-world",
     "variant-d": "variant-d-world",
+    "landing": "variant-e-landing",
+    "variant-e": "variant-e-landing",
 }
 
 app = Flask(__name__)
